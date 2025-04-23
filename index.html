@@ -192,5 +192,50 @@
       </div>
     </div>
   </section>
+
+<script>
+  (async () => {
+    console.log("🕓 Waiting for ReSpec...");
+    await document.respecIsReady;
+    console.log("✅ ReSpec ready — initializing tabs");
+
+    document.querySelectorAll('.example-tabset').forEach(container => {
+      const exampleId = container.dataset.example;
+      const buttons = container.querySelectorAll('button[data-tab]');
+      const codes = container.querySelectorAll('pre');
+
+      const firstBtn = container.querySelector('button.active') || buttons[0];
+      const firstTab = container.querySelector(`#${exampleId}-${firstBtn.dataset.tab}`);
+      showTab(firstBtn, firstTab);
+
+      buttons.forEach(button => {
+        const tabName = button.dataset.tab;
+        const target = container.querySelector(`#${exampleId}-${tabName}`);
+        button.addEventListener('click', () => showTab(button, target));
+      });
+
+      function showTab(activeButton, showEl) {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        codes.forEach(pre => pre.style.display = 'none');
+
+        activeButton.classList.add('active');
+        showEl.style.display = 'block';
+
+        const code = showEl.querySelector('code');
+        if (!code.dataset.loaded && code.dataset.src) {
+          fetch(code.dataset.src)
+            .then(res => res.ok ? res.text() : Promise.reject(res))
+            .then(text => {
+              code.textContent = text;
+              code.dataset.loaded = "true";
+              if (window.hljs) hljs.highlightElement(code);
+            })
+            .catch(() => code.textContent = "Failed to load example.");
+        }
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
