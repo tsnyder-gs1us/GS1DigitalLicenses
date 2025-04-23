@@ -4,6 +4,13 @@ This github repo contains the document development for the simplified GS1 VC Dat
 
 View the document [here](https://woodycreek.github.io/GS1DigitalLicenses/).
 
+# Viewing in web server
+
+Its best to view this in a webserver since content is dynamic. I use
+
+```
+python -m http.server 8000
+```
 
 # Generation
 
