@@ -1,0 +1,111 @@
+/* gs1-respec-style.css */
+
+/* Base font and background */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #005eb8; /* GS1 blue */
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Links */
+a {
+  color: #005eb8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.75em;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+/* Code blocks */
+pre, code {
+  background-color: #f8f8f8;
+  border: 1px solid #eaeaea;
+  padding: 0.5em;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95em;
+  overflow-x: auto;
+}
+
+/* Notes and warnings */
+.note, .warning {
+  border-left: 4px solid #005eb8;
+  background-color: #e6f0fa;
+  padding: 1em;
+  margin: 1em 0;
+}
+
+.warning {
+  border-color: #d9534f;
+  background-color: #f9e6e6;
+}
+
+/* Lists */
+ul, ol {
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 1em;
+  color: #666;
+  margin: 1em 0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 1.5em;
+}
+
+ul li::before {
+  content: "";
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-right: 0.6em;
+  background-color: #f47920; /* GS1 orange */
+  vertical-align: middle;
+}
+
+/* Nested list: hollow orange circle */
+ul ul li::before {
+  background-color: transparent;
+  border: 2px solid #f47920;
+  border-radius: 50%;
+}
