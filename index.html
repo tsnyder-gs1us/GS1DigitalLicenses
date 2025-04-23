@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <title>Sample Title</title>
-  <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
+  <script class="remove" src="https://unpkg.com/respec@latest/builds/respec.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
   <script class="remove">
     var respecConfig = {
       noTitle: true,
@@ -27,6 +28,7 @@
     };
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
   <link rel="stylesheet" href="./gs1-respec.css">
 
   <script>
@@ -182,7 +184,6 @@
       </div>
     </div>
   </section>
-
 <script>
   (async () => {
     console.log("🕓 Waiting for ReSpec...");
@@ -218,14 +219,23 @@
             .then(text => {
               code.textContent = text;
               code.dataset.loaded = "true";
-              if (window.hljs) hljs.highlightElement(code);
+              if (window.hljs && typeof hljs.highlightElement === 'function') {
+                // Delay ensures content is in DOM before highlight is applied
+                setTimeout(() => hljs.highlightElement(code), 0);
+              }
             })
             .catch(() => code.textContent = "Failed to load example.");
         }
       }
     });
+
+    // Optionally highlight all static <code> blocks on the page
+    if (window.hljs && typeof hljs.highlightAll === 'function') {
+      hljs.highlightAll();
+    }
   })();
 </script>
+
 
 </body>
 </html>

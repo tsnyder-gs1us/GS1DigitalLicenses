@@ -367,3 +367,18 @@ div.ednote {
   border-radius: 0 0 5px 5px;
 }
 code { white-space: pre-wrap; }
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  background: #f8f8f8;
+  color: #333;
+  font-family: monospace;
+  font-size: 0.9em;
+  border-radius: 4px;
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-section {
+  font-weight: bold;
+}
