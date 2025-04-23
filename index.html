@@ -6,6 +6,7 @@
   <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
   <script class="remove">
     var respecConfig = {
+      noTitle: true,
       specStatus: "ED",
       shortName: "GS1-Digital-Licenses",
       editors: [
@@ -20,11 +21,11 @@
       latestVersion: "https://woodycreek.github.io/GS1DigitalLicenses/",
       noRecTrack: true,
       includePermalinks: true,
-      noTitle: true,
     };
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./gs1-respec.css">
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const tabs = document.querySelectorAll(".tab-buttons button");
@@ -42,22 +43,59 @@
 </head>
 <body>
 
-<div class="gs1-title-banner">
-  <img src="https://gs1go2.azureedge.net/cdn/ff/9s7YciihOJPDOqdxcJZACpQozarnaECzUHunMD7jqtc/1743699494/:relative:/themes/custom/gsone_revamp/logo.png" alt="GS1 logo">
-  <div>
-    <h1 id="title">2D in Retail Guidelines</h1>
-    <p class="gs1-title-sub">23 April 2025</p>
+  <div class="gs1-header">
+    <div class="gs1-topbar">
+      <img src="https://gs1go2.azureedge.net/cdn/ff/9s7YciihOJPDOqdxcJZACpQozarnaECzUHunMD7jqtc/1743699494/:relative:/themes/custom/gsone_revamp/logo.png"
+           alt="GS1 Logo" class="gs1-logo">
+      <span class="gs1-site">ref.gs1.org</span>
+      <span class="gs1-tagline">The Global Language of Business</span>
+    </div>
+
+    <div class="gs1-banner">
+      <span class="gs1-badge">Editors Version</span>
+      <h1>GS1 Digital Licenses</h1>
+      <p>Implementation Guideline for the GS1 Digital License Ecosystem</p>
+    <div class="gs1-buttons">
+      <a href="https://woodycreek.github.io/GS1DigitalLicenses/" class="gs1-btn">Latest version</a>
+    </div>
+    </div>
   </div>
-</div>
 
   <section id="abstract">
     <h2>Abstract</h2>
-    <p>TODO for GS1 Digital Licenses.</p>
+    <p>TODO for GS1 Digital Licenses. <a href="https://woodycreek.github.io/GS1DigitalLicenses/">Test Link</a>
+ </p>
   </section>
 
   <section id="overview">
     <h2>Overview</h2>
     <p>TODO for GS1 Digital Licenses.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Barcode Type</th>
+          <th>GS1 Syntax</th>
+          <th>Use Case</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EAN-13</td>
+          <td>GTIN only</td>
+          <td>POS linear barcode</td>
+        </tr>
+        <tr>
+          <td>GS1 DataMatrix</td>
+          <td>GS1 Digital Link URI</td>
+          <td>2D barcode for POS and beyond</td>
+        </tr>
+        <tr>
+          <td>QR Code</td>
+          <td>GS1 Digital Link URI</td>
+          <td>Consumer engagement</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
   <section id="benefits">
