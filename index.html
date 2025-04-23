@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>GS1 Digital Licenses</title>
+  <title>Sample Title</title>
   <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c"></script>
   <script class="remove">
     var respecConfig = {
       noTitle: true,
       specStatus: "ED",
-      shortName: "GS1-Digital-Licenses",
+      shortName: "sample-short-name",
+      doSectionNumbering: true,
       editors: [
         {
-          name: "Paul Dietrich",
+          name: "Author Name",
           company: "GS1 Global Office",
         }
       ],
@@ -53,8 +54,8 @@
 
     <div class="gs1-banner">
       <span class="gs1-badge">Editors Version</span>
-      <h1>GS1 Digital Licenses</h1>
-      <p>Implementation Guideline for the GS1 Digital License Ecosystem</p>
+      <h1>Sample Title</h1>
+      <p>Sample Subtitle with more description</p>
     <div class="gs1-buttons">
       <a href="https://woodycreek.github.io/GS1DigitalLicenses/" class="gs1-btn">Latest version</a>
     </div>
@@ -63,51 +64,109 @@
 
   <section id="abstract">
     <h2>Abstract</h2>
-    <p>TODO for GS1 Digital Licenses. <a href="https://woodycreek.github.io/GS1DigitalLicenses/">Test Link</a>
+    <p>This is a required section</p>
+  </section>
+
+  <section id="section-1">
+    <h2>Top Level Section</h2>
+    <p>This is the first top-level section.</p>
+
+    <section id="section-1-1">
+      <h3>Subsection 1.1</h3>
+      <p>This is a subsection of the top-level section.</p>
+
+      <section id="section-1-1-1">
+        <h4>Sub-subsection 1.1.1</h4>
+        <p>This is a nested subsection (third level).</p>
+      </section>
+
+      <section id="section-1-1-2">
+        <h4>Sub-subsection 1.1.2</h4>
+        <p>Another third-level subsection.</p>
+      </section>
+    </section>
+
+    <section id="section-1-2">
+      <h3>Subsection 1.2</h3>
+      <p>Another second-level section under the top-level one.</p>
+    </section>
+  </section>
+
+  <section id="section-2">
+    <h2>Second Top Level Section</h2>
+    <p>This is a new top-level section.</p>
+
+    <section id="section-2-1">
+      <h3>Subsection 2.1</h3>
+      <p>More subsections for numbering test.</p>
+    </section>
+  </section>
+
+  <section id="links">
+    <h2>Links</h2>
+    <p>This shows the format for a sample link. <a href="https://woodycreek.github.io/GS1DigitalLicenses/">Test Link</a>
  </p>
   </section>
 
-  <section id="overview">
-    <h2>Overview</h2>
-    <p>TODO for GS1 Digital Licenses.</p>
+  <section id="callouts">
+    <h2>Callouts</h2>
+    <p>Callouts look like this.</p>
+    <div class="callout note">
+      <div class="callout-icon">✓</div>
+      <div class="callout-text">
+        <strong>Note:</strong>A sample note callout.
+      </div>
+    </div>
+
+    <div class="callout important">
+      <div class="callout-icon">!</div>
+      <div class="callout-text">
+        <strong>Important:</strong>A sample important callout.
+      </div>
+    </div>
+  </section>
+
+  <section id="tables">
+    <h2>Tables</h2>
+    <p>This shows a test table format</p>
     <table>
       <thead>
         <tr>
-          <th>Barcode Type</th>
-          <th>GS1 Syntax</th>
-          <th>Use Case</th>
+          <th>Header 1</th>
+          <th>Header 2</th>
+          <th>Header 3</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>EAN-13</td>
-          <td>GTIN only</td>
-          <td>POS linear barcode</td>
+          <td>Body 1A</td>
+          <td>Body 2A</td>
+          <td>Body 3A</td>
         </tr>
         <tr>
-          <td>GS1 DataMatrix</td>
-          <td>GS1 Digital Link URI</td>
-          <td>2D barcode for POS and beyond</td>
-        </tr>
-        <tr>
-          <td>QR Code</td>
-          <td>GS1 Digital Link URI</td>
-          <td>Consumer engagement</td>
+          <td>Body 1B</td>
+          <td>Body 2B</td>
+          <td>Body 3B</td>
         </tr>
       </tbody>
     </table>
   </section>
 
-  <section id="benefits">
-    <h2>Key Benefits</h2>
+  <section id="bullets">
+    <h2>Bullet Lists</h2>
+    <p>This section shows the format for Bullet Lists</p>
     <ul class="orange-bullets">
-      <li>TODO for GS1 Digital Licenses.</li>
-      <li>TODO for GS1 Digital Licenses.</li>
+      <li>Bullet Item 1</li>
+      <li>Bullet Item 2</li>
+      <ul class="orange-bullets">
+        <li>Bullet Item a</li>
+        <li>Bullet Item b</li>
+      </ul>
     </ul>
   </section>
 
   <section id="tabbed-example">
-    <h2>Code Formats</h2>
+    <h2>Tabbed Code Formats</h2>
     <div class="tabs">
       <div class="tab-buttons">
         <button class="active">HTML</button>

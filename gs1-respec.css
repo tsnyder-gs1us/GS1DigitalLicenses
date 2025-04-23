@@ -29,6 +29,32 @@ p {
   margin-bottom: 1em;
 }
 
+a {
+  color: #005eb8; /* GS1 blue */
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #005eb8; /* blue underline always */
+}
+
+a:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 100%;
+  background-color: #c13f00; /* red underline on hover */
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -120,13 +146,17 @@ ul li::before {
   vertical-align: middle;
 }
 
-/* Nested list: hollow orange circle */
 ul ul li::before {
+  content: "";
+  display: inline-block;
+  width: 0.45em;             /* smaller */
+  height: 0.45em;            /* smaller */
+  margin-right: 0.6em;
   background-color: transparent;
-  border: 2px solid #f47920;
+  border: 1.5px solid #f47920; /* thinner circle */
   border-radius: 50%;
+  vertical-align: middle;
 }
-
 .gs1-header {
   font-family: Arial, sans-serif;
 }
@@ -246,4 +276,54 @@ ul ul li::before {
 
 .tab-content.active {
   display: block;
+}
+
+.callout {
+  display: flex;
+  align-items: flex-start;
+  background-color: #f2f7fb; /* GS1 light blue */
+  border-radius: 6px;
+  padding: 1em;
+  margin: 1em 0;
+  border: none;              /* No left bar */
+  box-shadow: none;
+}
+
+.callout-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 1em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #f47920; /* GS1 orange default */
+  flex-shrink: 0;
+}
+
+.callout.important .callout-icon {
+  background-color: #f47920; /* GS1 red for important */
+}
+
+.callout-text {
+  flex: 1;
+}
+
+.callout-text strong {
+  font-weight: bold;
+  margin-right: 0.3em;
+}
+
+div.note,
+div.issue,
+div.warning,
+div.ednote {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
