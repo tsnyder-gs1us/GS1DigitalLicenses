@@ -29,32 +29,34 @@ p {
   margin-bottom: 1em;
 }
 
-a {
-  color: #005eb8; /* GS1 blue */
+
+body a:not(nav#toc a) {
+  color: #005eb8;
   text-decoration: none;
   position: relative;
   padding-bottom: 2px;
 }
 
-a::after {
+body a:not(nav#toc a)::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   height: 1px;
   width: 100%;
-  background-color: #005eb8; /* blue underline always */
+  background-color: #005eb8;
 }
 
-a:hover::before {
+body a:not(nav#toc a):hover::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: -3px;
   height: 2px;
   width: 100%;
-  background-color: #c13f00; /* red underline on hover */
+  background-color: #c13f00;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -327,3 +329,4 @@ div.ednote {
   margin: 0 !important;
   box-shadow: none !important;
 }
+
