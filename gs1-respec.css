@@ -330,3 +330,40 @@ div.ednote {
   box-shadow: none !important;
 }
 
+
+.example-tabset {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1em 0;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+.example-tab-buttons {
+  display: flex;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+}
+.example-tab-buttons button {
+  flex: 1;
+  padding: 0.75em 1em;
+  border: none;
+  border-right: 1px solid #ccc;
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #002d72;
+  cursor: pointer;
+}
+.example-tab-buttons button:last-child {
+  border-right: none;
+}
+.example-tab-buttons button.active {
+  background-color: #002d72;
+  color: white;
+}
+.example-tab-content pre {
+  margin: 0;
+  padding: 1em;
+  background-color: #fcfcfc;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+}
+code { white-space: pre-wrap; }

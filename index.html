@@ -169,26 +169,16 @@
 
   <section id="tabbed-example">
     <h2>Tabbed Code Formats</h2>
-    <div class="tabs">
-      <div class="tab-buttons">
-        <button class="active">HTML</button>
-        <button>JSON</button>
-        <button>XML</button>
+    <div class="example-tabset" data-example="product">
+      <div class="example-tab-buttons">
+        <button data-tab="html">HTML</button>
+        <button data-tab="json" class="active">JSON</button>
+        <button data-tab="text">Text</button>
       </div>
-      <div class="tab-content active">
-        <pre><code>&lt;a href="https://id.gs1.org/01/09506000134352/21/ABC123"&gt;Scan Product&lt;/a&gt;</code></pre>
-      </div>
-      <div class="tab-content">
-        <pre><code>{
-  "gtin": "09506000134352",
-  "serial": "ABC123"
-}</code></pre>
-      </div>
-      <div class="tab-content">
-        <pre><code>&lt;Product&gt;
-  &lt;GTIN&gt;09506000134352&lt;/GTIN&gt;
-  &lt;Serial&gt;ABC123&lt;/Serial&gt;
-&lt;/Product&gt;</code></pre>
+      <div class="example-tab-content">
+        <pre id="product-html" style="display: none;"><code class="hljs html" data-src="samples/sample.html">Loading HTML...</code></pre>
+        <pre id="product-json" style="display: block;"><code class="hljs json" data-src="samples/sample.json">Loading JSON...</code></pre>
+        <pre id="product-text" style="display: none;"><code class="hljs plaintext" data-src="samples/sample.text">Loading Text...</code></pre>
       </div>
     </div>
   </section>
