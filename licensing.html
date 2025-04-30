@@ -49,8 +49,8 @@
         small MOs gettings a single GS1 prefix while larger MOs may have hundreds.  GS1 MOs issue GCPs and single
         issue ID Key Licenses from their prefixes. There are millions of MCs and millions of GCP issued worldwide. </p>
 
-        <div class="callout note">
-          <div class="callout-icon">✓</div>
+        <div class="callout important">
+          <div class="callout-icon">!</div>
           <div class="callout-text">
             <strong>Note:</strong>GS1 Number is complex and there are abbreviated number forms that can omit leading zeros
             in numbering This can sometimes make the GS1 Prefix and GCP matching complex.  (<span class="todo">TODO</span> put a link to some better
@@ -64,13 +64,52 @@
     </section>
     <section id="License-Credentials">
         <h3>Digital License Credentials Overview</h3>
-        <p>GS1 Digital Licenses use the <a href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials V2.0 Format</a>.
-        This credential format uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
-        details of a license in the format that is well understood worldwide. In addition to the W3C VC JSON-LD context,
-        all GS1 License Credentials must also contain the GS1 License Context.
+        <p>GS1 Digital Licenses use the <a href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
+        The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
+        uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
+        details of a license in the format that is well understood worldwide.
 
-        <div class="callout note">
-          <div class="callout-icon">✓</div>
+        A few optional properties of the W3C VCDM are mandatory in GS1 License Credentials. These are outlined here:
+
+        <table>
+            <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@context</td>
+                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 License Credential Context is also required</td>
+                </tr>
+                <tr>
+                    <td>validFrom</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials</td>
+                </tr>
+                <tr>
+                    <td>credentialSubject:id</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials</td>
+                </tr>
+                <tr>
+                    <td>credentialStatus</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">TODO</span></td>
+                </tr>
+                <tr>
+                    <td>credentialSchema</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">TODO</span></td>
+                </tr>
+                <tr>
+                    <td>renderMethod</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">TODO</span></td>
+                </tr>
+            </tbody>
+            </table>
+        </p>
+
+
+        <div class="callout important">
+          <div class="callout-icon">!</div>
           <div class="callout-text">
             <strong>Note:</strong>The current GS1 License Context can be found here:
             <ul class="orange-bullets">
@@ -79,16 +118,15 @@
           </div>
         </div>
 
-        <p>The context establishes six different types of GS1 licenses.  Three of these licenses correspond directly to the descriptions and examples
-            above and will be described in detail in this section:
+        <p>The GS1 License context establishes six different types of GS1 license Credentials.  Three of these licenses correspond directly to the descriptions and examples above and will be described in detail in this section:
         <ul class="orange-bullets">
             <li>GS1PrefixLicenseCredential -- A GS1 Prefix License </li>
             <li>GS1CompanyPrefixLicenseCredential -- A GS1 Company Prefix License</li>
             <li>GS1IdentificationKeyLicenseCredential -- A GS1 Single Issue ID Key License</li>
         </ul>.
 
-        <div class="callout note">
-          <div class="callout-icon">✓</div>
+        <div class="callout important">
+          <div class="callout-icon">!</div>
           <div class="callout-text">
             <strong>Note:</strong>This context also defines the following licenses that will be covered in section <a href="#license-exceptions"></a>.
             <ul class="orange-bullets">
@@ -162,7 +200,7 @@
         <section id="identification-key-type">
             <h3>identificationKeyType</h3>
             <p>The identificationKeyType is an enumerated value of <a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a>. It
-            can take the values from this table</p>
+            can take the values from this table. For more information on GS1 ID Keys see Section <a href='#GS1-Keys'></a></p>
             <table>
                 <thead>
                     <tr>
