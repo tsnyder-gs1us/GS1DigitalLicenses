@@ -3,26 +3,263 @@
 <head>
 </head>
 <body>
-    <h2>Licensing</h2>
-    <p>TODO</p>
+    <h2>Digital Licensing</h2>
+    <p><a href='#GS1-Licenses'>GS1 Licensing</a> provides the root of trust for the globally unique
+        numbering systems
+        GS1 Digital Licenses are digital representations of the existing GS1 Licenses.  These Digital license
+        can be verified by machines in <abbr title="Business to Business">B2B</abbr>
+        transaction. Why might digital verification of GS1 licecnses be beneficial: </p>
+    <ul class="orange-bullets">
+        <li>To prove a GS1 MO is authentic within the GS1 system for issuing Licenses</li>
+        <li>To prove a MC or MO is authorized to create specific GS1 ID Keys</li>
+        <li>To establish provenance over GS1 ID Keys created by MC or MO</li>
+        <li>To establish provenance over data about GS1 ID Keys created by MC or MO</li>
+    </ul>
     <section id="Licencsing-nutshell">
-        <h3>Licensing in a Nutshell</h3>
-        <p>TODO</p>
+        <h3>Digital Licensing in a Nutshell</h3>
+        <p>GS1 Digital Licenses parallel the licenses discussed <a href='#GS1-Licenses'>here</a>.</p>
+        <p>A Digital GS1 Prefix License is issue by GO to a specific MO.  It authorizes them to
+        issue GS1 Company Prefixes (<abbr title="GS1 Company Prefixes">GCPs</abbr> singular <abbr title="GS1 Company Prefix">GCP</abbr>)
+         and single issue identiiers from a specific GS1 prefix value. GS1 Prefix licenses
+        are typically 3 digit numbers, with exceptions listed <a href="#tricky-topics">below</a>.
+        For example, GS1 New Zealand is issued prefixes 940 - 949.</p>
+
+        <p>A Digital GCP is isssued from and MO to a MC to authorize them to issue
+        GS1 ID Keys from a specific number range.  GCPs have different lengths depending on the
+        needs of the MC.  GCPs range from 6 digits to 11 digits.  They always begin with the
+        prefix value.  The fewer digits a GCP has, the more individual ID keys it can create. For example,
+        a 10 digit GCP (e.g. 08600058400) can only create 10 ID keys of each type while a 6 digit GCP can create
+        many thousands of ID keys.</p>
+
+        <p>A Digital Single ID Key License authorizes a MC to use a specific GS1 ID Key for their
+        business operations. Single Issue ID Key Licenses are often used by small business to
+        generate a few GTIN numbers for their products.  They are also used to issue GLN numbers
+        to identify organizations in the global supply chain that participate, but are not creating
+        product, shipments or assets.</p>
+
     </section>
     <section id="License-Hierarchy">
-        <h3>License Hieararchy</h3>
-        <p>TODO</p>
+        <h3>Digital License Hieararchy</h3>
+        <p>These licenses for a hierarchy that can be represented by the image below</p>
+        <figure id="figure">
+          <img src="images/GeneralLicenseHierarchy.drawio.svg" alt="GS1 License Hierarchy" />
+          <figcaption>GS1 License Hierarchy</figcaption>
+        </figure>
+        <p>The GS1 Global Office issues GS1 Prefixes to MOs.  Each MO gets GS1 prefixes based on their needs, with
+        small MOs gettings a single GS1 prefix while larger MOs may have hundreds.  GS1 MOs issue GCPs and single
+        issue ID Key Licenses from their prefixes. There are millions of MCs and millions of GCP issued worldwide. </p>
+
+        <div class="callout note">
+          <div class="callout-icon">✓</div>
+          <div class="callout-text">
+            <strong>Note:</strong>GS1 Number is complex and there are abbreviated number forms that can omit leading zeros
+            in numbering This can sometimes make the GS1 Prefix and GCP matching complex.  (<span class="todo">TODO</span> put a link to some better
+            documentation) For example:
+            <ul class="orange-bullets">
+                <li>For 12-digit GTINs, and only 12-digit GTINs, there is an implied leading zero. For example, given the 12-digit GTIN 614141234561, the GS1 Prefix is 061, not 614. </li>
+            </ul>.
+          </div>
+        </div>
+    </note>
     </section>
     <section id="License-Credentials">
-        <h3>License Credentials Overview</h3>
-        <p>TODO</p>
+        <h3>Digital License Credentials Overview</h3>
+        <p>GS1 Digital Licenses use the <a href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials V2.0 Format</a>.
+        This credential format uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
+        details of a license in the format that is well understood worldwide. In addition to the W3C VC JSON-LD context,
+        all GS1 License Credentials must also contain the GS1 License Context.
+
+        <div class="callout note">
+          <div class="callout-icon">✓</div>
+          <div class="callout-text">
+            <strong>Note:</strong>The current GS1 License Context can be found here:
+            <ul class="orange-bullets">
+                <li><span class="todo">TODO</span>  https://github.com/gs1us-technology/vc-verifier-core/blob/main/src/contexts/gs1/json-ld/gs1_licence_context.js</li>
+            </ul>.
+          </div>
+        </div>
+
+        <p>The context establishes six different types of GS1 licenses.  Three of these licenses correspond directly to the descriptions and examples
+            above and will be described in detail in this section:
+        <ul class="orange-bullets">
+            <li>GS1PrefixLicenseCredential -- A GS1 Prefix License </li>
+            <li>GS1CompanyPrefixLicenseCredential -- A GS1 Company Prefix License</li>
+            <li>GS1IdentificationKeyLicenseCredential -- A GS1 Single Issue ID Key License</li>
+        </ul>.
+
+        <div class="callout note">
+          <div class="callout-icon">✓</div>
+          <div class="callout-text">
+            <strong>Note:</strong>This context also defines the following licenses that will be covered in section <a href="#license-exceptions"></a>.
+            <ul class="orange-bullets">
+                <li>GS18PrefixLicenseCredential</li>
+                <li>DelegatedGS1PrefixLicenseCredential</li>
+                <li>DelegatedGS1IdentificationKeyLicenseCredential</li>
+            </ul>.
+          </div>
+        </div>
+
+        <p>All GS1 Digital License Credentials Share these Properties.</p>
+
+        <table>
+            <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Presence</th>
+                  <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>organization</td>
+                  <td><a href="https://ref.gs1.org/voc/Organization">gs1:organization</a></td>
+                  <td>Mandatory</td>
+                  <td>Organization that is the credential subject.At minimum, the attributes <a href="https://ref.gs1.org/voc/partyGLN">partyGLN</a> and <a href="https://ref.gs1.org/voc/organizationName">organizationName</a> must be populated.</td>
+                </tr>
+                <tr>
+                  <td>licenseValue</td>
+                  <td><a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a></td>
+                  <td>Mandatory</td>
+                  <td>See Section <a href='#License-values'></a></td>
+                </tr>
+                <tr>
+                  <td>alternativeLicenseValue</td>
+                  <td><a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a></td>
+                  <td>Optional</td>
+                  <td>See Section <a href='#alternate-License-values'></a></td>
+                </tr>
+                <tr>
+                  <td>extendsCredential</td>
+                  <td><a href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
+                  <td>Mandatory</td>
+                  <td>a reference to the GS1 License that this credential extends (issues from)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Identification Key Licenses (single Issue ID Keys) also contain this property</p>
+
+        <table>
+            <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Presence</th>
+                  <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>identificationKeyType</td>
+                  <td>gs1:GS1IdentificationKeyTypeCode</td>
+                  <td>Mandatory</td>
+                  <td>See Section <a href='#identification-key-type'></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <section id="identification-key-type">
+            <h3>identificationKeyType</h3>
+            <p>The identificationKeyType is an enumerated value of <a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a>. It
+            can take the values from this table</p>
+            <table>
+                <thead>
+                    <tr>
+                      <th>Enumeration</th>
+                      <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GTIN</td>
+                        <td>Global Trade Item Number</td>
+                    </tr>
+                    <tr>
+                        <td>GLN</td>
+                        <td>Global Location Number</td>
+                    </tr>
+                    <tr>
+                        <td>SSCC</td>
+                        <td>Serial Shipping Container Code</td>
+                    </tr>
+                    <tr>
+                        <td>GRAI</td>
+                        <td>Global Returnable Asset Identifier</td>
+                    </tr>
+                    <tr>
+                        <td>GIAI</td>
+                        <td>Global Individual Asset Identifier</td>
+                    </tr>
+                    <tr>
+                        <td>GSRN</td>
+                        <td>Global Service Relation Number</td>
+                    </tr>
+                    <tr>
+                        <td>GDTI</td>
+                        <td>Global Document Type Identifier</td>
+                    </tr>
+                    <tr>
+                        <td>GINC</td>
+                        <td>Global Identification Number for Consignment</td>
+                    </tr>
+                    <tr>
+                        <td>GSIN</td>
+                        <td>Global Shipment Identification Number</td>
+                    </tr>
+                    <tr>
+                        <td>GCN</td>
+                        <td>GCN Global Coupon Number</td>
+                    </tr>
+                    <tr>
+                        <td>CPID</td>
+                        <td>Component/Part Identifier</td>
+                    </tr>
+                    <tr>
+                        <td>GMN</td>
+                        <td>Global Model Number</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="License-values">
+        <h3>licenseValue</h3>
+        <p>Every license credential includes a license value. The license credential type is usually sufficient to
+        define, together with the license value, the “space” or “range” of the GS1 identification system
+        granted to the licensee. The exception to this is any license credential that has to do with a GS1
+        identification key, which requires an identification key type as an additional qualifier.
+        For license credentials that have to do with prefixes, the license value is in normalized GS1 (i.e.,
+        non-U.P.C.) form. Where the license credential is within the U.P.C. range, the alternative license
+        value holds the U.P.C. form.
+        For license credentials that have to do with GS1 identification keys, the license value is the key,
+        including the check digit or check characters if applicable, and excluding the serial component if
+        applicable. When the license is specifically for a GTIN, the license value is the GTIN in its minimum
+        format: GTIN-8, GTIN-12, GTIN-13 (which must not start with a zero), or GTIN-14 (which must
+        start with indicator digit 9). Where the license credential is for a GTIN-8, GTIN-12, or GTIN-13, the
+        alternative license value is the GTIN normalized to 13 digits (by padding with zeros on the left) and
+        with the check digit removed (resulting in a 12-digit string); this value is used when verifying a
+        GTIN with indicator digit 1-8 against a license.</p>
+        </section>
+
+        <section id="alternate-License-values">
+        <h3>alternativeLicenseValue</h3>
+        <p>Alternative value of the license.
+        For most licenses, the alternative value of
+        the license is the bridge between the
+        U.P.C. system and the rest of the GS1
+        system: if the license value starts with
+        zero, then the alternative license value is
+        the same as the license value but without
+        the starting zero.</p>
+        </section>
+
     </section>
     <section id="License-Details">
-        <h3>License Credentials Details</h3>
-        <p>TODO</p>
+        <h3>Digital License Credentials Details</h3>
+        <p><span class="todo">TODO</span></p>
     </section>
     <section id="license-exceptions">
-        <h3>License Credentials Exceptional Cases</h3>
-        <p>TODO</p>
+        <h3>Digital License Credentials Exceptional Cases</h3>
+        <p><span class="todo">TODO</span></p>
     </section>
 </body>

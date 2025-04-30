@@ -382,3 +382,12 @@ code { white-space: pre-wrap; }
 .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-section {
   font-weight: bold;
 }
+
+.todo {
+  color: #d63333;
+  background-color: #fff3cd;
+  padding: 0.2em 0.4em;
+  border-left: 4px solid #d63333;
+  font-weight: bold;
+  display: inline-block;
+}

@@ -4,17 +4,59 @@
 </head>
 <body>
     <h2>Tricky Topics</h2>
-    <p>TODO</p>
+    <p><span class="todo">TODO</span></p>
+
+     <section id="key-tiers">
+        <h3>GS1 ID Key Tiers</h3>
+        <p>Within the GS1 identification system, keys are broken down into four tiers. Full details may be found
+        in the <a href="https://www.gs1.org/standards/gs1-system-architecture-document/current-standard">GS1 System Architecture</a>,
+        but some of the text is reproduced here.
+        <ul class="orange-bullets">
+        <li>Tier 1: The structure, usage, and lifecycle rules of a GS1 tier 1 key are defined, administered,
+        and managed entirely by GS1. A tier 1 key always incorporates a GS1 Prefix. A tier 1 key may
+        incorporate a GS1 Company Prefix issued to a user company, who then issues the key, or it may
+        be issued in its entirety as an individual key. Tier 1 keys are subject to allocation rules defined
+        in GS1 standards, and their association with descriptive data elements is governed by validation
+        rules also defined in GS1 standards.</li>
+        <li>Tier 2: The structure of a GS1 tier 2 key is defined by GS1 as a GS1 tier 1 key, but its usage
+        and lifecycle rules are defined, administered, and managed by an external organization. A tier 2
+        key exists within the range of a GS1 Prefix or a GS1 Company Prefix, incorporates additional
+        characters administered by an external organization, and includes a check digit or a check
+        character pair if required by its corresponding tier 1 key format. Tier 2 keys are unique with
+        respect to tier 1 keys of the same type and can be used in most or all applications that support
+        the corresponding tier 1 key type. Their allocation and lifecycle rules, however, are defined by
+        an organization external to GS1. The degree to which the usage and lifecycle rules are
+        compatible with those of the corresponding tier 1 keys is specific to each tier 2 key.</li>
+        <li>Tier 3: The structure, usage, and its lifecycle rules of a GS1 tier 3 key are defined, administered,
+        and managed entirely by an organization external to GS1. This organization enters into an
+        agreement with GS1 that enables its keys to be supported in selected GS1 standards (e.g.,
+        within an EPC header).</li>
+        <li>Tier 4: The structure and, usage, and lifecycle rules of a GS1 tier 4 key are defined,
+        administered, and managed entirely by an organization or entity external to GS1. A tier 4 key
+        has no explicit support within the GS1 system, but it may have some implicit support. For
+        example, the EPCIS standard supports any URI as an object identifier and trading partners
+        could, by mutual greement, agree to use URIs for geographic locations as a ReadPointID for certain events.</li>
+        </p>
+
+    </section>
     <section id="license-exceptions">
         <h3>License Exceptions</h3>
-        <p>TODO</p>
+        <p><span class="todo">TODO</span></p>
+    </section>
+    <section id="license-exceptions">
+        <h3>GTIN 8 Licensing</h3>
+        <p><span class="todo">TODO</span></p>
+    </section>
+    <section id="license-exceptions">
+        <h3>Delegated GS1 ID Key Issuance</h3>
+        <p><span class="todo">TODO</span></p>
     </section>
     <section id="key-creation-delegation">
         <h3>Delegation over Key Creation</h3>
-        <p>TODO</p>
+        <p><span class="todo">TODO</span></p>
     </section>
     <section id="data-creation-delegation">
         <h3>Delegation over Data Creation</h3>
-        <p>TODO</p>
+        <p><span class="todo">TODO</span></p>
     </section>
 </body>
