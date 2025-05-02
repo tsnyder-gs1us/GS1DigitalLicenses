@@ -19,7 +19,7 @@
         <h3>Digital Licensing in a Nutshell</h3>
         <p>GS1 Digital Licenses parallel the licenses discussed <a href='#GS1-Licenses'>here</a>.</p>
         <p>A Digital GS1 Prefix License is issue by GO to a specific MO.  It authorizes them to
-        issue GS1 Company Prefixes (<abbr title="GS1 Company Prefixes">GCPs</abbr> singular <abbr title="GS1 Company Prefix">GCP</abbr>)
+        issue GS1 Company Prefixes
          and single issue identiiers from a specific GS1 prefix value. GS1 Prefix licenses
         are typically 3 digit numbers, with exceptions listed <a href="#tricky-topics">below</a>.
         For example, GS1 New Zealand is issued prefixes 940 - 949.</p>
@@ -81,7 +81,7 @@
             <tbody>
                 <tr>
                     <td>@context</td>
-                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 License Credential Context is also required</td>
+                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 License Credential Context is also required (see below)</td>
                 </tr>
                 <tr>
                     <td>validFrom</td>
@@ -93,11 +93,13 @@
                 </tr>
                 <tr>
                     <td>credentialStatus</td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">TODO</span></td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type BitstringStatusListEntry
+                    defined in the <a href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C.</td>
                 </tr>
                 <tr>
                     <td>credentialSchema</td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">TODO</span></td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type JsonSchema
+                        defined in the <a href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C.</td>
                 </tr>
                 <tr>
                     <td>renderMethod</td>
@@ -170,8 +172,9 @@
                 <tr>
                   <td>extendsCredential</td>
                   <td><a href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
-                  <td>Mandatory</td>
-                  <td>a reference to the GS1 License that this credential extends (issues from)</td>
+                  <td>Optional</td>
+                  <td>a reference to the GS1 License that this credential extends (issues from). This is
+                  required on all license credentials except GS1 Prefix Credentials issued by GO</td>
                 </tr>
             </tbody>
         </table>
@@ -291,11 +294,122 @@
         the starting zero.</p>
         </section>
 
+        <section id="encapsulation-and-signatures">
+            <h3>Encapsulation and Signatures</h3>
+            <p>GS1 License credentials are issued in the W3C VCDM data model using <a href="https://www.w3.org/TR/vc-jose-cose/">vc-jose-cose</a>
+                specifically as references in <a href="https://www.w3.org/TR/vc-jose-cose/#securing-with-jose">this section</a>. GS1
+                License Credentials are signed with ECDSA ES256 algorithm. Eamples are show in Section <a href="#License-Details"></a></p>
+            <p><span class="todo">TODO</span> do talk about whether we provide these as VCs or VPs</p>
+        </section>
+
+        <section id="delivery">
+            <h3>Delivery</h3>
+            <p><span class="todo">TODO</span> How does one get these?  Is there a protocol I need</p>
+        </section>
+
     </section>
     <section id="License-Details">
         <h3>Digital License Credentials Details</h3>
-        <p><span class="todo">TODO</span></p>
-    </section>
+
+        <p>This section shows specific examples of GS1 License Credentials to allow a more concrete understanding of their contents and format</p>
+
+        <section id="gs1-prefix-credential-sample">
+
+            <h3>Digital GS1 Prefix Licenses</h3>
+
+            <p>GS1 Prefix Licenses were described in <a href="#GS1-Licenses"></a> and <a href="#License-Hierarchy"></a>. The following shows
+                an eample GS1 Prefix License issued from GO to GS1 US for prefix 08.</p>
+
+            <div class="example-tabset" data-example="gs1-prefix-sample">
+              <div class="example-tab-buttons">
+                <button data-tab="json" class="active">JSON</button>
+                <button data-tab="jwt">JWT</button>
+              </div>
+              <div class="example-tab-content">
+                <pre id="gs1-prefix-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gs1-prefix-license-sample.json">Loading JSON...</code></pre>
+                <pre id="gs1-prefix-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/gs1-prefix-license-sample.jwt">Loading JWT...</code></pre>
+              </div>
+            </div>
+
+            <p><span class="todo">TODO</span> we need to add render method to this example</p>
+
+            <p>The extendsCredential property is omitted as this credential is signed by the GS1 GO DID. The subject ID of the credential is always the MO DID with the gs1:organization field containing the partyGLN and Name properties. Since this prefix starts with a leading 0, the alternativeLicenseValue is present
+            with the leading zero removed.</p>
+
+            <p>The name and description field are for visual rendering.</p>
+
+            <p><span class="todo">TODO</span> Name and Desription are optional in VCDM?  Are they always present in GS1 Prefix Credentials?  </p>
+        </section>
+
+        <section id="gcp-sample">
+
+            <h3>Digital GCP Licenses</h3>
+
+            <p>GCP Licenses were described in <a href="#GS1-Licenses"></a> and <a href="#License-Hierarchy"></a>. The following shows
+                an eample GCP License issued from GS1 US to a ficticous company Healthy Tots</p>
+
+            <div class="example-tabset" data-example="gcp-sample">
+              <div class="example-tab-buttons">
+                <button data-tab="json" class="active">JSON</button>
+                <button data-tab="jwt">JWT</button>
+              </div>
+              <div class="example-tab-content">
+                <pre id="gcp-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gcp-sample.json">Loading JSON...</code></pre>
+                <pre id="gcp-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/gcp-sample.jwt">Loading JWT...</code></pre>
+              </div>
+            </div>
+
+            <p><span class="todo">TODO</span> we need to add render method to this example</p>
+
+            <p>The extendsCredential property is required to referene the GS1 Prefix license from which this assignment was authorized. In
+            this case, since the GCP came from GS1 Prefix License 08, a reference to that credential is required. </p>
+
+            <p> This GCP License Credential is issued to HealthTots.  This required healthy tots to obtain a DID and share that information
+                with GS1 US for issuance. <span class="todo">TODO</span> How are we going to talk about this?
+            <p>The name and description field are for visual rendering.</p>
+
+            <p><span class="todo">TODO</span> Name and Desription are optional in VCDM?  Are they always present in GS1 Prefix Credentials?  </p>
+        </section>
+
+        <section id="gtin-license-sample">
+
+            <h3>Digital GTIN License</h3>
+
+            <p>Individual GS1 ID Key Licenses were described in <a href="#GS1-Licenses"></a> and <a href="#License-Hierarchy"></a>. The following shows
+                an eample GS1 ID Key License of an individual GTIN </p>
+
+            <div class="example-tabset" data-example="id-key-sample">
+              <div class="example-tab-buttons">
+                <button data-tab="json" class="active">JSON</button>
+                <button data-tab="jwt">JWT</button>
+              </div>
+              <div class="example-tab-content">
+                <pre id="id-key-sample-json" style="display: block;"><code class="hljs json" data-src="samples/id-key-sample.json">Loading JSON...</code></pre>
+                <pre id="id-key-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/id-key-sample.jwt">Loading JWT...</code></pre>
+              </div>
+            </div>
+
+            <p>This single GTIN license was issued by GS1 US to a ficticous HealthyTots organization for the specific GTIN 00198715637472.
+                Because GS1 ID Keys are numbers, the identificationKeyType property with value GTIN tells the holder/verifier that this ID Key license
+            is a GTIN. The name and description field are for visual rendering. </p>
+
+            <p>The GS1 ID Key License Credential can also be used to issue other GS1 Keys individually. Most common are GTINs and GLNs.</p>
+
+            <div class="callout important">
+              <div class="callout-icon">!</div>
+              <div class="callout-text">
+                <strong>Note:</strong>The Licensing of a GTIN to a specific party is independent of the party actually using that GTIN for
+                a specific product.  See Section <a href="#creating-keys"></a> for informaion on how to create assertions that this GTIN
+                represents a valid product.
+              </div>
+            </div>
+
+            <p><span class="todo">TODO</span> we need to add render method to this example</p>
+
+            <p><span class="todo">TODO</span>The extendsCredential Field here seems incorrect?  This should reference an 001 prefix?</p>
+
+            <p><span class="todo">TODO</span> Name and Desription are optional in VCDM?  Are they always present in GS1 Prefix Credentials?  </p>
+        </section>
     <section id="license-exceptions">
         <h3>Digital License Credentials Exceptional Cases</h3>
         <p><span class="todo">TODO</span></p>

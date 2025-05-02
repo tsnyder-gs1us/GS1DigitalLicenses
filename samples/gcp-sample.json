@@ -1,0 +1,43 @@
+{
+  "kid": "did:web:cbpvsvip-vc.gs1us.org#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas",
+  "alg": "ES256"
+}
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://ref.gs1.org/gs1/vc/license-context"
+  ],
+  "id": "https://cbpvsvip-vc-api.gs1us.org/credentials/081015955",
+  "type": [
+    "VerifiableCredential",
+    "GS1CompanyPrefixLicenseCredential"
+  ],
+  "issuer": {
+    "id": "did:web:cbpvsvip-vc.gs1us.org",
+    "name": "GS1 US"
+  },
+  "name": "GS1 Company Prefix License",
+  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 identification keys.",
+  "validFrom": "2024-01-25T12:30:00.000Z",
+  "credentialSubject": {
+    "id": "did:web:healthytots.net",
+    "organization": {
+      "gs1:partyGLN": "0810159550000",
+      "gs1:organizationName": "Healthy Tots"
+    },
+    "extendsCredential": "https://id.gs1.org/vc/license/gs1_prefix/08",
+    "licenseValue": "081015955",
+    "alternativeLicenseValue": "81015955"
+  },
+  "credentialSchema": {
+    "id": "https://id.gs1.org/vc/schema/v1/companyprefix",
+    "type": "JsonSchema"
+  },
+  "credentialStatus": {
+    "id": "https://cbpvsvip-vc-api.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14#10010",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "10010",
+    "statusListCredential": "https://cbpvsvip-vc-api.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14/"
+  }
+}

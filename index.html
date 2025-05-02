@@ -177,10 +177,29 @@
   <section id="tof" class="appendix"></section>
 
 <script>
-  (async () => {
-    console.log("🕓 Waiting for ReSpec...");
-    await document.respecIsReady;
+  async function waitForIncludes() {
+   console.log("🕓 Waiting for ReSpec...");
+   await document.respecIsReady;
+
+    // Wait until all data-includes have finished loading
+    const includes = document.querySelectorAll("[data-include]");
+    console.log("🕓 Waiting for data-includes...");
+    await Promise.all([...includes].map(section => {
+      return new Promise(resolve => {
+        const observer = new MutationObserver(() => {
+          if (section.children.length > 0) {
+            observer.disconnect();
+            resolve();
+          }
+        });
+        observer.observe(section, { childList: true });
+      });
+    }));
     console.log("✅ ReSpec ready — initializing tabs");
+  }
+
+  (async () => {
+    await waitForIncludes();
 
     document.querySelectorAll('.example-tabset').forEach(container => {
       const exampleId = container.dataset.example;
@@ -189,6 +208,7 @@
 
       const firstBtn = container.querySelector('button.active') || buttons[0];
       const firstTab = container.querySelector(`#${exampleId}-${firstBtn.dataset.tab}`);
+
       showTab(firstBtn, firstTab);
 
       buttons.forEach(button => {
@@ -226,6 +246,13 @@
       hljs.highlightAll();
     }
   })();
+
+  function decodeBase64Url(base64Url) {
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = base64 + '='.repeat((4 - base64.length % 4) % 4);
+    return atob(padded);
+  }
+
 </script>
 
 
