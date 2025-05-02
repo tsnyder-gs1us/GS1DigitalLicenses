@@ -412,6 +412,51 @@
         </section>
     <section id="license-exceptions">
         <h3>Digital License Credentials Exceptional Cases</h3>
-        <p><span class="todo">TODO</span></p>
+
+        <p>This section covers some unusual licensing cases.</p>
+
+        <section id="gtin8-prefix-licenses">
+            <h3>GTIN8 Prefix Licenses</h3>
+
+            <p>a GTIN-8 is a 8 digit GTIN that is used for products where a larger barcode might not fit, such as a lipstick or box of matches.
+            GO can license prefixes to MOs to issue GTIN-8. GTIN-8 prefixes are not issued to MCs, so GTIN-8 are only licensed as inddividual ID
+            Keys to MCs.  Nevertheless, when handling GS1 License credentials you may come across a GTIN-8 Prefix License. GTIN-8 prefix
+            credenial should always be issued by GO and do not require an extendsCredential field.</p>
+
+            <div class="example-tabset" data-example="gtin8-prefix-sample">
+              <div class="example-tab-buttons">
+                <button data-tab="json" class="active">JSON</button>
+                <button data-tab="jwt">JWT</button>
+              </div>
+              <div class="example-tab-content">
+                <pre id="gtin8-prefix-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gtin8-prefix-sample.json">Loading JSON...</code></pre>
+                <pre id="gtin8-prefix-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/gtin8-prefix-sample.jwt">Loading JWT...</code></pre>
+              </div>
+            </div>
+
+        </section>
+        <section id="gtin8-id-key-licenses">
+            <h3>Individual GTIN8 Licenses</h3>
+            <p>When a GTIN-8 is licensed to an MC, is conveyed digitally as an ID Key License as shown in section <a href="#gtin-license-sample"></a>.
+            These licenses have the following specific format.
+                <ul class="orange-bullets">
+                    <li>The extendsCredential property references a valid GTIN-8 prefix license</li>
+                    <li>The licsenseValue property contains the 8 digit GTIN</li>
+                    <li>The alternateLicenseValue property contains the 14 digit GTIN</li>
+                    <li>The identificationKeyType property is type GTIN</li>
+                </ul>
+            </p>
+
+            <div class="example-tabset" data-example="gtin8-id-key-sample">
+              <div class="example-tab-buttons">
+                <button data-tab="json" class="active">JSON</button>
+                <button data-tab="jwt">JWT</button>
+              </div>
+              <div class="example-tab-content">
+                <pre id="gtin8-id-key-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gtin8-id-key-sample.json">Loading JSON...</code></pre>
+                <pre id="gtin8-id-key-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/gtin8-id-key-sample.jwt">Loading JWT...</code></pre>
+              </div>
+            </div>
+        </section>
     </section>
 </body>

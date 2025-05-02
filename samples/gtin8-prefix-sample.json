@@ -1,0 +1,41 @@
+{
+  "kid": "did:web:id.gs1.org#fw_hRvwdtJ-LgJk5mSBcdXYfZigY0Ysvz1hOA--1thI",
+  "alg": "ES256"
+}
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://ref.gs1.org/gs1/vc/license-context"
+  ],
+  "id": "https://id.gs1.org/vc/license/gs1_8_prefix/754",
+  "type": [
+    "VerifiableCredential",
+    "GS18PrefixLicenseCredential"
+  ],
+  "issuer": {
+    "id": "did:web:id.gs1.org",
+    "name": "GS1 Global"
+  },
+  "name": "GS1 GTIN-8 Prefix License",
+  "description": "FOR DEMONSTRATION PURPOSES ONLY: NOT TO BE USED FOR PRODUCTION GRADE SYSTEMS! A company prefix that complies with GS1 Standards (a “GS1 Company Prefix”) is a unique identification number that is assigned to just your company by GS1 US. It’s the foundation of GS1 Standards and can be found in all of the GS1 Identification Numbers.",
+  "validFrom": "2024-01-25T12:30:00.000Z",
+  "credentialSubject": {
+    "id": "did:web:www.gs1ca.org",
+    "organization": {
+      "gs1:partyGLN": "7541230000000",
+      "gs1:organizationName": "GS1 Canada"
+    },
+    "licenseValue": "754",
+  },
+  "credentialSchema": {
+    "id": "https://id.gs1.org/vc/schema/v1/gtin8-prefix",
+    "type": "JsonSchema"
+  },
+  "credentialStatus": {
+    "id": "https://id.gs1.org/vc/license/status/gs1_8_prefix/754",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "108",
+    "statusListCredential": "https://id.gs1.org/vc/status/1"
+  }
+}
