@@ -6,7 +6,7 @@
     <h2>Digital Licensing</h2>
     <p><a href='#GS1-Licenses'>GS1 Licensing</a> provides the root of trust for the globally unique
         numbering systems
-        GS1 Digital Licenses are digital representations of the existing GS1 Licenses.  These Digital license
+        GS1 Digital Licenses are digital representations of the existing GS1 Licenses desribed in <a href="#GS1-Licenses"></a>.  These Digital license
         can be verified by machines in <abbr title="Business to Business">B2B</abbr>
         transaction. Why might digital verification of GS1 licecnses be beneficial: </p>
     <ul class="orange-bullets">
@@ -17,19 +17,19 @@
     </ul>
     <section id="Licencsing-nutshell">
         <h3>Digital Licensing in a Nutshell</h3>
-        <p>GS1 Digital Licenses parallel the licenses discussed <a href='#GS1-Licenses'>here</a>.</p>
+        <p>GS1 Digital Licenses parallel the licenses discussed in <a href='#GS1-Licenses'></a>.</p>
         <p>A Digital GS1 Prefix License is issue by GO to a specific MO.  It authorizes them to
         issue GS1 Company Prefixes
          and single issue identiiers from a specific GS1 prefix value. GS1 Prefix licenses
-        are typically 3 digit numbers, with exceptions listed <a href="#tricky-topics">below</a>.
+        are typically 3 digit numbers, with exceptions listed in <a href="#tricky-topics"></a>.
         For example, GS1 New Zealand is issued prefixes 940 - 949.</p>
 
         <p>A Digital GCP is isssued from and MO to a MC to authorize them to issue
         GS1 ID Keys from a specific number range.  GCPs have different lengths depending on the
         needs of the MC.  GCPs range from 6 digits to 11 digits.  They always begin with the
-        prefix value.  The fewer digits a GCP has, the more individual ID keys it can create. For example,
-        a 10 digit GCP (e.g. 08600058400) can only create 10 ID keys of each type while a 6 digit GCP can create
-        many thousands of ID keys.</p>
+        prefix value.  The fewer digits a GCP has, the more individual GS1 ID keys it can create. For example,
+        a 10 digit GCP (e.g. 08600058400) can only create 10 GS1 ID keys of each type while a 6 digit GCP can create
+        many thousands of GS1 ID keys.</p>
 
         <p>A Digital Single ID Key License authorizes a MC to use a specific GS1 ID Key for their
         business operations. Single Issue ID Key Licenses are often used by small business to
@@ -81,41 +81,45 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>@context</td>
+                    <td><code>@context</code></td>
                     <td>In addition to the W3C VCDM 2.0 Context, the GS1 License Credential Context is also required (see below)</td>
                 </tr>
                 <tr>
-                    <td>id</td>
+                    <td><code>id</code></td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials See Section <a href='#credential-id'></a></td>
                 </tr>
                 <tr>
-                    <td>validFrom</td>
+                    <td><code>issuer</code></td>
+                    <td>This property is a URI in the VCDM but is, more specifically, a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 Licsense Credentials</td>
+                </tr>
+                <tr>
+                    <td><code>validFrom</code></td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials</td>
                 </tr>
                 <tr>
-                    <td>name</td>
+                    <td><code>name</code></td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials<span class="todo">confirm with Steering Committee</span></td>
                 </tr>
                 <tr>
-                    <td>description</td>
+                    <td><code>description</code></td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials<span class="todo">confirm with Steering Committee</span></td>
                 </tr>
                 <tr>
-                    <td>credentialSubject:id</td>
+                    <td>credentialSubject <code>:id</code></td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials See Section <a href='#credential-subject-id'></a></td>
                 </tr>
                 <tr>
-                    <td>credentialStatus</td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type BitstringStatusListEntry
+                    <td><code>credentialStatus</code></td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <code>BitstringStatusListEntry</code>
                     defined in the <a href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C.</td>
                 </tr>
                 <tr>
-                    <td>credentialSchema</td>f
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type JsonSchema
+                    <td><code>credentialSchema</code></td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <code>JsonSchema</code>
                         defined in the <a href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C.</td>
                 </tr>
                 <tr>
-                    <td>renderMethod</td>
+                    <td><code>renderMethod</code></td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">confirm with Steering Committee</span></td>
                 </tr>
             </tbody>
@@ -136,9 +140,9 @@
 
         <p>The GS1 License context establishes six different types of GS1 license Credentials.  Three of these licenses correspond directly to the descriptions and examples above and will be described in detail in this section:
         <ul class="orange-bullets">
-            <li>GS1PrefixLicenseCredential -- A GS1 Prefix License </li>
-            <li>GS1CompanyPrefixLicenseCredential -- A GS1 Company Prefix License</li>
-            <li>GS1IdentificationKeyLicenseCredential -- A GS1 Single Issue ID Key License</li>
+            <li><code>GS1PrefixLicenseCredential</code> -- A GS1 Prefix License </li>
+            <li><code>GS1CompanyPrefixLicenseCredential</code> -- A GS1 Company Prefix License</li>
+            <li><code>GS1IdentificationKeyLicenseCredential</code> -- A GS1 Single Issue ID Key License</li>
         </ul>.
 
         <div class="callout important">
@@ -146,9 +150,9 @@
           <div class="callout-text">
             <strong>Note:</strong>This context also defines the following licenses that will be covered in section <a href="#license-exceptions"></a>.
             <ul class="orange-bullets">
-                <li>GS18PrefixLicenseCredential</li>
-                <li>DelegatedGS1PrefixLicenseCredential</li>
-                <li>DelegatedGS1IdentificationKeyLicenseCredential</li>
+                <li><code>GS18PrefixLicenseCredential</code></li>
+                <li><code>DelegatedGS1PrefixLicenseCredential</code></li>
+                <li><code>DelegatedGS1IdentificationKeyLicenseCredential</code></li>
             </ul>.
           </div>
         </div>
@@ -167,25 +171,26 @@
             </thead>
             <tbody>
                 <tr>
-                  <td>organization</td>
+                  <td><code>organization</code></td>
                   <td><a href="https://ref.gs1.org/voc/Organization">gs1:organization</a></td>
                   <td>Mandatory</td>
-                  <td>Organization that is the credential subject.At minimum, the attributes <a href="https://ref.gs1.org/voc/partyGLN">partyGLN</a> and <a href="https://ref.gs1.org/voc/organizationName">organizationName</a> must be populated.</td>
+                  <td>Organization that is the credential subject.At minimum, the attributes <a href="https://ref.gs1.org/voc/partyGLN"><code>partyGLN</code></a>
+                    and <a href="https://ref.gs1.org/voc/organizationName"><code>organizationName</code></a> must be populated.</td>
                 </tr>
                 <tr>
-                  <td>licenseValue</td>
+                  <td><code>licenseValue</code></td>
                   <td><a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a></td>
                   <td>Mandatory</td>
                   <td>See Section <a href='#License-values'></a></td>
                 </tr>
                 <tr>
-                  <td>alternativeLicenseValue</td>
+                  <td><code>alternativeLicenseValue</code></td>
                   <td><a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a></td>
                   <td>Optional</td>
                   <td>See Section <a href='#alternate-License-values'></a></td>
                 </tr>
                 <tr>
-                  <td>extendsCredential</td>
+                  <td><code>extendsCredential</code></td>
                   <td><a href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
                   <td>Optional</td>
                   <td>a reference to the GS1 License that this credential extends (issues from). This is
@@ -208,8 +213,8 @@
             </thead>
             <tbody>
                 <tr>
-                  <td>identificationKeyType</td>
-                  <td>gs1:GS1IdentificationKeyTypeCode</td>
+                  <td><code>identificationKeyType</code></td>
+                  <td><code>gs1:GS1IdentificationKeyTypeCode</code></td>
                   <td>Mandatory</td>
                   <td>See Section <a href='#identification-key-type'></a></td>
                 </tr>
@@ -218,7 +223,7 @@
 
         <section id="identification-key-type">
             <h3>identificationKeyType</h3>
-            <p>The identificationKeyType is an enumerated value of <a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a>. It
+            <p>The <code>gs1:identificationKeyType</code> is an enumerated value of <a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a>. It
             can take the values from this table. For more information on GS1 ID Keys see Section <a href='#GS1-Keys'></a></p>
             <table>
              <caption>GS1 ID Key Types</caption>
@@ -282,8 +287,8 @@
         </section>
         <section id="License-values">
         <h3>licenseValue</h3>
-        <p>Every license credential includes a license value. The license credential type is usually sufficient to
-        define, together with the license value, the “space” or “range” of the GS1 identification system
+        <p>Every license credential includes a <code>licenseValue</code>. The license credential type is usually sufficient to
+        define, together with the <code>licenseValue</code>, the “space” or “range” of the GS1 identification system
         granted to the licensee. The exception to this is any license credential that has to do with a GS1
         identification key, which requires an identification key type as an additional qualifier.
         For license credentials that have to do with prefixes, the license value is in normalized GS1 (i.e.,
@@ -331,14 +336,16 @@
         </section>
         <section id="credential-subject-id">
             <h3>VCDM Credential Subject ID property</h3>
-            <p>The id property is optional in the VCDM, but required in GS1 License credentials. </p>
-            <p><span class="todo">TODO</span>What can we state about the ID field of these credentials.  Should it be a URL etc.</p>
+            <p>The id property is optional in the VCDM, but required in GS1 License credentials. The credential subject ID in all
+            license credentials is a DID that is controlled by the licensee. DIDs are defined by the W3C specification
+            <a href="https://www.w3.org/TR/did-1.0/">https://www.w3.org/TR/did-1.0/</a>.</p>
+            <p><span class="todo">confirm with Steering Committee</span>What advice or guidance do we need here?</p>
         </section>
     </section>
     <section id="License-Details">
         <h3>Digital License Credentials Details</h3>
 
-        <p>This section shows specific examples of GS1 License Credentials to allow a more concrete understanding of their contents and format</p>
+        <p>This section shows specific examples of GS1 License Credentials to allow a more concrete understanding of their contents and format.</p>
 
         <section id="gs1-prefix-credential-sample">
 
@@ -360,14 +367,17 @@
 
             <p><span class="todo">TODO</span> we need to add render method to this example</p>
 
-            <p>The extendsCredential property is omitted as this credential is signed by the GS1 GO DID. The subject ID of the credential is always the MO DID with the gs1:organization field containing the partyGLN and Name properties. Since this prefix starts with a leading 0, the alternativeLicenseValue is present
+            <p>The <code>extendsCredential</code> property is omitted as this credential is signed by the GS1 GO DID. The <code>credentialSubject id</code>  is the
+                MO DID with the <code>gs1:organization</code> field containing the
+                <code>partyGLN</code> and <code>name</code> properties. Since this prefix starts with a leading 0, the <code>alternativeLicenseValue</code> is present
             with the leading zero removed.</p>
 
             <p>The name and description field are for visual rendering.</p>
 
             <section id="gs1-prefix-credential-availability">
                 <h3>Prefix Credential IDs</h3>
-                <p><span class="todo">TODO</span>Can we state that the ID of this credential is always resolvable</p>
+                <p><span class="todo">confirm with Steering Committee</span> The credential <code>id</code> property in GS1 Prefix credentials are always
+                    resolvable URLs and resolve to the credential itself (when using an HTTP get with <code>application/json</code></p>
             </section>
 
 
@@ -393,14 +403,16 @@
 
             <p><span class="todo">TODO</span> we need to add render method to this example</p>
 
-            <p>The extendsCredential property is required to referene the GS1 Prefix license from which this assignment was authorized. In
-            this case, since the GCP came from GS1 Prefix License 08, a reference to that credential is required. </p>
+            <p>The <code>extendsCredential</code> property is required to referene the GS1 Prefix license from which this assignment was authorized. In
+            this case, since the GCP came from GS1 Prefix License 08, a reference to that credential is present.
+            The <code>credentialSubject</code> <code>id</code> is a DID created and controlled by Healthy Tots.
+            The <code>name</code> and <code>description</code> field are for visual rendering. </p>
 
-            <p> This GCP License Credential is issued to HealthTots.  This required healthy tots to obtain a DID and share that information
-                with GS1 US for issuance. <span class="todo">TODO</span> How are we going to talk about this?
-            <p>The name and description field are for visual rendering.</p>
+            <section id="gcp-credential-availability">
+                <h3>GCP Credential IDs</h3>
+                <p>The credential <code>id</code> property is not necessarily resolvable as in <a href="#gs1-prefix-credential-sample"></a>. See MO specific documentation for details.</p>
+            </section>
 
-            <p><span class="todo">TODO</span> Name and Desription are optional in VCDM?  Are they always present in GS1 Prefix Credentials?  </p>
         </section>
 
         <section id="gtin-license-sample">
@@ -422,10 +434,10 @@
             </div>
 
             <p>This single GTIN license was issued by GS1 US to a ficticous HealthyTots organization for the specific GTIN 00198715637472.
-                Because GS1 ID Keys are numbers, the identificationKeyType property with value GTIN tells the holder/verifier that this ID Key license
-            is a GTIN. The name and description field are for visual rendering. </p>
+                Because GS1 ID Keys are numbers, the <code>identificationKeyType</code> property with value GTIN tells the holder/verifier that this ID Key license
+            is a GTIN. The <code>name</code> and <code>description</code> field are for visual rendering. </p>
 
-            <p>The GS1 ID Key License Credential can also be used to issue other GS1 Keys individually. Most common are GTINs and GLNs.</p>
+            <p>In general, GS1 ID Key License Credential can also be used to issue other GS1 Keys individually. Most common are GTINs and GLNs.</p>
 
             <div class="callout important">
               <div class="callout-icon">!</div>
@@ -437,10 +449,7 @@
             </div>
 
             <p><span class="todo">TODO</span> we need to add render method to this example</p>
-
             <p><span class="todo">TODO</span>The extendsCredential Field here seems incorrect?  This should reference an 001 prefix?</p>
-
-            <p><span class="todo">TODO</span> Name and Desription are optional in VCDM?  Are they always present in GS1 Prefix Credentials?  </p>
         </section>
     </section>
     <section id="license-exceptions">
