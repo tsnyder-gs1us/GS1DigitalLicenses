@@ -5,8 +5,8 @@
 <body>
     <h2>Digital License Validation</h2>
     <p>Digital License validation is the process of confirming that a specific license is current,
-    authentic, and relevant.  Because GS1 Licenses are issued in a federated manor, license 
-    validation requires examing the set (or chain) of licenses back to the GO root of trust.</p>
+    authentic, and relevant.  Because GS1 Licenses are issued in a federated manor, license
+    validation requires examing the set (chain) of licenses back to the GO root of trust.</p>
     <section id="license-validation-philosophy">
         <h3>Philosophy of License Validation</h3>
         <p>Digital license validation is the process by which a machine can verify that a license is
@@ -24,26 +24,52 @@
         <h3>License Validation Rules</h3>
         <p>The following section contains rules for validation of GS1 Licenses.</p>
 
+        These steps must be performed on all GS1 license credentials:
+
+        <ul>
+            <li>The credential document must be a valid VCDM 2.0 credential document (<span class="todo">TODO</span> is there a schema)</li>
+            <li>The signature must be valid and from a signing key referenced in the issuer DID</li>
+            <li>The credential must NOT be revoked (see <span class="todo">TODO</span>)</li>
+            <li>The credential <code>validFrom</code> must not be in the future</li>
+        </ul>
+
         <section id="prefix-license-validation-rules">
             <h3>Prefix License Validation Rules</h3>
-            <p>When validating a prefix license, the following steps must be performed</p>
+            <p>When validating a prefix license, the following additional steps must be performed:</p>
             <ul>
-                <li><code>Isssuer</code> field must be a GS1 GO did:web or did:webvh</li>
-                <li>Signature must be valid and from a key referenced in the DID above</li>
-                <li>Credential must NOT be revoked (see <span class="todo">TODO</span>)</li>
-                <li>Must conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix</a></li>
-                <li>Prefix <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) must be between 2 and 5 <span class="todo">TODO</span> numeric digits</li>
+                <li>The credential document must conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix</a></li>
+                <li><code>Issuer</code> field must be a GS1 GO did:web or did:webvh</li>
+                <li>Prefix <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) must be between 2 and 5 <span class="todo">TODO can we add this rule to the schema</span> numeric digits</li>
             </ul>
         </section>
 
         <section id="gcp-validation-rules">
             <h3>GCP Validation Rules</h3>
-            <p><span class="todo">TODO</span></p>
+            <p>When validating a GCP license, the following additional steps must be performed:</p>
+            <ul>
+                <li>The credential document must conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/companyprefix">https://id.gs1.org/vc/schema/v1/companyprefix</a></li>
+                <li>The credential referenced by the <code>extendsCredential</code> field must be valid.</li>
+                <li>The GCP <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) must be between 4 and 11 <span class="todo">TODO</span> numeric digits</li>
+                <li>The following checks between the credential and the credential referenced by the <code>extendsCredential</code>
+                  <ul>
+                    <li>The <code>credentialSubject</code> <code>id</code> of the credential referenced by the <code>extendsCredential</code> must match the <code>issuer</code> property of this GCP credential.</li>
+                    <li>The GCP  <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) must begin and be at least one digit longer than the <code>licenseValue</code> and <code>alternateLicenseValue</code> of the credential referenced by the <code>extendsCredential</code></li>
+                </ul>
+            </ul>
         </section>
 
         <section id="id-key-validation-rules">
             <h3>Identification Key License Validation Rules</h3>
-            <p><span class="todo">TODO</span></p>
+            <p>When validating a Identification Key licsense, the following additional steps must be performed:</p>
+            <ul>
+                <li>The credential document must conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/identificationkey">https://id.gs1.org/vc/schema/v1/identificationkey</a></li>
+                <li>The credential referenced by the <code>extendsCredential</code> field must be valid.</li>
+                <li>The following checks between the credential and the credential referenced by the <code>extendsCredential</code>
+                  <ul>
+                    <li>The <code>credentialSubject</code> <code>id</code> of the credential referenced by the <code>extendsCredential</code> must match the <code>issuer</code> property of this ID Key credential.</li>
+                    <li>The ID Key credential <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) must begin with the <code>licenseValue</code> and <code>alternateLicenseValue</code> of the credential referenced by the <code>extendsCredential</code></li>
+                </ul>
+            </ul>
         </section>
     </section>
     <section id="validation-tools">
