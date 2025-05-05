@@ -72,6 +72,7 @@
         A few optional properties of the W3C VCDM are mandatory in GS1 License Credentials. These are outlined here:
 
         <table>
+           <caption>GS1 License Credential VCDM core properties</caption>
             <thead>
                 <tr>
                   <th>Property</th>
@@ -84,12 +85,24 @@
                     <td>In addition to the W3C VCDM 2.0 Context, the GS1 License Credential Context is also required (see below)</td>
                 </tr>
                 <tr>
+                    <td>id</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials See Section <a href='#credential-id'></a></td>
+                </tr>
+                <tr>
                     <td>validFrom</td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials</td>
                 </tr>
                 <tr>
+                    <td>name</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials<span class="todo">confirm with Steering Committee</span></td>
+                </tr>
+                <tr>
+                    <td>description</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials<span class="todo">confirm with Steering Committee</span></td>
+                </tr>
+                <tr>
                     <td>credentialSubject:id</td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials</td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials See Section <a href='#credential-subject-id'></a></td>
                 </tr>
                 <tr>
                     <td>credentialStatus</td>
@@ -97,13 +110,13 @@
                     defined in the <a href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C.</td>
                 </tr>
                 <tr>
-                    <td>credentialSchema</td>
+                    <td>credentialSchema</td>f
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type JsonSchema
                         defined in the <a href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C.</td>
                 </tr>
                 <tr>
                     <td>renderMethod</td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">TODO</span></td>
+                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">confirm with Steering Committee</span></td>
                 </tr>
             </tbody>
             </table>
@@ -115,7 +128,8 @@
           <div class="callout-text">
             <strong>Note:</strong>The current GS1 License Context can be found here:
             <ul class="orange-bullets">
-                <li><span class="todo">TODO</span>  https://github.com/gs1us-technology/vc-verifier-core/blob/main/src/contexts/gs1/json-ld/gs1_licence_context.js</li>
+                <li><a href="https://ref.gs1.org/gs1/vc/license-context/">https://ref.gs1.org/gs1/vc/license-context/</a></li>
+                <li><span class="todo">Confirm this is up to date with VCDM 2.0</span></li>
             </ul>.
           </div>
         </div>
@@ -142,6 +156,7 @@
         <p>All GS1 Digital License Credentials Share these Properties.</p>
 
         <table>
+           <caption>GS1 License Credential Properties</caption>
             <thead>
                 <tr>
                   <th>Property</th>
@@ -179,9 +194,10 @@
             </tbody>
         </table>
 
-        <p>Identification Key Licenses (single Issue ID Keys) also contain this property</p>
+        <p>Identification Key Licenses (single Issue ID Keys) also contain these properties:</p>
 
         <table>
+           <caption>GS1 ID Key Credential Additional Properties</caption>
             <thead>
                 <tr>
                   <th>Property</th>
@@ -205,6 +221,7 @@
             <p>The identificationKeyType is an enumerated value of <a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a>. It
             can take the values from this table. For more information on GS1 ID Keys see Section <a href='#GS1-Keys'></a></p>
             <table>
+             <caption>GS1 ID Key Types</caption>
                 <thead>
                     <tr>
                       <th>Enumeration</th>
@@ -291,7 +308,7 @@
         system: if the license value starts with
         zero, then the alternative license value is
         the same as the license value but without
-        the starting zero.</p>
+        the leading zero.</p>
         </section>
 
         <section id="encapsulation-and-signatures">
@@ -299,14 +316,24 @@
             <p>GS1 License credentials are issued in the W3C VCDM data model using <a href="https://www.w3.org/TR/vc-jose-cose/">vc-jose-cose</a>
                 specifically as references in <a href="https://www.w3.org/TR/vc-jose-cose/#securing-with-jose">this section</a>. GS1
                 License Credentials are signed with ECDSA ES256 algorithm. Eamples are show in Section <a href="#License-Details"></a></p>
-            <p><span class="todo">TODO</span> do talk about whether we provide these as VCs or VPs</p>
+            <p><span class="todo">confirm with Steering Committee</span> that licenses are provided from GS1 in the VC format (not VP)</p>
         </section>
 
         <section id="delivery">
             <h3>Delivery</h3>
-            <p><span class="todo">TODO</span> How does one get these?  Is there a protocol I need</p>
+            <p>Contact your member organization for details on obtaining Digital GS1 Licenses</p>
         </section>
 
+        <section id="credential-id">
+            <h3>VCDM Credential ID property</h3>
+            <p>The id property is optional in the VCDM, but required in GS1 License credentials. </p>
+            <p><span class="todo">TODO</span>What can we state about the ID field of these credentials.  Should it be a URL etc.</p>
+        </section>
+        <section id="credential-subject-id">
+            <h3>VCDM Credential Subject ID property</h3>
+            <p>The id property is optional in the VCDM, but required in GS1 License credentials. </p>
+            <p><span class="todo">TODO</span>What can we state about the ID field of these credentials.  Should it be a URL etc.</p>
+        </section>
     </section>
     <section id="License-Details">
         <h3>Digital License Credentials Details</h3>
@@ -338,7 +365,12 @@
 
             <p>The name and description field are for visual rendering.</p>
 
-            <p><span class="todo">TODO</span> Name and Desription are optional in VCDM?  Are they always present in GS1 Prefix Credentials?  </p>
+            <section id="gs1-prefix-credential-availability">
+                <h3>Prefix Credential IDs</h3>
+                <p><span class="todo">TODO</span>Can we state that the ID of this credential is always resolvable</p>
+            </section>
+
+
         </section>
 
         <section id="gcp-sample">
@@ -410,6 +442,7 @@
 
             <p><span class="todo">TODO</span> Name and Desription are optional in VCDM?  Are they always present in GS1 Prefix Credentials?  </p>
         </section>
+    </section>
     <section id="license-exceptions">
         <h3>Digital License Credentials Exceptional Cases</h3>
 

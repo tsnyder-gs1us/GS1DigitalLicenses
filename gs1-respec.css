@@ -391,3 +391,11 @@ code { white-space: pre-wrap; }
   font-weight: bold;
   display: inline-block;
 }
+
+table caption {
+  caption-side: top; /* or bottom */
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 0.5em;
+  color: #005eb8; /* GS1 blue */
+}

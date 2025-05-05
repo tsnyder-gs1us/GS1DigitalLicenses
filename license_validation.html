@@ -3,15 +3,46 @@
 <head>
 </head>
 <body>
-    <h2>License Validation</h2>
-    <p><span class="todo">TODO</span></p>
+    <h2>Digital License Validation</h2>
+    <p>Digital License validation is the process of confirming that a specific license </p>
     <section id="license-validation-philosophy">
         <h3>Philosophy of License Validation</h3>
-        <p><span class="todo">TODO</span></p>
+        <p>Digital license validation is the process by which a machine can verify that a license is
+        authentic as part of the GS1 identity system. Generally, this involves validating the chain
+        of licenses starting with the most specific license up to the root license
+        issued by GS1 GO. In addition to checking the fields of the documents, the documents must
+        link together using the extendsCredential property forming a chain back to the root license.
+        This chain must have properties so that each licenseValue stems from its previous license value.
+        This validation process is presented in detail in the sections below.</p>
+        <p> For example, in the chain with prefix license 02, GCP 022345 and individual GTIN 02234545645654,
+        we can see the license value of the GTIN starts with the license value of the GCP which starts with
+        the license value from the prefix license, indicating a complete and valid chain</p>
     </section>
     <section id="license-validation-rules">
         <h3>License Validation Rules</h3>
-        <p><span class="todo">TODO</span></p>
+        <p>The following section contains rules for validation of GS1 Licenses.</p>
+
+        <section id="prefix-license-validation-rules">
+            <h3>Prefix License Validation Rules</h3>
+            <p>When validating a prefix license, the following steps must be performed</p>
+            <ul>
+                <li>Isssuer field must be a GS1 GO did:web or did:webvh</li>
+                <li>Signature must be valid and from a key referenced in the DID above</li>
+                <li>Credential must NOT be revoked (see <span class="todo">TODO</span>)</li>
+                <li>Must conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix</a></li>
+                <li>Prefix licenseValue and alternateLicenseValue (if present) must be between 2 and 5 <span class="todo">TODO</span> numeric digits</li>
+            </ul>
+        </section>
+
+        <section id="gcp-validation-rules">
+            <h3>GCP Validation Rules</h3>
+            <p><span class="todo">TODO</span></p>
+        </section>
+
+        <section id="id-key-validation-rules">
+            <h3>Identification Key License Validation Rules</h3>
+            <p><span class="todo">TODO</span></p>
+        </section>
     </section>
     <section id="validation-tools">
         <h3>License Validation Libraries and Tools</h3>
