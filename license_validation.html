@@ -19,6 +19,9 @@
         <p> For example, in the chain with prefix license 02, GCP 022345 and individual GTIN 02234545645654,
         we can see the <code>licenseValue</code> of the GTIN starts with the <code>licenseValue</code> of the GCP which starts with
         the <code>licenseValue</code> from the prefix license, indicating a complete and valid chain</p>
+
+        <p><span class="todo">confirm with Steering Committee</span> What do we say here about the utility of validataing a license?  Should we 
+        talk about whether this can be used with a presentation to validate a traading partners identity?</p>
     </section>
     <section id="license-validation-rules">
         <h3>License Validation Rules</h3>
@@ -37,7 +40,7 @@
             <h3>Prefix License Validation Rules</h3>
             <p>When validating a prefix license, the following additional steps must be performed:</p>
             <ul>
-                <li>The credential document must conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix</a></li>
+                <li>The credential document must conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix</a></li>
                 <li><code>Issuer</code> field must be a GS1 GO did:web or did:webvh</li>
                 <li>Prefix <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) must be between 2 and 5 <span class="todo">TODO can we add this rule to the schema</span> numeric digits</li>
             </ul>
@@ -47,7 +50,7 @@
             <h3>GCP Validation Rules</h3>
             <p>When validating a GCP license, the following additional steps must be performed:</p>
             <ul>
-                <li>The credential document must conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/companyprefix">https://id.gs1.org/vc/schema/v1/companyprefix</a></li>
+                <li>The credential document must conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/companyprefix">https://id.gs1.org/vc/schema/v1/companyprefix</a></li>
                 <li>The credential referenced by the <code>extendsCredential</code> field must be valid.</li>
                 <li>The GCP <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) must be between 4 and 11 <span class="todo">TODO</span> numeric digits</li>
                 <li>The following checks between the credential and the credential referenced by the <code>extendsCredential</code>
@@ -62,7 +65,7 @@
             <h3>Identification Key License Validation Rules</h3>
             <p>When validating a Identification Key licsense, the following additional steps must be performed:</p>
             <ul>
-                <li>The credential document must conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/identificationkey">https://id.gs1.org/vc/schema/v1/identificationkey</a></li>
+                <li>The credential document must conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/identificationkey">https://id.gs1.org/vc/schema/v1/identificationkey</a></li>
                 <li>The credential referenced by the <code>extendsCredential</code> field must be valid.</li>
                 <li>The following checks between the credential and the credential referenced by the <code>extendsCredential</code>
                   <ul>

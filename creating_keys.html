@@ -4,14 +4,151 @@
 </head>
 <body>
     <h2>Creating Keys</h2>
-    <p><span class="todo">TODO</span></p>
+
+    <p>
+        This section describes how to create Digital GS1 Key Credentials.
+    </p>
     <section id="creating-key-overview">
         <h3>Key Overview</h3>
-        <p><span class="todo">TODO</span></p>
+
+        <p>
+            Section <a href="#GS1-Keys"></a> described the various GS1 ID Key types that can
+            be created from a GCP.
+        </p>
+
+        <p>
+            A MC that has obtained a GCP or ID Key License can create GS1 key Credentials to assert
+            the existence of a specific GS1 ID Key.  For example, if a fictictious company Healthy Tots
+            has a Digital GCP license and wishes to commision a GTIN from their GCP, they can create
+            and share a GS1 Key Credential asserting the existence of this GTIN for global trade.
+        </p>
+        <p>
+            If an MC uses serialization, batch/lot or other identifiers to further specify their
+            individual trade items, the MC can also generate specific GS1 Key Credentials to assert
+            the existence of a specific batch/lot or serial number of a trade item.
+        </p>
+        <p>
+            The specific format of each GS1 ID Key is different. this <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/sites/default/files/docs/idkeys/gs1_id_keys_reference_card.pdf.pdf">quick reference card</a>
+            higlights the basics of how to fornat GS1 ID Keys from a GCP. For more details on how to form
+            individual GS1 ID Keys from your GCP, see your MO web page, the
+            <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification</a>
+            or services like <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/services/activate">GS1 Activate</a>
+        </p>
+
+        <p>
+            A GS1 ID Key License Credential still requires a GS1 Key Credential to assert that the GS1 ID Key
+            is in circulation.  Think of a GS1 ID Key License Credential as a right to use a specific GS1 ID Key
+            and the GS1 Key Credential as the actual instantiation (usage) of that Key.
+        </p>
+
+
+        <p><span class="todo">TODO</span>we need to explain why this is valuable</p>
     </section>
     <section id="key-credentials-overview">
         <h3>Key Credential Overview</h3>
-        <p><span class="todo">TODO</span></p>
+
+        <p>GS1 Key Credentials use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
+        The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
+        uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
+        details of a license in the format that is well understood worldwide.
+
+        A few optional properties of the W3C VCDM are mandatory in GS1 Key Credentials. These are outlined here:
+
+        <table>
+           <caption>GS1 Key Credential VCDM core properties</caption>
+            <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>@context</code></td>
+                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 Declaration Credential Context MUST be included (see below)</td>
+                </tr>
+                <tr>
+                    <td><code>id</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Key Credentials See Section <a href='#key-credential-id'></a></td>
+                </tr>
+                <tr>
+                    <td><code>type</code></td>
+                    <td>This property must contain <code>VerifiableCredential</code> in the VCDM, but must also <code>KeyCredential</code></td>
+                </tr>
+                <tr>
+                    <td><code>issuer</code> <code>id</code></td>
+                    <td>This property is a URI in the VCDM but is, more specifically, a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 Key Credentials</td>
+                </tr>
+
+                <tr>
+                    <td>credentialSubject <code>:id</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Key Credentials and must be a GS1 Digital Link URI. See Section <a href='#key-credential-subject-id'></a></td>
+                </tr>
+                <tr>
+                    <td><code>credentialStatus</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Key Credentials and be of the type <code>BitstringStatusListEntry</code>
+                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
+                </tr>
+                <tr>
+                    <td><code>credentialSchema</code></td>
+                    <td>This property is optional in the VCDM but MAY be present in all GS1 Key Credentials and be of the type <code>JsonSchema</code>
+                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C. <span class="todo">confirm with Steering Committee</span> is this optional</td>
+                </tr>
+                <tr>
+                    <td><code>renderMethod</code></td>
+                    <td>This property is optional in the VCDM but MAY be present in all GS1 Key Credentials and be of the type <span class="todo">confirm with Steering Committee</span> is this optional</td>
+                </tr>
+            </tbody>
+            </table>
+
+            <span class="todo">confirm with Steering Committee</span>Should we require name and description? What about an issuer Name.
+        </p>
+
+        <div class="callout important">
+          <div class="callout-icon">!</div>
+          <div class="callout-text">
+            <strong>Note:</strong>The current GS1 Declaration Context can be found here:
+            <ul class="orange-bullets">
+                <li><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/declaration-context//">https://ref.gs1.org/gs1/vc/declaration-context/</a></li>
+                <li><span class="todo">Confirm this is up to date with VCDM 2.0</span></li>
+            </ul>.
+          </div>
+        </div>
+        <section id="key-credential-id">
+            <h3>Key Credential ID Property</h3>
+            <p>
+                The Key Credential ID Property SHOULD be a URI selected to be globally unique.  If its desired to have the credential
+                publicly accessible the credential ID Property SHOULD be a resolvable URL.
+            </p>
+
+        </section>
+        <section id="key-credential-subject-id">
+            <h3>Key CredentialSubject ID Property</h3>
+            <p>The Key Credential subject ID Property MUST be present and MUST be a GS1 Digital Link URI.</p>
+        </section>
+
+        All GS1 Key Credentials share these properies:
+
+        <table>
+           <caption>GS1 Key Credential Properties</caption>
+            <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Presence</th>
+                  <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td><code>extendsCredential</code></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
+                  <td>Optional</td>
+                  <td>a reference to the GS1 License or GS1 Key Credential that this credential extends (issues from). </td>
+                </tr>
+            </tbody>
+        </table>
+
     </section>
     <section id="key-credential-details">
         <h3>Key Credential Details</h3>

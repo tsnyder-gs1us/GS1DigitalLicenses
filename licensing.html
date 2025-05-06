@@ -64,7 +64,7 @@
     </section>
     <section id="License-Credentials">
         <h3>Digital License Credentials Overview</h3>
-        <p>GS1 Digital Licenses use the <a href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
+        <p>GS1 Digital Licenses use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
         The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
         uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
         details of a license in the format that is well understood worldwide.
@@ -89,6 +89,10 @@
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials See Section <a href='#credential-id'></a></td>
                 </tr>
                 <tr>
+                    <td><code>type</code></td>
+                    <td>This property must contain <code>VerifiableCredential</code> in the VCDM, but must also include one of the GS1 License Credential Types defined below</td>
+                </tr>
+                <tr>
                     <td><code>issuer</code></td>
                     <td>This property is a URI in the VCDM but is, more specifically, a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 Licsense Credentials</td>
                 </tr>
@@ -111,12 +115,12 @@
                 <tr>
                     <td><code>credentialStatus</code></td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <code>BitstringStatusListEntry</code>
-                    defined in the <a href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C.</td>
+                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C.</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
                     <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <code>JsonSchema</code>
-                        defined in the <a href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C.</td>
+                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C.</td>
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
@@ -132,7 +136,7 @@
           <div class="callout-text">
             <strong>Note:</strong>The current GS1 License Context can be found here:
             <ul class="orange-bullets">
-                <li><a href="https://ref.gs1.org/gs1/vc/license-context/">https://ref.gs1.org/gs1/vc/license-context/</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/license-context/">https://ref.gs1.org/gs1/vc/license-context/</a></li>
                 <li><span class="todo">Confirm this is up to date with VCDM 2.0</span></li>
             </ul>.
           </div>
@@ -157,7 +161,7 @@
           </div>
         </div>
 
-        <p>All GS1 Digital License Credentials Share these Properties.</p>
+        <p>All GS1 Digital License Credentials share these properties.</p>
 
         <table>
            <caption>GS1 License Credential Properties</caption>
@@ -172,26 +176,26 @@
             <tbody>
                 <tr>
                   <td><code>organization</code></td>
-                  <td><a href="https://ref.gs1.org/voc/Organization">gs1:organization</a></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Organization">gs1:organization</a></td>
                   <td>Mandatory</td>
-                  <td>Organization that is the credential subject.At minimum, the attributes <a href="https://ref.gs1.org/voc/partyGLN"><code>partyGLN</code></a>
-                    and <a href="https://ref.gs1.org/voc/organizationName"><code>organizationName</code></a> must be populated.</td>
+                  <td>Organization that is the credential subject.At minimum, the attributes <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/partyGLN"><code>partyGLN</code></a>
+                    and <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/organizationName"><code>organizationName</code></a> must be populated.</td>
                 </tr>
                 <tr>
                   <td><code>licenseValue</code></td>
-                  <td><a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a></td>
                   <td>Mandatory</td>
                   <td>See Section <a href='#License-values'></a></td>
                 </tr>
                 <tr>
                   <td><code>alternativeLicenseValue</code></td>
-                  <td><a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a></td>
                   <td>Optional</td>
                   <td>See Section <a href='#alternate-License-values'></a></td>
                 </tr>
                 <tr>
                   <td><code>extendsCredential</code></td>
-                  <td><a href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
                   <td>Optional</td>
                   <td>a reference to the GS1 License that this credential extends (issues from). This is
                   required on all license credentials except GS1 Prefix Credentials issued by GO</td>
@@ -223,7 +227,7 @@
 
         <section id="identification-key-type">
             <h3>identificationKeyType</h3>
-            <p>The <code>gs1:identificationKeyType</code> is an enumerated value of <a href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a>. It
+            <p>The <code>gs1:identificationKeyType</code> is an enumerated value of <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#string">xsd:string</a>. It
             can take the values from this table. For more information on GS1 ID Keys see Section <a href='#GS1-Keys'></a></p>
             <table>
              <caption>GS1 ID Key Types</caption>
@@ -318,8 +322,8 @@
 
         <section id="encapsulation-and-signatures">
             <h3>Encapsulation and Signatures</h3>
-            <p>GS1 License credentials are issued in the W3C VCDM data model using <a href="https://www.w3.org/TR/vc-jose-cose/">vc-jose-cose</a>
-                specifically as references in <a href="https://www.w3.org/TR/vc-jose-cose/#securing-with-jose">this section</a>. GS1
+            <p>GS1 License credentials are issued in the W3C VCDM data model using <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/">vc-jose-cose</a>
+                specifically as references in <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/#securing-with-jose">this section</a>. GS1
                 License Credentials are signed with ECDSA ES256 algorithm. Eamples are show in Section <a href="#License-Details"></a></p>
             <p><span class="todo">confirm with Steering Committee</span> that licenses are provided from GS1 in the VC format (not VP)</p>
         </section>
@@ -338,7 +342,7 @@
             <h3>VCDM Credential Subject ID property</h3>
             <p>The id property is optional in the VCDM, but required in GS1 License credentials. The credential subject ID in all
             license credentials is a DID that is controlled by the licensee. DIDs are defined by the W3C specification
-            <a href="https://www.w3.org/TR/did-1.0/">https://www.w3.org/TR/did-1.0/</a>.</p>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/did-1.0/">https://www.w3.org/TR/did-1.0/</a>.</p>
             <p><span class="todo">confirm with Steering Committee</span>What advice or guidance do we need here?</p>
         </section>
     </section>
@@ -356,12 +360,12 @@
 
             <div class="example-tabset" data-example="gs1-prefix-sample">
               <div class="example-tab-buttons">
-                <button data-tab="json" class="active">JSON</button>
                 <button data-tab="jwt">JWT</button>
+                <button data-tab="json" class="active">Decode JSON-LD</button>
               </div>
               <div class="example-tab-content">
-                <pre id="gs1-prefix-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gs1-prefix-license-sample.json">Loading JSON...</code></pre>
                 <pre id="gs1-prefix-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/gs1-prefix-license-sample.jwt">Loading JWT...</code></pre>
+                <pre id="gs1-prefix-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gs1-prefix-license-sample.json">Loading JSON...</code></pre>
               </div>
             </div>
 
@@ -392,12 +396,12 @@
 
             <div class="example-tabset" data-example="gcp-sample">
               <div class="example-tab-buttons">
-                <button data-tab="json" class="active">JSON</button>
                 <button data-tab="jwt">JWT</button>
+                <button data-tab="json" class="active">Decode JSON-LD</button>
               </div>
               <div class="example-tab-content">
-                <pre id="gcp-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gcp-sample.json">Loading JSON...</code></pre>
                 <pre id="gcp-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/gcp-sample.jwt">Loading JWT...</code></pre>
+                <pre id="gcp-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gcp-sample.json">Loading JSON...</code></pre>
               </div>
             </div>
 
@@ -424,12 +428,12 @@
 
             <div class="example-tabset" data-example="id-key-sample">
               <div class="example-tab-buttons">
-                <button data-tab="json" class="active">JSON</button>
                 <button data-tab="jwt">JWT</button>
+                <button data-tab="json" class="active">Decode JSON-LD</button>
               </div>
               <div class="example-tab-content">
-                <pre id="id-key-sample-json" style="display: block;"><code class="hljs json" data-src="samples/id-key-sample.json">Loading JSON...</code></pre>
                 <pre id="id-key-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/id-key-sample.jwt">Loading JWT...</code></pre>
+                <pre id="id-key-sample-json" style="display: block;"><code class="hljs json" data-src="samples/id-key-sample.json">Loading JSON...</code></pre>
               </div>
             </div>
 
@@ -467,12 +471,12 @@
 
             <div class="example-tabset" data-example="gtin8-prefix-sample">
               <div class="example-tab-buttons">
-                <button data-tab="json" class="active">JSON</button>
                 <button data-tab="jwt">JWT</button>
+                <button data-tab="json" class="active">Decode JSON-LD</button>
               </div>
               <div class="example-tab-content">
-                <pre id="gtin8-prefix-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gtin8-prefix-sample.json">Loading JSON...</code></pre>
                 <pre id="gtin8-prefix-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/gtin8-prefix-sample.jwt">Loading JWT...</code></pre>
+                <pre id="gtin8-prefix-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gtin8-prefix-sample.json">Loading JSON...</code></pre>
               </div>
             </div>
 
@@ -491,12 +495,12 @@
 
             <div class="example-tabset" data-example="gtin8-id-key-sample">
               <div class="example-tab-buttons">
-                <button data-tab="json" class="active">JSON</button>
                 <button data-tab="jwt">JWT</button>
+                <button data-tab="json" class="active">Decode JSON-LD</button>
               </div>
               <div class="example-tab-content">
-                <pre id="gtin8-id-key-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gtin8-id-key-sample.json">Loading JSON...</code></pre>
                 <pre id="gtin8-id-key-sample-jwt" style="display: none;"><code class="hljs plaintext" data-src="samples/gtin8-id-key-sample.jwt">Loading JWT...</code></pre>
+                <pre id="gtin8-id-key-sample-json" style="display: block;"><code class="hljs json" data-src="samples/gtin8-id-key-sample.json">Loading JSON...</code></pre>
               </div>
             </div>
         </section>
