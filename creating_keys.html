@@ -17,7 +17,7 @@
         </p>
 
         <p>
-            A MC that has obtained a GCP or ID Key License can create GS1 key Credentials to assert
+            A MC that has obtained a Digital GCP or ID Key license can create GS1 Key Credentials to assert
             the existence of a specific GS1 ID Key.  For example, if a fictictious company Healthy Tots
             has a Digital GCP license and wishes to commision a GTIN from their GCP, they can create
             and share a GS1 Key Credential asserting the existence of this GTIN for global trade.
@@ -124,7 +124,7 @@
         </section>
         <section id="key-credential-subject-id">
             <h3>Key CredentialSubject ID Property</h3>
-            <p>The Key Credential subject ID Property MUST be present and MUST be a GS1 Digital Link URI.</p>
+            <p>The Key <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI.</p>
         </section>
 
         All GS1 Key Credentials share these properies:
@@ -148,6 +148,29 @@
                 </tr>
             </tbody>
         </table>
+
+        <section id="key-credential-extends-credential">
+            <h3>Key Credential extendsCredential property</h3>
+            <p>The Key Credential <code>extendsCredential</code> propery MUST be one of the following:
+                <ul>
+                    <li>A reference to a GS1 License Credential where the primary GS1 ID Key extracted from the Key Credential <ode>credentialSubject</ode> <code>id</code>
+                        MUST begin witth (as a string) the <code>licenseValue</code> from the credential referenced in the <code>extendsCredential</code> property</li>
+                    <li>a reference to another GS1 Key Credential where the canonicalized <code>credentialSubject</code> <code>id</code>  of the credential MUST start with and MUST extend the canonicalized <code>credentialSubject</code> <code>id</code> of the credential referenced in <code>extendsCredential</code>.
+                </ul>
+            </p>
+
+            <span class="todo">confirm with Steering Committee</span>By these rules its possible to create a batch/lot/serial number credential and extend a GCP. Do we require that there be a chain as the granualrity gets more specific?  TODO should these comparisons only be done on the path component of the GS1 Digital Link or should it include the query components?
+
+            <p>A few examples:</p>
+            <ul>
+                <li>A GS1 Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code> properly extendeds a GCP credential with <code>licenseValue</code>  <code>0754123</code></li>
+                <li>A GS1 Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code> does <strong>NOT</strong> properly extend a GCP credential with <code>licenseValue</code>  <code>0755555</code></li>
+                <li>A GS1 Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> properly extendeds a GS1 Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code></li>
+                <li>A GS1 Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extendeds a GS1 Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234777777</code></li>
+                <li>A GS1 Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extendeds a GS1 Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> because although it "starts with", it does not "extend".</li>
+            </ul>
+
+        </section>
 
     </section>
     <section id="key-credential-details">
