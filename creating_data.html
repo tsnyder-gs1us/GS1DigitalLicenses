@@ -4,23 +4,205 @@
 </head>
 <body>
     <h2>Creating Data Credentials</h2>
-    <p><span class="todo">TODO</span></p>
+
+    <p>
+        This section describes how to create Digital GS1 Data Credentials.
+    </p>
+
     <section id="data-credential-whatis">
         <h3>What is a Data Credential</h3>
-        <p><span class="todo">TODO</span></p>
-    </section>
-    <section id="data-credential-extension">
-        <h3>Extend a Data Credential</h3>
-        <p><span class="todo">TODO</span></p>
-    </section>
-    <section id="data-credential-ids">
-        <h3>Data Credential IDs</h3>
-        <p><span class="todo">TODO</span></p>
+        <p>A GS1 Data Credential is an envelope to declare facts about GS1 Keys.  Its primary purpose is to link
+        back to the Key Credentials (and ultimately the License) to that these facts can be authentically
+        attributed to MC that holds the license to commission this Key. For example, as a brand owner,
+        I can create a GS1 Data Credential that asserts the country of origin of a specific GTIN/Batch/Lot
+        and any party receiving this credential (and its chain) can know its authentic data from the
+        brand ownwer.</p>
     </section>
     <section id="data-credential-details">
         <h3>Data Credential Details</h3>
-        <p><span class="todo">TODO</span></p>
+        <p>GS1 Data Credentials use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
+        The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
+        uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
+        details in the format that is well understood worldwide.
+
+        A few optional properties of the W3C VCDM are mandatory in GS1 Data Credentials. These are outlined here:
+        <table>
+           <caption>GS1 Data Credential VCDM core properties</caption>
+            <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>@context</code></td>
+                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 Declaration Credential Context MUST be included (see below)</td>
+                </tr>
+                <tr>
+                    <td><code>id</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials See Section <a href='#data-credential-id'></a></td>
+                </tr>
+                <tr>
+                    <td><code>type</code></td>
+                    <td>This property MUST contain <code>VerifiableCredential</code> and MUST also contain <code>DataCredential</code></td>
+                </tr>
+                <tr>
+                    <td><code>issuer</code> <code>id</code></td>
+                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 Data Credentials</td>
+                </tr>
+
+                <tr>
+                    <td>credentialSubject <code>:id</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials and MUST be a GS1 Digital Link URI. See Section <a href='#key-credential-subject-id'></a></td>
+                </tr>
+                <tr>
+                    <td><code>credentialStatus</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials and MUST be of the type <code>BitstringStatusListEntry</code>
+                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
+                </tr>
+                <tr>
+                    <td><code>credentialSchema</code></td>
+                    <td>This property is optional in the VCDM but MAY be present in all GS1 Data Credentials and MAY be of the type <code>JsonSchema</code>
+                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C. <span class="todo">confirm with Steering Committee</span> is this optional</td>
+                </tr>
+                <tr>
+                    <td><code>renderMethod</code></td>
+                    <td>This property is optional in the VCDM but MAY be present in all GS1 Data Credentials and be of the type <span class="todo">confirm with Steering Committee</span> is this optional</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout important">
+          <div class="callout-icon">!</div>
+          <div class="callout-text">
+            <strong>Note:</strong>The current GS1 Declaration Context can be found here:
+            <ul class="orange-bullets">
+                <li><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/declaration-context//">https://ref.gs1.org/gs1/vc/declaration-context/</a></li>
+                <li><span class="todo">Confirm this is up to date with VCDM 2.0</span></li>
+            </ul>.
+          </div>
+        </div>
+
+        <section id="data-credential-id">
+            <h3>Data Credential IDs</h3>
+            <p>
+                The Data Credential <code>id</code> property SHOULD be a URI selected to be globally unique.  If its desired to have the credential
+                publicly accessible the credential ID Property SHOULD be a resolvable URL.
+            </p>
+        </section>
+
+        <section id="data-credential-subject-id">
+            <h3>Data CredentialSubject ID Property</h3>
+            <p>The Data <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI.</p>
+        </section>
+
+        All GS1 Data Credentials share these properies:
+
+        <table>
+           <caption>GS1 Data Credential Properties</caption>
+            <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Presence</th>
+                  <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td><code>keyAuthorization</code></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
+                  <td>Mandatory</td>
+                  <td>a reference to a credential that authorizes the issuer to declare data. Normally this is a GS1 Key Credential</td>
+                </tr>
+            </tbody>
+        </table>
+
     </section>
+
+    <section id="data-credential-subtypes">
+        <h3>Data Credential Subtypes</h3>
+        <p>GS1 Data Credentials form a base class for building more specific credentials. GS1 defines these specific DataCredentials
+        that extend the DataCredential Model for various GS1 ID Keys.</p>
+
+        <section id="product-data-credential">
+        <h3>Product Data Credential</h3>
+            <p>A GS1 Product Data Credential is a DataCredential with the following properties</p>
+
+            <table>
+               <caption>GS1 Product Data Credential Properties</caption>
+                <thead>
+                    <tr>
+                      <th>Property</th>
+                      <th>Type</th>
+                      <th>Presence</th>
+                      <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td><code>product</code></td>
+                      <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Product">gs1:Product</a></td>
+                      <td>Mandatory</td>
+                      <td>An Object that contains an instance of product describing the product associated with <code>credentialSubject</code> <code>id</code> GTIN</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+ <section id="organiaion-data-credential">
+        <h3>Organization Data Credential</h3>
+            <p>A GS1 Organization Data Credential is a DataCredential with the following properties</p>
+
+            <table>
+               <caption>GS1 Organization Data Credential Properties</caption>
+                <thead>
+                    <tr>
+                      <th>Property</th>
+                      <th>Type</th>
+                      <th>Presence</th>
+                      <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td><code>organization</code></td>
+                      <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Organization">gs1:Organization</a></td>
+                      <td>Mandatory</td>
+                      <td>An Object that contains an instance of product describing the organization associated with <code>credentialSubject</code> <code>id</code> GLN </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+
+    <section id="data-credential-extension">
+        <h3>Extending a Data Credential</h3>
+        <p>GS1 Data Credentials are meant to be extended to allow MCs to assert any facts about any GS1 ID Keys</p>
+        <p><span class="todo">TODO</span>Describe best practices for extending Data Credentials</p>
+    </section>
+
+    <section id="data-credential-examples">
+        <h3>Data Credential Examples</h3>
+        <p><span class="todo">TODO</span></p>
+
+        <section id="sample-product-data-credential">
+            <h3>Product Data Credential Examples</h3>
+            <p><span class="todo">TODO</span></p>
+        </section>
+
+        <section id="sample-organization-data-credential">
+            <h3>Organization Data Credential Examples</h3>
+            <p><span class="todo">TODO</span></p>
+        </section>
+
+        <section id="sample-custom-data-credential">
+            <h3>Custom Data Credential Examples</h3>
+            <p><span class="todo">TODO</span></p>
+        </section>
+    </section>
+
     <section id="data-credential-tools">
         <h3>Data Credential Libraries and Tools</h3>
         <p><span class="todo">TODO</span></p>

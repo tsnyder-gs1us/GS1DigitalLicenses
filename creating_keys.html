@@ -50,7 +50,7 @@
         <p>GS1 Key Credentials use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
         The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
         uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
-        details of a license in the format that is well understood worldwide.
+        details in the format that is well understood worldwide.
 
         A few optional properties of the W3C VCDM are mandatory in GS1 Key Credentials. These are outlined here:
 
@@ -77,7 +77,7 @@
                 </tr>
                 <tr>
                     <td><code>issuer</code> <code>id</code></td>
-                    <td>This property is a URI in the VCDM but is, more specifically, a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 Key Credentials</td>
+                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 Key Credentials</td>
                 </tr>
 
                 <tr>
@@ -143,7 +143,7 @@
                 <tr>
                   <td><code>extendsCredential</code></td>
                   <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
-                  <td>Optional</td>
+                  <td>Mandatory</td>
                   <td>a reference to the GS1 License or GS1 Key Credential that this credential extends (issues from). </td>
                 </tr>
             </tbody>
