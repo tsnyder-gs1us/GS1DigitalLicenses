@@ -34,6 +34,7 @@
     "id": "https://id.gs1.org/vc/schema/v1/identificationkey",
     "type": "JsonSchema"
   },
+  
   "credentialStatus": {
     "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/24",
     "type": "BitstringStatusListEntry",
