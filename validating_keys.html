@@ -4,14 +4,42 @@
 </head>
 <body>
     <h2>Validating Keys</h2>
-    <p><span class="todo">TODO</span></p>
+    <p>This section describes the philosophy and process to validate GS1 Key Credentials.</p>
     <section id="key-validation-philosophy">
         <h3>Key Validation Overview</h3>
-        <p><span class="todo">TODO</span></p>
+        <p>A Key Credential provides proof that a GS1 MC has commissioned a specific GS1 Key, possibly with additional specificity like a specific batch/Lot or specific serial number.
+        The validatiion a GS1 Key Credential requires verifying the integrity of the credential itself as well as validating that the Key Credential "extends" from a valid Credential </p>
+
+         <span class="todo">TODO</span>Try to talk about why its valuable to validate these.
+
     </section>
     <section id="key-validation-rules">
         <h3>Key Validation Rules</h3>
-        <p><span class="todo">TODO</span></p>
+
+        Denoting the GS1 Key Credential as <strong>K</strong> and the credential referenced by <strong>K's</strong> <code>extendsCredential</code> field as <strong>P</strong>,
+        the following steps MUST be performed to validate a GS1 Key Credential
+
+        <ul>
+            <li>The credential document <strong>K</strong> MUST be a valid VCDM 2.0 credential document (<span class="todo">TODO</span> is there a schema)</li>
+            <li>The signature of <strong>K</strong> MUST be valid and from a signing key referenced in the issuer DID</li>
+            <li><strong>K</strong> MUST NOT be revoked (see <span class="todo">TODO</span> is this required)</li>
+            <li><strong>K</strong> <code>validFrom</code> MUST NOT be in the future</li>
+            <li>The credential document <strong>K</strong>  MUST conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/key">https://id.gs1.org/vc/schema/v1/key</a></li>
+            <li>The <code>issuer</code> of <strong>K</strong>  MUST match the issuer of <strong>P</strong></li>
+            <li><strong>P</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a> or MUST be a valid <a href="#validating-keys">GS1 Key Credential</a>.</li>
+            <li>if <strong>P</strong> is a valid GS1 License Credential</li>
+            <ul>
+                <li>the primary GS1 ID Key extracted from <strong>K</strong> <code>credentialSubject</code> <code>id</code>
+                        MUST begin witth (as a string) the <code>licenseValue</code> from <strong>P</strong></li>
+            </ul>
+            <li>if <strong>P</strong> is a valid GS1 Key Credential</li>
+            <ul>
+                <li>The canonicalized <strong>K</strong> <code>credentialSubject</code> <code>id</code> MUST start with
+                    and MUST extend the canonicalized <strong>P</strong> <ode>credentialSubject</ode> <code>id</code></li>
+            </ul>
+        </ul>
+
+
     </section>
     <section id="key-validation-tools">
         <h3>Key Validation Libraries and Tools</h3>
