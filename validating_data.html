@@ -21,7 +21,21 @@
 
     <section id="data-validation-philosophy">
         <h3>Data Validation Overview</h3>
-        <p></p>
+        <p>Validating a data credential without a <code>keyAuthorization</code> field is simply ensuring
+        that the credential is well-formed and has not been altered.  When a data credential contains
+        a  <code>keyAuthorization</code>, its best practice to validate the chain of credentials
+        linked via this authorization. An example of this credenial chain is shown in the image below:</p>
+
+        <figure id="figure-data-credential-chain">
+          <img src="images/gs1_credential_chain_example.png" alt="GS1 Credential Chain Sample" />
+          <figcaption>GS1 Data Credental Chain</figcaption>
+        </figure>
+
+        <p>This example shows a GS1 Product Data Credential assertings product facts from the brand owner.
+            Because the <code>keyAuthorization</code> that links back to GS1 ID Key Credential which then
+            extends a valid GS1 License chain, the verifier can have confidence that this product data
+            originated from the  licensee of the GS1 ID Key.  </p>
+
     </section>
     <section id="data-validation-rules">
         <h3>Data Validation Rules</h3>

@@ -37,7 +37,7 @@
             <tbody>
                 <tr>
                     <td><code>@context</code></td>
-                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 Declaration Credential Context MUST be included (see below)</td>
+                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 Declaration Credential and Context MUST be included (see below)</td>
                 </tr>
                 <tr>
                     <td><code>id</code></td>
@@ -129,6 +129,7 @@
 
         <section id="product-data-credential">
         <h3>Product Data Credential</h3>
+
             <p>A GS1 Product Data Credential is a DataCredential with the following properties</p>
 
             <table>
@@ -150,6 +151,11 @@
                     </tr>
                 </tbody>
             </table>
+
+            In addition:
+            <ul>
+                <li>the Credential <code>@context</code> field must also contain  <a target="_blank" rel="noopener noreferrer" href= "https://ref.gs1.org/gs1/vc/product-context">https://ref.gs1.org/gs1/vc/product-context</a></li>
+            </ul>
         </section>
 
  <section id="organiaion-data-credential">
@@ -175,6 +181,11 @@
                     </tr>
                 </tbody>
             </table>
+
+            In addition:
+            <ul>
+                <li>the Credential <code>@context</code> field must also contain  <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/organization-context">https://ref.gs1.org/gs1/vc/organization-context</a></li>
+            </ul>
         </section>
     </section>
 
