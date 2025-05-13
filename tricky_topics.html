@@ -4,7 +4,12 @@
 </head>
 <body>
     <h2>Tricky Topics</h2>
-    <p><span class="todo">TODO</span></p>
+
+    <p>This section is captures some exceptional cases within the GS1 system and provides
+        guidance on how to handle these cases hen encountered in GS1 Digital Licenses. Its
+        recommended that users interested in these topics review the
+        <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/gs1-system-architecture-document/current-standard">GS1 System Architecture</a>.
+    </p>
 
      <section id="key-tiers">
         <h3>GS1 ID Key Tiers</h3>
@@ -38,25 +43,72 @@
         could, by mutual greement, agree to use URIs for geographic locations as a ReadPointID for certain events.</li>
         </p>
 
+        <div class="callout important">
+          <div class="callout-icon">!</div>
+          <div class="callout-text">
+            <strong>Note:</strong>The GS1 Digital License system currently handles Tier 1 ID Keys with limited support for Tier 2 ID Keys.
+          </div>
+        </div>
     </section>
-    <section id="license-exceptions">
-        <h3>License Exceptions</h3>
-        <p><span class="todo">TODO</span></p>
-    </section>
-    <section id="license-exceptions">
-        <h3>GTIN 8 Licensing</h3>
-        <p><span class="todo">TODO</span></p>
-    </section>
-    <section id="license-exceptions">
+
+    <section id="delegated-key-issuance">
         <h3>Delegated GS1 ID Key Issuance</h3>
-        <p><span class="todo">TODO</span></p>
-    </section>
-    <section id="key-creation-delegation">
-        <h3>Delegation over Key Creation</h3>
-        <p><span class="todo">TODO</span></p>
+        <p>Tier 2 GS1 ID Keys are delegate to organizations outside GS1.  For example,
+            the International Standard Book Number (ISBN), issued by the International ISBN Agency. GS1
+            Prefixes 978 and 979 are delegated to the Agency for ISBN management</p>
+
+            <p>Currently, GS1 has not issued credentials to Tier 2 Key Organizations, so its unlikely
+            that these will be encountered.  However the Digital License system has provisions to
+            support GS1 Prefix Licenses issued to Tier 2 Key management organizations like ISBN. These
+            crednetials will appear as <code>GS1DelegatedPrefixLicenseCredential</code>.  They can be
+            treated like <code>GS1PrefixLicenseCredentials</code> with the following additions:
+
+            <ul>
+                <li><code>GS1DelegatedPrefixLicenseCredential</code> can only extend <code>GS1IdentificationKeyLicenseCredential</code></li>
+                <li>When validating an <code>GS1IdentificationKeyLicenseCredential</code> that extends a <code>GS1DelegatedPrefixLicenseCredential</code>,
+                the <code>identificationKeyType</code> field of the <code>GS1IdentificationKeyLicenseCredential</code> must be supported within the
+                <code>identificationKeyType</code> field of the <code>GS1DelegatedPrefixLicenseCredential</code></li>
+            </ul>
+            </p>
+
+        <div class="callout important">
+          <div class="callout-icon">!</div>
+          <div class="callout-text">
+            <strong>Note:</strong>Support for validation of ID Keys with delegated Prefix Issuance may not be well supported in available tools.
+          </div>
+        </div>
+
     </section>
     <section id="data-creation-delegation">
         <h3>Delegation over Data Creation</h3>
-        <p><span class="todo">TODO</span></p>
+        <p>Sometimes the licensee of a GS1 ID Key or Prefix wants to delgate authority over data creation to third parties.  Examples include:
+            <ul>
+                <li>a partner marketing firm publishing product data</li>
+                <li>an authorized planagram provider doing product images and measurements</li>
+                <li>authorized shippers</li>
+            </ul>
+        </p>
+
+        <p><span class="todo">Steering Committee Review</span>We've never tried this out. Should we exclude this</p>
+        <div class="callout important">
+          <div class="callout-icon">!</div>
+          <div class="callout-text">
+            <strong>Note:</strong>Support for validation of Delegated Data Credentials may not be well supported in available tools.
+          </div>
+        </div>
     </section>
+
+    <section id="party-credentials">
+        <h3>Party Credentials</h3>
+
+        <p>When using GLNs, which can identify entities within an organization, it might be necessary
+            to associate a GLN with a cryptographic identifier like a DID.  The party credential serves
+            this purpose.  Specifically the licensee of the prefix (or ID Key License) can issue a party
+            credential associating a GLN that stems from the license to another DID. This association can
+            be traced back through the same license system to assure that this association is
+            authorized by the licensee of the GS1 identifier.</p>
+
+        <p><span class="todo">Steering Committee Review</span>We've never tried this out. Should we exclude this</p>
+    </section>
+
 </body>
