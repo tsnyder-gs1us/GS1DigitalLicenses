@@ -13,7 +13,7 @@
         <h3>What is a Data Credential</h3>
         <p>A GS1 Data Credential is an envelope to declare facts about GS1 ID Keys.  Its primary purpose is to link
         back to the Key Credentials (and ultimately the License) to that these facts can be authentically
-        attributed to MC that holds the license to commission this Key. For example, as a brand owner,
+        attributed to the MC that holds the license to commission this Key. For example, as a brand owner,
         I can create a GS1 Data Credential that asserts the country of origin of a specific GTIN/Batch/Lot
         and any party receiving this credential (and its chain) can know its authentic data from the
         brand ownwer.</p>
@@ -113,8 +113,9 @@
                 <tr>
                   <td><code>keyAuthorization</code></td>
                   <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
-                  <td>Mandatory</td>
-                  <td>a reference to a credential that authorizes the issuer to declare data. Normally this is a GS1 ID Key Credential</td>
+                  <td>Optional</td>
+                  <td>a reference to a credential that authorizes the issuer to declare data. Normally this is a GS1 ID Key Credential. When the Licensee of the GS1 ID
+                    Key creates Data Credentials the SHOULD include a <code>keyAuthorization</code> referencing the GS1 ID Key Credential for this ID Key.</td>
                 </tr>
             </tbody>
         </table>
@@ -145,7 +146,7 @@
                       <td><code>product</code></td>
                       <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Product">gs1:Product</a></td>
                       <td>Mandatory</td>
-                      <td>An Object that contains an instance of product describing the product associated with <code>credentialSubject</code> <code>id</code> GTIN</td>
+                      <td>An Object that contains an instance of product describing the product associated with <code>credentialSubject</code> <code>id</code> GTIN GS1 Digital Link URI</td>
                     </tr>
                 </tbody>
             </table>
@@ -170,7 +171,7 @@
                       <td><code>organization</code></td>
                       <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Organization">gs1:Organization</a></td>
                       <td>Mandatory</td>
-                      <td>An Object that contains an instance of product describing the organization associated with <code>credentialSubject</code> <code>id</code> GLN </td>
+                      <td>An Object that contains an instance of product describing the organization associated with <code>credentialSubject</code> <code>id</code> GLN GS1 Digital Link URI</td>
                     </tr>
                 </tbody>
             </table>
@@ -180,16 +181,25 @@
     <section id="data-credential-extension">
         <h3>Extending a Data Credential</h3>
         <p>GS1 Data Credentials are meant to be extended to allow MCs to assert any facts about any GS1 ID Keys</p>
-        <p><span class="todo">TODO</span>Describe best practices for extending Data Credentials</p>
+
+        <p>Custom Extensions to the GS1 Data Credential should be formed as follows:
+            <ul>
+                <li>The <code>type</code> field MUST contain <code>DataCredential</code> and satisfy the requirements in <a href="#data-credential-details"></a></li>
+                <li>The <code>type</code> field SHOULD contain a credential type for this extension (e.g. CertificationDetailsCredential)</li>
+                <li>The credential SHOULD contain a schema reference to your custom credential</li>
+                <li>The data should describe the GS1 ID Key that is the <code>credentialSubject</code> <code>id</code>
+                <li>When possible the data SHOULD adhere to the <a target="_blank" rel="noopener noreferrer"  href="https://www.gs1.org/gs1-web-vocabulary">GS1 Web Vocabulary</a>
+                    or the <a target="_blank" rel="noopener noreferrer"  href="https://navigator.gs1.org/gdm"> GS1 Global Data Model</a> when possible</li>
+            </ul>
+        <p>
     </section>
 
     <section id="data-credential-examples">
         <h3>Data Credential Examples</h3>
-        <p><span class="todo">TODO</span></p>
+        <p>This section shows specific examples of GS1 Data Credentials to allow a more concrete understanding of their contents and format.</p>
 
         <section id="sample-product-data-credential">
             <h3>Product Data Credential Examples</h3>
-            <p><span class="todo">TODO</span></p>
 
             <div class="example-tabset" data-example="product-data-credential-sample">
               <div class="example-tab-buttons">
@@ -205,7 +215,6 @@
 
         <section id="sample-organization-data-credential">
             <h3>Organization Data Credential Examples</h3>
-            <p><span class="todo">TODO</span></p>
 
             <div class="example-tabset" data-example="organization-data-credential-sample">
               <div class="example-tab-buttons">
@@ -221,7 +230,6 @@
 
         <section id="sample-custom-data-credential">
             <h3>Custom Data Credential Examples</h3>
-            <p><span class="todo">TODO</span></p>
 
             <div class="example-tabset" data-example="sscc-data-credential-sample">
               <div class="example-tab-buttons">
