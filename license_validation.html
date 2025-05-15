@@ -5,8 +5,8 @@
 <body>
     <h2>Digital License Validation</h2>
     <p>Digital License validation is the process of confirming that a specific license is current,
-    authentic, and relevant.  Because GS1 Licenses are issued in a federated manor, license
-    validation requires examing the set (chain) of licenses back to the GO root of trust.</p>
+    authentic, and relevant.  Because GS1 Licenses are issued in a federated manner, license
+    validation requires examining the set (chain) of licenses back to the GO root of trust.</p>
     <section id="license-validation-philosophy">
         <h3>Philosophy of License Validation</h3>
         <p>Digital license validation is the process by which a machine can verify that a license is
@@ -20,14 +20,14 @@
         we can see the <code>licenseValue</code> of the GTIN starts with the <code>licenseValue</code> of the GCP which starts with
         the <code>licenseValue</code> from the prefix license, indicating a complete and valid chain</p>
 
-        <p><span class="todo">confirm with Steering Committee</span> What do we say here about the utility of validataing a license?  Should we
-        talk about whether this can be used with a presentation to validate a traading partners identity?</p>
+        <p><span class="todo">confirm with Steering Committee</span> What do we say here about the utility of validating a license?  Should we
+        talk about whether this can be used with a presentation to validate a trading partners identity?</p>
     </section>
     <section id="license-validation-rules">
         <h3>License Validation Rules</h3>
         <p>The following section contains rules for validation of GS1 Licenses.</p>
 
-        Denoting the GS1 Licsense Credential as <strong>L</strong>,
+        Denoting the GS1 License Credential as <strong>L</strong>,
         the following steps MUST be performed on all GS1 license credentials:
 
         <ul>
@@ -42,15 +42,15 @@
             <p>When validating a prefix license, the following additional steps MUST be performed:</p>
             <ul>
                 <li><strong>L</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix</a></li>
-                <li><strong>L</strong>  <code>Issuer</code> field MUST be a GS1 GO did:web or did:webvh</li>
+                <li><strong>L</strong>  <code>Issuer</code> property MUST be a GS1 GO did:web or did:webvh</li>
                 <li>Prefix <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) MUST be between 2 and 5 <span class="todo">TODO can we add this rule to the schema</span> numeric digits</li>
             </ul>
         </section>
 
         <section id="gcp-validation-rules">
             <h3>GCP Validation Rules</h3>
-             <p>With the credential referenced by <strong>L's</strong> extendsCredential field as <strong>P</strong>
-             the following additional steps MUST be performed to alidate a GCP Licsense</p>
+             <p>With the credential referenced by <strong>L's</strong> <code>extendsCredential</code> property as <strong>P</strong>
+             the following additional steps MUST be performed to validate a GCP License</p>
             <ul>
                 <li><strong>L</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/companyprefix">https://id.gs1.org/vc/schema/v1/companyprefix</a></li>
                 <li><strong>P</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a>.</li>
@@ -62,12 +62,12 @@
 
         <section id="id-key-validation-rules">
             <h3>Identification Key License Validation Rules</h3>
-            <p>When validating a Identification Key licsense, the following additional steps MUST be performed:</p>
+            <p>When validating a Identification Key License, the following additional steps MUST be performed:</p>
             <ul>
                 <li><strong>L</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/identificationkey">https://id.gs1.org/vc/schema/v1/identificationkey</a></li>
                 <li><strong>P</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a>.</li>
                 <li><strong>P</strong> <code>credentialSubject</code> <code>id</code>MUST match <strong>L</strong> <code>issuer</code></li>
-                <li><strong>L</strong> <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) MUST begin with the <strong>P</strong> <code>licenseValue</code> and <code>alternateLicenseValue</code> respectievly</li>
+                <li><strong>L</strong> <code>licenseValue</code> and <code>alternateLicenseValue</code> (if present) MUST begin with the <strong>P</strong> <code>licenseValue</code> and <code>alternateLicenseValue</code> respectively</li>
             </ul>
         </section>
     </section>

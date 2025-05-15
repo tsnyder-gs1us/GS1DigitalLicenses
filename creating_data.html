@@ -12,11 +12,11 @@
     <section id="data-credential-whatis">
         <h3>What is a Data Credential</h3>
         <p>A GS1 Data Credential is an envelope to declare facts about GS1 ID Keys.  Its primary purpose is to link
-        back to the Key Credentials (and ultimately the License) to that these facts can be authentically
+        back to the Key Credentials (and ultimately the License) so that these facts can be confidently
         attributed to the MC that holds the license to commission this Key. For example, as a brand owner,
         I can create a GS1 Data Credential that asserts the country of origin of a specific GTIN/Batch/Lot
         and any party receiving this credential (and its chain) can know its authentic data from the
-        brand ownwer.</p>
+        brand owner.</p>
     </section>
     <section id="data-credential-details">
         <h3>Data Credential Details</h3>
@@ -59,7 +59,7 @@
                 <tr>
                     <td><code>credentialStatus</code></td>
                     <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials and MUST be of the type <code>BitstringStatusListEntry</code>
-                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
+                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bitstring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
@@ -97,7 +97,7 @@
             <p>The Data <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI.</p>
         </section>
 
-        All GS1 Data Credentials share these properies:
+        All GS1 Data Credentials share these properties:
 
         <table>
            <caption>GS1 Data Credential Properties</caption>
@@ -115,7 +115,7 @@
                   <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
                   <td>Optional</td>
                   <td>a reference to a credential that authorizes the issuer to declare data. Normally this is a GS1 ID Key Credential. When the Licensee of the GS1 ID
-                    Key creates Data Credentials the SHOULD include a <code>keyAuthorization</code> referencing the GS1 ID Key Credential for this ID Key.</td>
+                    Key creates Data Credentials they SHOULD include a <code>keyAuthorization</code> referencing the GS1 ID Key Credential for this ID Key.</td>
                 </tr>
             </tbody>
         </table>
@@ -124,13 +124,13 @@
 
     <section id="data-credential-subtypes">
         <h3>Data Credential Subtypes</h3>
-        <p>GS1 Data Credentials form a base class for building more specific credentials. GS1 defines these specific DataCredentials
-        that extend the DataCredential Model for various GS1 ID Keys.</p>
+        <p>GS1 Data Credentials form a base class for building more specific credentials. GS1 defines these specific Data Credentials
+        that extend the <code>DataCredential</code> Model for various GS1 ID Keys.</p>
 
         <section id="product-data-credential">
         <h3>Product Data Credential</h3>
 
-            <p>A GS1 Product Data Credential is a DataCredential with the following properties</p>
+            <p>A GS1 Product Data Credential is a <code>DataCredential</code> with the following properties</p>
 
             <table>
                <caption>GS1 Product Data Credential Properties</caption>
@@ -147,20 +147,20 @@
                       <td><code>product</code></td>
                       <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Product">gs1:Product</a></td>
                       <td>Mandatory</td>
-                      <td>An Object that contains an instance of product describing the product associated with <code>credentialSubject</code> <code>id</code> GTIN GS1 Digital Link URI</td>
+                      <td>An Object that contains an instance of <code>gs1:Product</code> describing the product associated with <code>credentialSubject</code> <code>id</code> GTIN GS1 Digital Link URI</td>
                     </tr>
                 </tbody>
             </table>
 
             In addition:
             <ul>
-                <li>the Credential <code>@context</code> field must also contain  <a target="_blank" rel="noopener noreferrer" href= "https://ref.gs1.org/gs1/vc/product-context">https://ref.gs1.org/gs1/vc/product-context</a></li>
+                <li>The <code>@context</code> property must also contain  <a target="_blank" rel="noopener noreferrer" href= "https://ref.gs1.org/gs1/vc/product-context">https://ref.gs1.org/gs1/vc/product-context</a></li>
             </ul>
         </section>
 
- <section id="organiaion-data-credential">
+ <section id="organization-data-credential">
         <h3>Organization Data Credential</h3>
-            <p>A GS1 Organization Data Credential is a DataCredential with the following properties</p>
+            <p>A GS1 Organization Data Credential is a <code>DataCredential</code> with the following properties</p>
 
             <table>
                <caption>GS1 Organization Data Credential Properties</caption>
@@ -177,14 +177,14 @@
                       <td><code>organization</code></td>
                       <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Organization">gs1:Organization</a></td>
                       <td>Mandatory</td>
-                      <td>An Object that contains an instance of product describing the organization associated with <code>credentialSubject</code> <code>id</code> GLN GS1 Digital Link URI</td>
+                      <td>An Object that contains an instance of <code>gs1:Organization</code> describing the organization associated with <code>credentialSubject</code> <code>id</code> GLN GS1 Digital Link URI</td>
                     </tr>
                 </tbody>
             </table>
 
             In addition:
             <ul>
-                <li>the Credential <code>@context</code> field must also contain  <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/organization-context">https://ref.gs1.org/gs1/vc/organization-context</a></li>
+                <li>The <code>@context</code> property must also contain  <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/organization-context">https://ref.gs1.org/gs1/vc/organization-context</a></li>
             </ul>
         </section>
     </section>
@@ -195,12 +195,12 @@
 
         <p>Custom Extensions to the GS1 Data Credential should be formed as follows:
             <ul>
-                <li>The <code>type</code> field MUST contain <code>DataCredential</code> and satisfy the requirements in <a href="#data-credential-details"></a></li>
-                <li>The <code>type</code> field SHOULD contain a credential type for this extension (e.g. CertificationDetailsCredential)</li>
+                <li>The <code>type</code> property MUST contain <code>DataCredential</code> and satisfy the requirements in <a href="#data-credential-details"></a></li>
+                <li>The <code>type</code> property SHOULD contain a credential-specific type (e.g., CertificationDetailsCredential)</li>
                 <li>The credential SHOULD contain a schema reference to your custom credential</li>
-                <li>The data should describe the GS1 ID Key that is the <code>credentialSubject</code> <code>id</code>
+                <li>The data should describe the GS1 ID Key that is the <code>credentialSubject</code> <code>id</code></li>
                 <li>When possible the data SHOULD adhere to the <a target="_blank" rel="noopener noreferrer"  href="https://www.gs1.org/gs1-web-vocabulary">GS1 Web Vocabulary</a>
-                    or the <a target="_blank" rel="noopener noreferrer"  href="https://navigator.gs1.org/gdm"> GS1 Global Data Model</a> when possible</li>
+                    or the <a target="_blank" rel="noopener noreferrer"  href="https://navigator.gs1.org/gdm"> GS1 Global Data Model</a>.</li>
             </ul>
         <p>
     </section>

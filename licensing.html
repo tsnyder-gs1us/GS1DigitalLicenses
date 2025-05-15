@@ -333,9 +333,9 @@
         </section>
 
         <section id="credential-id">
-            <h3>VCDM Credential ID property</h3>
+            <h3>VCDM Credential ID Property</h3>
             <p>The id property is optional in the VCDM, but required in GS1 License credentials. </p>
-            <p><span class="todo">TODO</span>What can we state about the ID field of these credentials.  Should it be a URL etc.</p>
+            <p><span class="todo">TODO</span>What can we state about the ID property of these credentials.  Should it be a URL etc.</p>
         </section>
         <section id="credential-subject-id">
             <h3>VCDM Credential Subject ID property</h3>
@@ -371,11 +371,11 @@
             <p><span class="todo">TODO</span> we need to add render method to this example</p>
 
             <p>The <code>extendsCredential</code> property is omitted as this credential is signed by the GS1 GO DID. The <code>credentialSubject id</code>  is the
-                MO DID with the <code>gs1:organization</code> field containing the
+                MO DID with the <code>gs1:organization</code> property containing the
                 <code>partyGLN</code> and <code>name</code> properties. Since this prefix starts with a leading 0, the <code>alternativeLicenseValue</code> is present
             with the leading zero removed.</p>
 
-            <p>The name and description fields are for visual rendering.</p>
+            <p>The name and description properties are for visual rendering.</p>
 
             <section id="gs1-prefix-credential-availability">
                 <h3>Prefix Credential IDs</h3>
@@ -409,7 +409,7 @@
             <p>The <code>extendsCredential</code> property is required to reference the GS1 Prefix license from which this assignment was authorized. In
             this case, since the GCP came from GS1 Prefix License 08, a reference to that credential is present.
             The <code>credentialSubject</code> <code>id</code> is a DID created and controlled by Healthy Tots.
-            The <code>name</code> and <code>description</code> fields are for visual rendering. </p>
+            The <code>name</code> and <code>description</code> properties are for visual rendering. </p>
 
             <section id="gcp-credential-availability">
                 <h3>GCP Credential IDs</h3>
@@ -438,7 +438,7 @@
 
             <p>This single GTIN license was issued by GS1 US to a fictitious organization, HealthyTots, for the specific GTIN 00198715637472.
                 Because GS1 ID Keys are numbers, the <code>identificationKeyType</code> property with value GTIN tells the holder/verifier that this ID Key license
-            is a GTIN. The <code>name</code> and <code>description</code> fields are for visual rendering. </p>
+            is a GTIN. The <code>name</code> and <code>description</code> properties are for visual rendering. </p>
 
             <p>In general, GS1 ID Key License Credential can also be used to issue other GS1 ID Keys individually. Most common are GTINs and GLNs.</p>
 
@@ -452,7 +452,7 @@
             </div>
 
             <p><span class="todo">TODO</span> we need to add render method to this example</p>
-            <p><span class="todo">TODO</span>The extendsCredential field here seems incorrect?  This should reference an 001 prefix?</p>
+            <p><span class="todo">TODO</span>The extendsCredential property here seems incorrect?  This should reference an 001 prefix?</p>
         </section>
     </section>
     <section id="license-exceptions">
@@ -466,7 +466,7 @@
             <p>a GTIN-8 is a 8 digit GTIN that is used for products where a larger barcode might not fit, such as a lipstick or box of matches.
             GO can license prefixes to MOs to issue GTIN-8. GTIN-8 prefixes are not issued to MCs, so GTIN-8 are only licensed as individual ID
             Keys to MCs.  Nevertheless, when handling GS1 License credentials you may come across a GTIN-8 Prefix License. GTIN-8 prefix
-            credential should always be issued by GO and do not require an extendsCredential field.</p>
+            credential should always be issued by GO and do not require an <code>extendsCredential</code> property.</p>
 
             <div class="example-tabset" data-example="gtin8-prefix-sample">
               <div class="example-tab-buttons">

@@ -18,8 +18,8 @@
 
         <p>
             A MC that has obtained a Digital GCP or ID Key license can create GS1 ID Key Credentials to assert
-            the existence of a specific GS1 ID Key.  For example, if a fictictious company Healthy Tots
-            has a Digital GCP license and wishes to commision a GTIN from their GCP, they can create
+            the existence of a specific GS1 ID Key.  For example, if a fictitious company Healthy Tots
+            has a Digital GCP license and wishes to commission a GTIN from their GCP, they can create
             and share a GS1 ID Key Credential asserting the existence of this GTIN for global trade.
         </p>
         <p>
@@ -28,8 +28,8 @@
             the existence of a specific batch/lot or serial number of a trade item.
         </p>
         <p>
-            The specific format of each GS1 ID Key is different. this <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/sites/default/files/docs/idkeys/gs1_id_keys_reference_card.pdf.pdf">quick reference card</a>
-            higlights the basics of how to fornat GS1 ID Keys from a GCP. For more details on how to form
+            The specific format of each GS1 ID Key is different. This <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/sites/default/files/docs/idkeys/gs1_id_keys_reference_card.pdf.pdf">quick reference card</a>
+            highlights the basics of how to format GS1 ID Keys from a GCP. For more details on how to form
             individual GS1 ID Keys from your GCP, see your MO web page, the
             <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification</a>
             or services like <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/services/activate">GS1 Activate</a>
@@ -87,7 +87,7 @@
                 <tr>
                     <td><code>credentialStatus</code></td>
                     <td>This property is optional in the VCDM but MUST be present in all GS1 ID Key Credentials and be of the type <code>BitstringStatusListEntry</code>
-                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
+                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bitstring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
@@ -101,7 +101,7 @@
             </tbody>
             </table>
 
-            <span class="todo">confirm with Steering Committee</span>Should we require name and description? What about an issuer Name.
+            <span class="todo">confirm with Steering Committee</span>Should we require name and description? What about an Issuer name.
         </p>
 
         <div class="callout important">
@@ -117,7 +117,7 @@
         <section id="key-credential-id">
             <h3>ID Key Credential ID Property</h3>
             <p>
-                The ID Key Credential ID Property SHOULD be a URI selected to be globally unique.  If its desired to have the credential
+                The ID Key Credential ID Property SHOULD be a URI selected to be globally unique.  If it is desired to have the credential
                 publicly accessible the credential ID Property SHOULD be a resolvable URL.
             </p>
 
@@ -127,7 +127,7 @@
             <p>The ID Key <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI.</p>
         </section>
 
-        All GS1 ID Key Credentials share these properies:
+        All GS1 ID Key Credentials share these properties:
 
         <table>
            <caption>GS1 ID Key Credential Properties</caption>
@@ -151,23 +151,23 @@
 
         <section id="key-credential-extends-credential">
             <h3>ID Key Credential extendsCredential property</h3>
-            <p>The ID Key Credential <code>extendsCredential</code> propery MUST be one of the following:
+            <p>The ID Key Credential <code>extendsCredential</code> property MUST be one of the following:
                 <ul>
-                    <li>A reference to a GS1 License Credential where the primary GS1 ID Key extracted from the ID Key Credential <ode>credentialSubject</ode> <code>id</code>
-                        MUST begin witth (as a string) the <code>licenseValue</code> from the credential referenced in the <code>extendsCredential</code> property</li>
+                    <li>A reference to a GS1 License Credential where the primary GS1 ID Key extracted from the ID Key Credential <code>credentialSubject</code> <code>id</code>
+                        MUST begin with (as a string) the <code>licenseValue</code> from the credential referenced in the <code>extendsCredential</code> property</li>
                     <li>a reference to another GS1 ID Key Credential where the canonicalized <code>credentialSubject</code> <code>id</code>  of the credential MUST start with and MUST extend the canonicalized <code>credentialSubject</code> <code>id</code> of the credential referenced in <code>extendsCredential</code>.
                 </ul>
             </p>
 
-            <span class="todo">confirm with Steering Committee</span>By these rules its possible to create a batch/lot/serial number credential and extend a GCP. Do we require that there be a chain as the granualrity gets more specific?  TODO should these comparisons only be done on the path component of the GS1 Digital Link or should it include the query components?
+            <span class="todo">confirm with Steering Committee</span>By these rules its possible to create a batch/lot/serial number credential and extend a GCP. Do we require that there be a chain as the granularity gets more specific?  TODO should these comparisons only be done on the path component of the GS1 Digital Link or should it include the query components?
 
             <p>A few examples:</p>
             <ul>
-                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code> properly extendeds a GCP credential with <code>licenseValue</code>  <code>0754123</code></li>
+                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code> properly extends a GCP credential with <code>licenseValue</code>  <code>0754123</code></li>
                 <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code> does <strong>NOT</strong> properly extend a GCP credential with <code>licenseValue</code>  <code>0755555</code></li>
-                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> properly extendeds a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code></li>
-                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extendeds a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234777777</code></li>
-                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extendeds a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> because although it "starts with", it does not "extend".</li>
+                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> properly extends a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code></li>
+                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extend a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234777777</code></li>
+                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extend a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> because although it "starts with", it does not "extend".</li>
             </ul>
 
         </section>
@@ -210,7 +210,7 @@
         </section>
 
         <section id="gtin-serial-key-credential">
-            <h3>GTIN Serailized ID Key Credential</h3>
+            <h3>GTIN Serialized ID Key Credential</h3>
             <p><span class="todo">TODO</span></p>
 
             <div class="example-tabset" data-example="gtin-serial-key-credential-sample">

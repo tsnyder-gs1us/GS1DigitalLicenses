@@ -4,37 +4,37 @@
 </head>
 <body>
     <h2>Validating Data Credentials</h2>
-    <p>This section describes the philosophy and proceedures to validate GS1 Data Credentials.</p>
+    <p>This section describes the philosophy and procedures to validate GS1 Data Credentials.</p>
     <section id="data-validation-whatis">
         <h3>What is Data Validation</h3>
-        <p>Data credental validation is the process of validating a set of data about a GS1 ID Key.
+        <p>Data credential validation is the process of validating a set of data about a GS1 ID Key.</p>
 
         <p>For example, a Data Credential about a GS1 Digital Link describing a GTIN might assert master data about the product
         such as dimensions, color, sizing, description, country of origin or any other attribute.  In this case,
-        its desirable to verify that this data has not been altered and was created by the licensee of that specific GTIN.</p>
+        it's desirable to verify that this data has not been altered and was created by the licensee of that specific GTIN.</p>
 
         <p>Another data credential might offer details about a specific shipment (SSCC) like the date,
-            time, and location the shipment was received by a specific party. In this case, its important
-            to verify that this data was untampered, but is unlikely this would be issued by the licensee
-            of the SSCC</p>
+            time, and location the shipment was received by a specific party. In this case, it's important
+            to verify that this data was unaltered, but it is unlikely this would be issued by the licensee
+            of the SSCC.</p>
     </section>
 
     <section id="data-validation-philosophy">
         <h3>Data Validation Overview</h3>
-        <p>Validating a data credential without a <code>keyAuthorization</code> field is simply ensuring
+        <p>Validating a data credential without a <code>keyAuthorization</code> property is simply ensuring
         that the credential is well-formed and has not been altered.  When a data credential contains
         a  <code>keyAuthorization</code>, its best practice to validate the chain of credentials
-        linked via this authorization. An example of this credenial chain is shown in the image below:</p>
+        linked via this authorization. An example of this credential chain is shown in the image below:</p>
 
         <figure id="figure-data-credential-chain">
-          <img src="images/gs1_credential_chain_example.png" alt="GS1 Credential Chain Sample" />
-          <figcaption>GS1 Data Credental Chain</figcaption>
+          <img src="images/gs1_credential_chain_example.png" alt="GS1 Data Credential Chain" />
+          <figcaption>GS1 Data Credential Chain</figcaption>
         </figure>
 
-        <p>This example shows a GS1 Product Data Credential assertings product facts from the brand owner.
-            Because the <code>keyAuthorization</code> that links back to GS1 ID Key Credential which then
+        <p>This example shows a GS1 Product Data Credential that asserts product facts from the brand owner.
+            Because the <code>keyAuthorization</code> that links back to a GS1 ID Key Credential which then
             extends a valid GS1 License chain, the verifier can have confidence that this product data
-            originated from the  licensee of the GS1 ID Key.  </p>
+            originated from the licensee of the GS1 ID Key.  </p>
 
     </section>
     <section id="data-validation-rules">
@@ -51,20 +51,20 @@
             <li>The credential document <strong>D</strong>  MUST conform to the JSON schema for the data credential:
                 <ul>
                     <li>For general data credentials  <a href="https://id.gs1.org/vc/schema/v1/data">https://id.gs1.org/vc/schema/v1/data</a></li>
-                    <li>For product data credentials  <a href="https://id.gs1.org/vc/schema/v1/data">https://id.gs1.org/vc/schema/v1/producdata</a></li>
-                    <li>For organization data credentials  <a href="https://id.gs1.org/vc/schema/v1/data">https://id.gs1.org/vc/schema/v1/organizationdata</a></li>
-                    <li>For custom dsata credentials, any additional schemas defined within the credential</li>
+                    <li>For product data credentials  <a href="https://id.gs1.org/vc/schema/v1/productdata">https://id.gs1.org/vc/schema/v1/productdata</a></li>
+                    <li>For organization data credentials  <a href="https://id.gs1.org/vc/schema/v1/organizationdata">https://id.gs1.org/vc/schema/v1/organizationdata</a></li>
+                    <li>For custom data credentials, any additional schemas defined within the credential</li>
                 </ul>
             </li>
         </ul>
 
-        If the credential <strong>D</strong> contains a <code>keyAuthorization</code> field, denoting the credential referenced by this field as <strong>K</strong>,its possible to verify that this credential data was created by the licensee of the GS1 ID Key.  The following steps SHOULD be performed:
+        If the credential <strong>D</strong> contains a <code>keyAuthorization</code> property, denoting the credential referenced by this property as <strong>K</strong>, it's possible to verify that the data in this credential was created by the licensee of the GS1 ID Key.  The following steps SHOULD be performed:
 
         <ul>
             <li>The <code>issuer</code> of <strong>D</strong>  MUST match the issuer of <strong>K</strong></li>
             <li><strong>K</strong> MUST be a valid <a href="#key-validation-rules">GS1 Key Credential</a></li>
             <li>The canonicalized <strong>D</strong> <code>credentialSubject</code> <code>id</code> MUST start with
-                and MAY extend the canonicalized <strong>K</strong> <ode>credentialSubject</ode> <code>id</code></li>
+                and MAY extend the canonicalized <strong>K</strong> <code>credentialSubject</code> <code>id</code></li>
         </ul>
 
     </section>
