@@ -6,53 +6,53 @@
     <h2>Digital Licensing</h2>
     <p><a href='#GS1-Licenses'>GS1 Licensing</a> provides the root of trust for the globally unique
         numbering systems
-        GS1 Digital Licenses are digital representations of the existing GS1 Licenses desribed in <a href="#GS1-Licenses"></a>.  These Digital license
+        GS1 Digital Licenses are digital representations of the existing GS1 Licenses described in <a href="#GS1-Licenses"></a>.  These Digital licenses
         can be verified by machines in <abbr title="Business to Business">B2B</abbr>
-        transaction. Why might digital verification of GS1 licecnses be beneficial: </p>
+        transactions. Why might digital verification of GS1 licenses be beneficial?</p>
     <ul class="orange-bullets">
         <li>To prove a GS1 MO is authentic within the GS1 system for issuing Licenses</li>
         <li>To prove a MC or MO is authorized to create specific GS1 ID Keys</li>
         <li>To establish provenance over GS1 ID Keys created by MC or MO</li>
         <li>To establish provenance over data about GS1 ID Keys created by MC or MO</li>
     </ul>
-    <section id="Licencsing-nutshell">
+    <section id="Licensing-nutshell">
         <h3>Digital Licensing in a Nutshell</h3>
         <p>GS1 Digital Licenses parallel the licenses discussed in <a href='#GS1-Licenses'></a>.</p>
-        <p>A Digital GS1 Prefix License is issue by GO to a specific MO.  It authorizes them to
+        <p>A Digital GS1 Prefix License is issued by GO to a specific MO.  It authorizes them to
         issue GS1 Company Prefixes
-         and single issue identiiers from a specific GS1 prefix value. GS1 Prefix licenses
+         and single issue identifiers from a specific GS1 prefix value. GS1 Prefix Licenses
         are typically 3 digit numbers, with exceptions listed in <a href="#tricky-topics"></a>.
         For example, GS1 New Zealand is issued prefixes 940 - 949.</p>
 
-        <p>A Digital GCP is isssued from and MO to a MC to authorize them to issue
+        <p>A Digital GCP is issued from an MO to a MC to authorize them to issue
         GS1 ID Keys from a specific number range.  GCPs have different lengths depending on the
         needs of the MC.  GCPs range from 6 digits to 11 digits.  They always begin with the
-        prefix value.  The fewer digits a GCP has, the more individual GS1 ID keys it can create. For example,
-        a 10 digit GCP (e.g. 08600058400) can only create 10 GS1 ID keys of each type while a 6 digit GCP can create
-        many thousands of GS1 ID keys.</p>
+        prefix value.  The fewer digits a GCP has, the more individual GS1 ID Keys it can create. For example,
+        a 10 digit GCP (e.g. 08600058400) can only create 10 GS1 ID Keys of each type while a 6 digit GCP can create
+        many thousands of GS1 ID Keys.</p>
 
         <p>A Digital Single ID Key License authorizes a MC to use a specific GS1 ID Key for their
-        business operations. Single Issue ID Key Licenses are often used by small business to
+        business operations. Single Issue ID Key Licenses are often used by small businesses to
         generate a few GTIN numbers for their products.  They are also used to issue GLN numbers
         to identify organizations in the global supply chain that participate, but are not creating
         product, shipments or assets.</p>
 
     </section>
     <section id="License-Hierarchy">
-        <h3>Digital License Hieararchy</h3>
-        <p>These licenses for a hierarchy that can be represented by the image below</p>
+        <h3>Digital License Hierarchy</h3>
+        <p>These licenses form a hierarchy that can be represented by the image below</p>
         <figure id="figure">
           <img src="images/GeneralLicenseHierarchy.drawio.svg" alt="GS1 License Hierarchy" />
           <figcaption>GS1 License Hierarchy</figcaption>
         </figure>
         <p>The GS1 Global Office issues GS1 Prefixes to MOs.  Each MO gets GS1 prefixes based on their needs, with
-        small MOs gettings a single GS1 prefix while larger MOs may have hundreds.  GS1 MOs issue GCPs and single
-        issue ID Key Licenses from their prefixes. There are millions of MCs and millions of GCP issued worldwide. </p>
+        small MOs getting a single GS1 prefix while larger MOs may have hundreds.  GS1 MOs issue GCPs and single
+        issue ID Key Licenses from their prefixes. There are millions of MCs and millions of GCPs issued worldwide. </p>
 
         <div class="callout important">
           <div class="callout-icon">!</div>
           <div class="callout-text">
-            <strong>Note:</strong>GS1 Number is complex and there are abbreviated number forms that can omit leading zeros
+            <strong>Note:</strong>The GS1 numbering system is complex and there are abbreviated number forms that can omit leading zeros
             in numbering This can sometimes make the GS1 Prefix and GCP matching complex.  (<span class="todo">TODO</span> put a link to some better
             documentation) For example:
             <ul class="orange-bullets">
@@ -60,7 +60,6 @@
             </ul>.
           </div>
         </div>
-    </note>
     </section>
     <section id="License-Credentials">
         <h3>Digital License Credentials Overview</h3>
@@ -324,7 +323,7 @@
             <h3>Encapsulation and Signatures</h3>
             <p>GS1 License credentials are issued in the W3C VCDM data model using <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/">vc-jose-cose</a>
                 specifically as references in <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/#securing-with-jose">this section</a>. GS1
-                License Credentials are signed with ECDSA ES256 algorithm. Eamples are show in Section <a href="#License-Details"></a></p>
+                License Credentials are signed with ECDSA ES256 algorithm. Examples are shown in Section <a href="#License-Details"></a></p>
             <p><span class="todo">confirm with Steering Committee</span> that licenses are provided from GS1 in the VC format (not VP)</p>
         </section>
 
@@ -356,7 +355,7 @@
             <h3>Digital GS1 Prefix Licenses</h3>
 
             <p>GS1 Prefix Licenses were described in <a href="#GS1-Licenses"></a> and <a href="#License-Hierarchy"></a>. The following shows
-                an eample GS1 Prefix License issued from GO to GS1 US for prefix 08.</p>
+                an example GS1 Prefix License issued from GO to GS1 US for prefix 08.</p>
 
             <div class="example-tabset" data-example="gs1-prefix-sample">
               <div class="example-tab-buttons">
@@ -376,7 +375,7 @@
                 <code>partyGLN</code> and <code>name</code> properties. Since this prefix starts with a leading 0, the <code>alternativeLicenseValue</code> is present
             with the leading zero removed.</p>
 
-            <p>The name and description field are for visual rendering.</p>
+            <p>The name and description fields are for visual rendering.</p>
 
             <section id="gs1-prefix-credential-availability">
                 <h3>Prefix Credential IDs</h3>
@@ -392,7 +391,7 @@
             <h3>Digital GCP Licenses</h3>
 
             <p>GCP Licenses were described in <a href="#GS1-Licenses"></a> and <a href="#License-Hierarchy"></a>. The following shows
-                an eample GCP License issued from GS1 US to a ficticous company Healthy Tots</p>
+                an example GCP License issued from GS1 US to a fictitious company Healthy Tots</p>
 
             <div class="example-tabset" data-example="gcp-sample">
               <div class="example-tab-buttons">
@@ -407,10 +406,10 @@
 
             <p><span class="todo">TODO</span> we need to add render method to this example</p>
 
-            <p>The <code>extendsCredential</code> property is required to referene the GS1 Prefix license from which this assignment was authorized. In
+            <p>The <code>extendsCredential</code> property is required to reference the GS1 Prefix license from which this assignment was authorized. In
             this case, since the GCP came from GS1 Prefix License 08, a reference to that credential is present.
             The <code>credentialSubject</code> <code>id</code> is a DID created and controlled by Healthy Tots.
-            The <code>name</code> and <code>description</code> field are for visual rendering. </p>
+            The <code>name</code> and <code>description</code> fields are for visual rendering. </p>
 
             <section id="gcp-credential-availability">
                 <h3>GCP Credential IDs</h3>
@@ -424,7 +423,7 @@
             <h3>Digital GTIN License</h3>
 
             <p>Individual GS1 ID Key Licenses were described in <a href="#GS1-Licenses"></a> and <a href="#License-Hierarchy"></a>. The following shows
-                an eample GS1 ID Key License of an individual GTIN </p>
+                an example GS1 ID Key License of an individual GTIN </p>
 
             <div class="example-tabset" data-example="id-key-sample">
               <div class="example-tab-buttons">
@@ -437,9 +436,9 @@
               </div>
             </div>
 
-            <p>This single GTIN license was issued by GS1 US to a ficticous HealthyTots organization for the specific GTIN 00198715637472.
+            <p>This single GTIN license was issued by GS1 US to a fictitious organization, HealthyTots, for the specific GTIN 00198715637472.
                 Because GS1 ID Keys are numbers, the <code>identificationKeyType</code> property with value GTIN tells the holder/verifier that this ID Key license
-            is a GTIN. The <code>name</code> and <code>description</code> field are for visual rendering. </p>
+            is a GTIN. The <code>name</code> and <code>description</code> fields are for visual rendering. </p>
 
             <p>In general, GS1 ID Key License Credential can also be used to issue other GS1 ID Keys individually. Most common are GTINs and GLNs.</p>
 
@@ -447,13 +446,13 @@
               <div class="callout-icon">!</div>
               <div class="callout-text">
                 <strong>Note:</strong>The Licensing of a GTIN to a specific party is independent of the party actually using that GTIN for
-                a specific product.  See Section <a href="#creating-keys"></a> for informaion on how to create assertions that this GTIN
+                a specific product.  See Section <a href="#creating-keys"></a> for information on how to create assertions that this GTIN
                 represents a valid product.
               </div>
             </div>
 
             <p><span class="todo">TODO</span> we need to add render method to this example</p>
-            <p><span class="todo">TODO</span>The extendsCredential Field here seems incorrect?  This should reference an 001 prefix?</p>
+            <p><span class="todo">TODO</span>The extendsCredential field here seems incorrect?  This should reference an 001 prefix?</p>
         </section>
     </section>
     <section id="license-exceptions">
@@ -465,9 +464,9 @@
             <h3>GTIN8 Prefix Licenses</h3>
 
             <p>a GTIN-8 is a 8 digit GTIN that is used for products where a larger barcode might not fit, such as a lipstick or box of matches.
-            GO can license prefixes to MOs to issue GTIN-8. GTIN-8 prefixes are not issued to MCs, so GTIN-8 are only licensed as inddividual ID
+            GO can license prefixes to MOs to issue GTIN-8. GTIN-8 prefixes are not issued to MCs, so GTIN-8 are only licensed as individual ID
             Keys to MCs.  Nevertheless, when handling GS1 License credentials you may come across a GTIN-8 Prefix License. GTIN-8 prefix
-            credenial should always be issued by GO and do not require an extendsCredential field.</p>
+            credential should always be issued by GO and do not require an extendsCredential field.</p>
 
             <div class="example-tabset" data-example="gtin8-prefix-sample">
               <div class="example-tab-buttons">
@@ -483,13 +482,13 @@
         </section>
         <section id="gtin8-id-key-licenses">
             <h3>Individual GTIN8 Licenses</h3>
-            <p>When a GTIN-8 is licensed to an MC, is conveyed digitally as an ID Key License as shown in section <a href="#gtin-license-sample"></a>.
+            <p>When a GTIN-8 is licensed to an MC, it is conveyed digitally as an ID Key License as shown in section <a href="#gtin-license-sample"></a>.
             These licenses have the following specific format.
                 <ul class="orange-bullets">
                     <li>The extendsCredential property references a valid GTIN-8 prefix license</li>
-                    <li>The licsenseValue property contains the 8 digit GTIN</li>
+                    <li>The licenseValue property contains the 8 digit GTIN</li>
                     <li>The alternateLicenseValue property contains the 14 digit GTIN</li>
-                    <li>The identificationKeyType property is type GTIN</li>
+                    <li>The identificationKeyType property is of type GTIN</li>
                 </ul>
             </p>
 
