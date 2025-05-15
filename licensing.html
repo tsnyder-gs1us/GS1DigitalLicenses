@@ -317,6 +317,8 @@
         zero, then the alternative license value is
         the same as the license value but without
         the leading zero.</p>
+        <p><span class="todo">TODO</span> we need more language on what this is.</p>
+
         </section>
 
         <section id="encapsulation-and-signatures">
@@ -329,13 +331,18 @@
 
         <section id="delivery">
             <h3>Delivery</h3>
-            <p>Contact your member organization for details on obtaining Digital GS1 Licenses</p>
+            <p><span class="todo">confirm with Steering Committee</span> how <code>GS18PrefixLicenseCredential</code> and <code>GS1PrefixLicenseCredential</code>
+            Digital Licenses are shared.</p>
+            <p>Contact your member organization for details on obtaining
+             <code>GS1CompanyPrefixLicenseCredential</code> and <code>GS1IdentificationKeyLicenseCredential</code> Digital Licenses.</p>
         </section>
 
         <section id="credential-id">
             <h3>VCDM Credential ID Property</h3>
-            <p>The id property is optional in the VCDM, but required in GS1 License credentials. </p>
-            <p><span class="todo">TODO</span>What can we state about the ID property of these credentials.  Should it be a URL etc.</p>
+            <p>The id property is optional in the VCDM, but required in GS1 License credentials. This property SHOULD be chosen
+            to be globally unique. Consideration should be given to revocation and re-issuance of credentials.</p>
+            <p><span class="todo">TODO</span>What can we state about the ID property of these credentials.  Should it be a URL etc.
+            Seemsl like it has to be more than </p>
         </section>
         <section id="credential-subject-id">
             <h3>VCDM Credential Subject ID property</h3>
