@@ -25,7 +25,7 @@
   <text x="160" y="55" id="credential-name" style="font: 15px monospace; fill: #0057b8;">[CREDENTIAL NAME]</text>
 
   <!-- GS1 Key Digital Link -->
-  <text x="30" y="85" style="font: bold 13px sans-serif; fill: #333;">GS1 Key Digital Link:</text>
+  <text x="30" y="85" style="font: bold 13px sans-serif; fill: #333;">ID Key:</text>
   <text x="210" y="85" id="gs1-key-digital-link" style="font: 13px monospace; fill: #0057b8;">[credentialSubject.id]</text>
 
   <!-- Description block -->
@@ -44,7 +44,7 @@
   </foreignObject>
 
   <!-- Extends Credential -->
-  <text x="30" y="220" style="font: bold 13px sans-serif; fill: #333;">Extends Credential:</text>
+  <text x="30" y="220" style="font: bold 13px sans-serif; fill: #333;">Extends:</text>
   <text x="210" y="220" id="extendsCredential" style="font: 13px monospace; fill: #0057b8;">N/A</text>
 
   <!-- Issuer: Label right-aligned, value underlined -->

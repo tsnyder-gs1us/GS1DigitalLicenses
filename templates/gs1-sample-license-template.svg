@@ -58,7 +58,7 @@
   </foreignObject>
 
   <!-- Extends Credential -->
-  <text x="30" y="290" style="font: bold 13px sans-serif; fill: #333;">Extends Credential:</text>
+  <text x="30" y="290" style="font: bold 13px sans-serif; fill: #333;">Extends:</text>
   <text x="210" y="290" id="extendsCredential" style="font: 13px monospace; fill: #0057b8;">N/A</text>
 
   <!-- Issuer: Right-aligned with underline only under value -->
