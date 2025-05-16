@@ -7,8 +7,8 @@
 
   <rect x="0" y="0" width="600" height="200" rx="10" ry="10" />
 
-  <text class="label" x="30" y="60">License Value:</text>
-  <text class="value" x="200" y="60" id="license-value">[LICENSE]</text>
+  <text class="label" x="30" y="100">License Value:</text>
+  <text class="value" x="200" y="100" id="license-value">[LICENSE]</text>
 
   <text class="label" x="30" y="120">Alternate License Value:</text>
   <text class="value" x="250" y="120" id="alt-license-value">[ALTERNATE]</text>

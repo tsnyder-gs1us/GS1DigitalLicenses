@@ -1,8 +1,4 @@
 {
-  "kid": "did:web:id.gs1.org#fw_hRvwdtJ-LgJk5mSBcdXYfZigY0Ysvz1hOA--1thI",
-  "alg": "ES256"
-}
-{
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
     "https://ref.gs1.org/gs1/vc/license-context"
@@ -38,5 +34,14 @@
     "statusPurpose": "revocation",
     "statusListIndex": "108",
     "statusListCredential": "https://id.gs1.org/vc/status/1"
-  }
+  },
+  "renderMethod": [
+    {
+      "id": "https://woodycreek.github.io/GS1DigitalLicenses/templates/gs1-prefix-license-template.svg",
+      "type": "SvgRenderingTemplate",
+      "name": "Portrait Mode",
+      "css3MediaQuery": "@media (orientation: portrait)",
+      "digestMultibase": "zQmAPdhyxzznFCwYxAp2dRerWC85Wg6wFl9G270iEu5h6JqW"
+    }
+  ]  
 }

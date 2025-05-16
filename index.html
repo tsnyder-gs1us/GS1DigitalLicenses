@@ -25,6 +25,7 @@
       latestVersion: "https://woodycreek.github.io/GS1DigitalLicenses/",
       noRecTrack: true,
       includePermalinks: true,
+      disableW3CLogos: true, // prevents preload of unused W3C logo resources
     };
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -95,10 +96,9 @@
 
 <script>
   async function waitForIncludes() {
-   console.log("🕓 Waiting for ReSpec...");
-   await document.respecIsReady;
+    console.log("🕓 Waiting for ReSpec...");
+    await document.respecIsReady;
 
-    // Wait until all data-includes have finished loading
     const includes = document.querySelectorAll("[data-include]");
     console.log("🕓 Waiting for data-includes...");
     await Promise.all([...includes].map(section => {
@@ -113,6 +113,42 @@
       });
     }));
     console.log("✅ ReSpec ready — initializing tabs");
+  }
+
+  async function loadVCAndRenderSVG(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container || container.dataset.rendered) return;
+
+    const vcUrl = container.getAttribute("data-src");
+    if (!vcUrl) return;
+
+    try {
+      const res = await fetch(vcUrl);
+      const vc = await res.json();
+
+      const renderMethod = vc.renderMethod?.find(
+        (m) => m.type === "SvgRenderingTemplate"
+      );
+      if (!renderMethod?.id) return;
+
+      const svgRes = await fetch(renderMethod.id);
+      const svgText = await svgRes.text();
+
+      const svgContainer = container.querySelector(".svg-container");
+      svgContainer.innerHTML = svgText;
+
+      const svgDoc = svgContainer.querySelector("svg");
+
+      const subject = vc.credentialSubject || {};
+      svgDoc.getElementById("license-value").textContent =
+        subject.licenseValue || "[MISSING]";
+      svgDoc.getElementById("alt-license-value").textContent =
+        subject.alternateLicenseValue || "[MISSING]";
+
+      container.setAttribute("data-rendered", "true");
+    } catch (err) {
+      console.error("Render error:", err);
+    }
   }
 
   (async () => {
@@ -131,7 +167,13 @@
       buttons.forEach(button => {
         const tabName = button.dataset.tab;
         const target = container.querySelector(`#${exampleId}-${tabName}`);
-        button.addEventListener('click', () => showTab(button, target));
+        button.addEventListener('click', () => {
+          showTab(button, target);
+          if (tabName === "svg") {
+            const targetId = `${exampleId}-${tabName}`;
+            loadVCAndRenderSVG(targetId);
+          }
+        });
       });
 
       function showTab(activeButton, showEl) {
@@ -142,14 +184,13 @@
         showEl.style.display = 'block';
 
         const code = showEl.querySelector('code');
-        if (!code.dataset.loaded && code.dataset.src) {
+        if (!code?.dataset.loaded && code?.dataset.src) {
           fetch(code.dataset.src)
             .then(res => res.ok ? res.text() : Promise.reject(res))
             .then(text => {
               code.textContent = text;
               code.dataset.loaded = "true";
               if (window.hljs && typeof hljs.highlightElement === 'function') {
-                // Delay ensures content is in DOM before highlight is applied
                 setTimeout(() => hljs.highlightElement(code), 0);
               }
             })
@@ -158,7 +199,6 @@
       }
     });
 
-    // Optionally highlight all static <code> blocks on the page
     if (window.hljs && typeof hljs.highlightAll === 'function') {
       hljs.highlightAll();
     }
@@ -169,7 +209,6 @@
     const padded = base64 + '='.repeat((4 - base64.length % 4) % 4);
     return atob(padded);
   }
-
 </script>
 
 
