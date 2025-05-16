@@ -154,6 +154,8 @@
       svgDoc.getElementById("alt-license-value").textContent =
         vc.credentialSubject?.alternativeLicenseValue || "[MISSING]";
 
+      svgDoc.getElementById("vc-description").textContent = vc.description || "N/A";
+
       container.setAttribute("data-rendered", "true");
     } catch (err) {
       console.error("Render error:", err);
