@@ -115,7 +115,7 @@
     console.log("✅ ReSpec ready — initializing tabs");
   }
 
-  async function loadVCAndRenderSVG(containerId) {
+  async function loadVCAndRenderLicenseSVG(containerId) {
     const container = document.getElementById(containerId);
     if (!container || container.dataset.rendered) return;
 
@@ -139,11 +139,17 @@
 
       const svgDoc = svgContainer.querySelector("svg");
 
-      const subject = vc.credentialSubject || {};
+      svgDoc.getElementById("org-name").textContent =
+        vc.credentialSubject?.organization?.["gs1:organizationName"] || "[MISSING]";
+
+      svgDoc.getElementById("org-gln").textContent =
+        vc.credentialSubject?.organization?.["gs1:partyGLN"] || "[MISSING]";
+
       svgDoc.getElementById("license-value").textContent =
-        subject.licenseValue || "[MISSING]";
+        vc.credentialSubject?.licenseValue || "[MISSING]";
+
       svgDoc.getElementById("alt-license-value").textContent =
-        subject.alternateLicenseValue || "[MISSING]";
+        vc.credentialSubject?.alternativeLicenseValue || "[MISSING]";
 
       container.setAttribute("data-rendered", "true");
     } catch (err) {
@@ -171,7 +177,7 @@
           showTab(button, target);
           if (tabName === "svg") {
             const targetId = `${exampleId}-${tabName}`;
-            loadVCAndRenderSVG(targetId);
+            loadVCAndRenderLicenseSVG(targetId);
           }
         });
       });

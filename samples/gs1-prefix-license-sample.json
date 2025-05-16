@@ -39,9 +39,8 @@
     {
       "id": "https://woodycreek.github.io/GS1DigitalLicenses/templates/gs1-prefix-license-template.svg",
       "type": "SvgRenderingTemplate",
-      "name": "Portrait Mode",
-      "css3MediaQuery": "@media (orientation: portrait)",
-      "digestMultibase": "zQmAPdhyxzznFCwYxAp2dRerWC85Wg6wFl9G270iEu5h6JqW"
+      "name": "Web Display",
+      "css3MediaQuery": "@media (min-aspect-ratio: 3/1)"
     }
   ]  
 }

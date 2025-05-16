@@ -1,15 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
   <style>
     .label { font: bold 16px sans-serif; fill: #333; }
     .value { font: 16px monospace; fill: #0057b8; }
     rect { fill: #f0f0f0; stroke: #ccc; stroke-width: 1; }
   </style>
 
-  <rect x="0" y="0" width="600" height="200" rx="10" ry="10" />
+  <rect x="0" y="0" width="600" height="300" rx="10" ry="10" />
 
-  <text class="label" x="30" y="100">License Value:</text>
-  <text class="value" x="200" y="100" id="license-value">[LICENSE]</text>
+  <text class="label" x="30" y="60">Organization Name:</text>
+  <text class="value" x="250" y="60" id="org-name">[ORG NAME]</text>
 
-  <text class="label" x="30" y="120">Alternate License Value:</text>
-  <text class="value" x="250" y="120" id="alt-license-value">[ALTERNATE]</text>
+  <text class="label" x="30" y="100">Organization GLN:</text>
+  <text class="value" x="250" y="100" id="org-gln">[GLN]</text>
+
+  <text class="label" x="30" y="140">License Value:</text>
+  <text class="value" x="250" y="140" id="license-value">[LICENSE]</text>
+
+  <text class="label" x="30" y="180">Alt License Value:</text>
+  <text class="value" x="250" y="180" id="alt-license-value">[ALTERNATE]</text>
 </svg>
