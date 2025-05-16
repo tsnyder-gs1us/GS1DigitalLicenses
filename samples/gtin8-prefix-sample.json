@@ -37,5 +37,13 @@
     "statusPurpose": "revocation",
     "statusListIndex": "108",
     "statusListCredential": "https://id.gs1.org/vc/status/1"
-  }
+  },
+  "renderMethod": [
+    {
+      "id": "https://woodycreek.github.io/GS1DigitalLicenses/templates/gs1-sample-license-template.svg",
+      "type": "SvgRenderingTemplate",
+      "name": "Web Display",
+      "css3MediaQuery": "@media (min-aspect-ratio: 3/1)"
+    }
+  ]
 }

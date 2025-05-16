@@ -1,8 +1,4 @@
 {
-  "kid": "did:web:cbpvsvip-vc.gs1us.org#Iyr0fwTvdlERk8EBXVuIs7682yn9djcBx6hGmzcaoas",
-  "alg": "ES256"
-}
-{
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
     "https://ref.gs1.org/gs1/vc/license-context"
@@ -39,5 +35,13 @@
     "statusPurpose": "revocation",
     "statusListIndex": "10010",
     "statusListCredential": "https://cbpvsvip-vc-api.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14/"
-  }
+  },
+  "renderMethod": [
+    {
+      "id": "https://woodycreek.github.io/GS1DigitalLicenses/templates/gs1-sample-license-template.svg",
+      "type": "SvgRenderingTemplate",
+      "name": "Web Display",
+      "css3MediaQuery": "@media (min-aspect-ratio: 3/1)"
+    }
+  ]
 }
