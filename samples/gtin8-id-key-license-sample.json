@@ -1,1 +1,49 @@
-TODO Generate this
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://ref.gs1.org/gs1/vc/license-context"
+  ],
+  "id": "http://did-vc.gs1us.org/vc/license/00198715637472",
+  "type": [
+    "VerifiableCredential",
+    "GS1IdentificationKeyLicenseCredential"
+  ],
+  "issuer": {
+    "id": "did:web:cbpvsvip-vc.gs1us.org",
+    "name": "GS1 Canada"
+  },
+  "name": "GS1 ID Key License",
+  "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is the Verifiable Product License Key Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the key that it contains exists and is valid.",
+  "validFrom": "2024-01-25T12:30:00.000Z",
+  "credentialSubject": {
+    "id": "did:key:z6MkpD2y2US5AkQARZH52q5CgjRURBrqEjLwWZoLKzD2LMjp/1",
+    "organization": {
+      "gs1:partyGLN": "0810159550000",
+      "gs1:organizationName": "Healthy Tots"
+    },
+    "extendsCredential": "https://id.gs1.org/vc/license/gs1_8_prefix/754",
+    "licenseValue": "07512345",
+    "alternativeLicenseValue": "00000007512345",
+    "identificationKeyType": "GTIN"
+  },
+  "credentialSchema": {
+    "id": "https://id.gs1.org/vc/schema/v1/identificationkey",
+    "type": "JsonSchema"
+  },
+
+  "credentialStatus": {
+    "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/24",
+    "type": "BitstringStatusListEntry",
+    "statusPurpose": "revocation",
+    "statusListIndex": "124",
+    "statusListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
+  },
+  "renderMethod": [
+    {
+      "id": "https://woodycreek.github.io/GS1DigitalLicenses/templates/gs1-sample-license-template.svg",
+      "type": "SvgRenderingTemplate",
+      "name": "Web Display",
+      "css3MediaQuery": "@media (min-aspect-ratio: 3/1)"
+    }
+  ]
+}

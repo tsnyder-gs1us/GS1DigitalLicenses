@@ -21,7 +21,7 @@
       "gs1:partyGLN": "7541230000000",
       "gs1:organizationName": "GS1 Canada"
     },
-    "licenseValue": "754",
+    "licenseValue": "754"
   },
   "credentialSchema": {
     "id": "https://id.gs1.org/vc/schema/v1/gtin8-prefix",

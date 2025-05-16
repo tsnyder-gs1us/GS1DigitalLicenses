@@ -18,36 +18,44 @@
 
   <!-- GS1 Logo -->
   <image href="https://gs1go2.azureedge.net/cdn/ff/-DWrvJ6_9SFLuFoLPq53eDFnZK5ChJZhyMixhk4Vh_M/1746862910/:relative:/themes/custom/gsone_revamp/logo.png"
-         x="460" y="30" width="110" height="36" />
+         x="460" y="24" width="110" height="36" />
 
   <!-- Credential Title -->
-  <text x="30" y="60" style="font: bold 20px serif; fill: #333;">Credential:</text>
-  <text x="170" y="60" id="credential-name" style="font: 18px monospace; fill: #0057b8;">[CREDENTIAL NAME]</text>
+  <text x="30" y="52" style="font: bold 18px serif; fill: #333;">Credential:</text>
+  <text x="170" y="52" id="credential-name" style="font: 16px monospace; fill: #0057b8;">[CREDENTIAL NAME]</text>
 
   <!-- Organization Info -->
-  <text x="30" y="110" style="font: bold 16px sans-serif; fill: #333;">Organization Name:</text>
-  <text x="250" y="110" id="org-name" style="font: 16px monospace; fill: #0057b8;">[ORG NAME]</text>
+  <text x="30" y="78" style="font: bold 14px sans-serif; fill: #333;">Organization Name:</text>
+  <text x="250" y="78" id="org-name" style="font: 14px monospace; fill: #0057b8;">[ORG NAME]</text>
 
-  <text x="30" y="150" style="font: bold 16px sans-serif; fill: #333;">Organization GLN:</text>
-  <text x="250" y="150" id="org-gln" style="font: 16px monospace; fill: #0057b8;">[GLN]</text>
+  <text x="30" y="102" style="font: bold 14px sans-serif; fill: #333;">Organization GLN:</text>
+  <text x="250" y="102" id="org-gln" style="font: 14px monospace; fill: #0057b8;">[GLN]</text>
 
   <!-- License Info -->
-  <text x="30" y="190" style="font: bold 16px sans-serif; fill: #333;">License Value:</text>
-  <text x="250" y="190" id="license-value" style="font: 16px monospace; fill: #0057b8;">[LICENSE]</text>
+  <text x="30" y="126" style="font: bold 14px sans-serif; fill: #333;">License Value:</text>
+  <text x="250" y="126" id="license-value" style="font: 14px monospace; fill: #0057b8;">[LICENSE]</text>
 
-  <text x="30" y="230" style="font: bold 16px sans-serif; fill: #333;">Alt License Value:</text>
-  <text x="250" y="230" id="alt-license-value" style="font: 16px monospace; fill: #0057b8;">[ALTERNATE]</text>
+  <text x="30" y="150" style="font: bold 14px sans-serif; fill: #333;">Alt License Value:</text>
+  <text x="250" y="150" id="alt-license-value" style="font: 14px monospace; fill: #0057b8;">[ALTERNATE]</text>
 
   <!-- Identification Key Type -->
-  <text x="30" y="270" style="font: bold 14px sans-serif; fill: #333;">Identification Key Type:</text>
-  <text x="250" y="270" id="identificationKeyType" style="font: 14px monospace; fill: #0057b8;">N/A</text>
+  <text x="30" y="174" style="font: bold 13px sans-serif; fill: #333;">Identification Key Type:</text>
+  <text x="250" y="174" id="identificationKeyType" style="font: 13px monospace; fill: #0057b8;">N/A</text>
+
+  <!-- Issuer -->
+  <text x="30" y="198" style="font: bold 13px sans-serif; fill: #333;">Issuer:</text>
+  <text x="250" y="198" id="issuer" style="font: 13px monospace; fill: #0057b8;">[ISSUER]</text>
+
+  <!-- Extends Credential -->
+  <text x="30" y="222" style="font: bold 13px sans-serif; fill: #333;">Extends Credential:</text>
+  <text x="250" y="222" id="extendsCredential" style="font: 13px monospace; fill: #0057b8;">N/A</text>
 
   <!-- Description block -->
-  <foreignObject x="30" y="290" width="540" height="70">
+  <foreignObject x="30" y="242" width="540" height="110">
     <body xmlns="http://www.w3.org/1999/xhtml">
       <p id="vc-description" style="
         font-family: sans-serif;
-        font-size: 12px;
+        font-size: 11px;
         color: #333;
         margin: 0;
         line-height: 1.3em;
@@ -55,5 +63,5 @@
         [VC DESCRIPTION GOES HERE...]
       </p>
     </body>
-  </foreignObject>  
+  </foreignObject>
 </svg>

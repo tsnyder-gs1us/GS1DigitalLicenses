@@ -157,6 +157,17 @@
       svgDoc.getElementById("identificationKeyType").textContent =
         vc.credentialSubject?.identificationKeyType || "Any";
 
+
+      // issuer can be a string or object with `id` or `name`
+      svgDoc.getElementById("issuer").textContent =
+        typeof vc.issuer === "string"
+          ? vc.issuer
+          : vc.issuer?.name || vc.issuer?.id || "N/A";
+
+      // extendsCredential may or may not be present
+      svgDoc.getElementById("extendsCredential").textContent =
+        vc.extendsCredential || "N/A";
+
       svgDoc.getElementById("vc-description").textContent = vc.description || "";
 
       container.setAttribute("data-rendered", "true");
