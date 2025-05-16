@@ -17,7 +17,8 @@
   <rect x="15" y="15" width="570" height="350" rx="12" ry="12" fill="url(#paper-bg)" />
 
   <!-- GS1 Logo -->
-  <image href="https://gs1go2.azureedge.net/cdn/ff/-DWrvJ6_9SFLuFoLPq53eDFnZK5ChJZhyMixhk4Vh_M/1746862910/:relative:/themes/custom/gsone_revamp/logo.png" x="460" y="30" width="110" height="36" />
+  <image href="https://gs1go2.azureedge.net/cdn/ff/-DWrvJ6_9SFLuFoLPq53eDFnZK5ChJZhyMixhk4Vh_M/1746862910/:relative:/themes/custom/gsone_revamp/logo.png"
+         x="460" y="30" width="110" height="36" />
 
   <!-- Credential Title -->
   <text x="30" y="60" style="font: bold 20px serif; fill: #333;">Credential:</text>
@@ -37,7 +38,12 @@
   <text x="30" y="230" style="font: bold 16px sans-serif; fill: #333;">Alt License Value:</text>
   <text x="250" y="230" id="alt-license-value" style="font: 16px monospace; fill: #0057b8;">[ALTERNATE]</text>
 
-  <foreignObject x="30" y="270" width="540" height="80">
+  <!-- Identification Key Type -->
+  <text x="30" y="270" style="font: bold 14px sans-serif; fill: #333;">Identification Key Type:</text>
+  <text x="250" y="270" id="identificationKeyType" style="font: 14px monospace; fill: #0057b8;">N/A</text>
+
+  <!-- Description block -->
+  <foreignObject x="30" y="290" width="540" height="70">
     <body xmlns="http://www.w3.org/1999/xhtml">
       <p id="vc-description" style="
         font-family: sans-serif;

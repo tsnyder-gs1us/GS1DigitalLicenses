@@ -12,7 +12,7 @@
     "id": "did:web:cbpvsvip-vc.gs1us.org",
     "name": "GS1 US"
   },
-  "name": "GS1 Product License Key Credential",
+  "name": "GS1 ID Key License",
   "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is the Verifiable Product License Key Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the key that it contains exists and is valid.",
   "validFrom": "2024-01-25T12:30:00.000Z",
   "credentialSubject": {

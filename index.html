@@ -154,7 +154,10 @@
       svgDoc.getElementById("alt-license-value").textContent =
         vc.credentialSubject?.alternativeLicenseValue || "[MISSING]";
 
-      svgDoc.getElementById("vc-description").textContent = vc.description || "N/A";
+      svgDoc.getElementById("identificationKeyType").textContent =
+        vc.credentialSubject?.identificationKeyType || "Any";
+
+      svgDoc.getElementById("vc-description").textContent = vc.description || "";
 
       container.setAttribute("data-rendered", "true");
     } catch (err) {
