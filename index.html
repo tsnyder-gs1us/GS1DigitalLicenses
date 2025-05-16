@@ -166,7 +166,7 @@
 
       // extendsCredential may or may not be present
       svgDoc.getElementById("extendsCredential").textContent =
-        vc.extendsCredential || "N/A";
+        vc.credentialSubject?.extendsCredential || "N/A";
 
       svgDoc.getElementById("vc-description").textContent = vc.description || "";
 
