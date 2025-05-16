@@ -36,3 +36,4 @@
 
   <text x="30" y="230" style="font: bold 16px sans-serif; fill: #333;">Alt License Value:</text>
   <text x="250" y="230" id="alt-license-value" style="font: 16px monospace; fill: #0057b8;">[ALTERNATE]</text>
+</svg>
