@@ -61,9 +61,14 @@
   <text x="30" y="290" style="font: bold 13px sans-serif; fill: #333;">Extends Credential:</text>
   <text x="210" y="290" id="extendsCredential" style="font: 13px monospace; fill: #0057b8;">N/A</text>
 
-  <!-- Issuer (right aligned) -->
-  <text id="issuer" x="570" y="320" text-anchor="end"
-        style="font: italic 13px monospace; fill: #333;">
+  <!-- Issuer: Right-aligned with underline only under value -->
+  <text id="issuer-label" x="560" y="320" text-anchor="end"
+        style="font: bold 13px sans-serif; fill: #333;">
+    Issuer:
+  </text>
+
+  <text id="issuer" x="560" y="336" text-anchor="end"
+        style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">
     [ISSUER]
   </text>
 </svg>
