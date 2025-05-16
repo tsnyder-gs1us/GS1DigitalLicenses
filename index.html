@@ -139,6 +139,9 @@
 
       const svgDoc = svgContainer.querySelector("svg");
 
+      svgDoc.getElementById("credential-name").textContent =
+        vc.name || "[MISSING]";
+
       svgDoc.getElementById("org-name").textContent =
         vc.credentialSubject?.organization?.["gs1:organizationName"] || "[MISSING]";
 

@@ -1,21 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
-  <style>
-    .label { font: bold 16px sans-serif; fill: #333; }
-    .value { font: 16px monospace; fill: #0057b8; }
-    rect { fill: #f0f0f0; stroke: #ccc; stroke-width: 1; }
-  </style>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
+  <rect x="0" y="0" width="600" height="340" rx="10" ry="10" style="fill: #f0f0f0; stroke: #ccc; stroke-width: 1;" />
 
-  <rect x="0" y="0" width="600" height="300" rx="10" ry="10" />
+  <text x="30" y="40" style="font: bold 18px sans-serif; fill: #333;">Credential:</text>
+  <text x="150" y="40" id="credential-name" style="font: 18px monospace; fill: #0057b8;">[CREDENTIAL NAME]</text>
 
-  <text class="label" x="30" y="60">Organization Name:</text>
-  <text class="value" x="250" y="60" id="org-name">[ORG NAME]</text>
+  <text x="30" y="80" style="font: bold 16px sans-serif; fill: #333;">Organization Name:</text>
+  <text x="250" y="80" id="org-name" style="font: 16px monospace; fill: #0057b8;">[ORG NAME]</text>
 
-  <text class="label" x="30" y="100">Organization GLN:</text>
-  <text class="value" x="250" y="100" id="org-gln">[GLN]</text>
+  <text x="30" y="120" style="font: bold 16px sans-serif; fill: #333;">Organization GLN:</text>
+  <text x="250" y="120" id="org-gln" style="font: 16px monospace; fill: #0057b8;">[GLN]</text>
 
-  <text class="label" x="30" y="140">License Value:</text>
-  <text class="value" x="250" y="140" id="license-value">[LICENSE]</text>
+  <text x="30" y="160" style="font: bold 16px sans-serif; fill: #333;">License Value:</text>
+  <text x="250" y="160" id="license-value" style="font: 16px monospace; fill: #0057b8;">[LICENSE]</text>
 
-  <text class="label" x="30" y="180">Alt License Value:</text>
-  <text class="value" x="250" y="180" id="alt-license-value">[ALTERNATE]</text>
+  <text x="30" y="200" style="font: bold 16px sans-serif; fill: #333;">Alt License Value:</text>
+  <text x="250" y="200" id="alt-license-value" style="font: 16px monospace; fill: #0057b8;">[ALTERNATE]</text>
 </svg>
