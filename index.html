@@ -166,7 +166,55 @@
 
       // extendsCredential may or may not be present
       svgDoc.getElementById("extendsCredential").textContent =
-        vc.credentialSubject?.extendsCredential || "N/A";
+        vc.credentialSubject?.extendsCredential || "None";
+
+      svgDoc.getElementById("vc-description").textContent = vc.description || "";
+
+      container.setAttribute("data-rendered", "true");
+    } catch (err) {
+      console.error("Render error:", err);
+    }
+  }
+
+  async function loadVCAndRenderIDKeySVG(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container || container.dataset.rendered) return;
+
+    const vcUrl = container.getAttribute("data-src");
+    if (!vcUrl) return;
+
+    try {
+      const res = await fetch(vcUrl);
+      const vc = await res.json();
+
+      const renderMethod = vc.renderMethod?.find(
+        (m) => m.type === "SvgRenderingTemplate"
+      );
+      if (!renderMethod?.id) return;
+
+      const svgRes = await fetch(renderMethod.id);
+      const svgText = await svgRes.text();
+
+      const svgContainer = container.querySelector(".svg-container");
+      svgContainer.innerHTML = svgText;
+
+      const svgDoc = svgContainer.querySelector("svg");
+
+      svgDoc.getElementById("credential-name").textContent =
+        vc.name || "[MISSING]";
+
+      svgDoc.getElementById("gs1-key-digital-link").textContent =
+        vc.credentialSubject?.id || "[MISSING]";
+
+      // issuer can be a string or object with `id` or `name`
+      svgDoc.getElementById("issuer").textContent =
+        typeof vc.issuer === "string"
+          ? vc.issuer
+          : vc.issuer?.name || vc.issuer?.id || "N/A";
+
+      // extendsCredential may or may not be present
+      svgDoc.getElementById("extendsCredential").textContent =
+        vc.credentialSubject?.extendsCredential || "None";
 
       svgDoc.getElementById("vc-description").textContent = vc.description || "";
 
@@ -194,9 +242,12 @@
         const target = container.querySelector(`#${exampleId}-${tabName}`);
         button.addEventListener('click', () => {
           showTab(button, target);
-          if (tabName === "svg") {
+          if (tabName === "license-svg") {
             const targetId = `${exampleId}-${tabName}`;
             loadVCAndRenderLicenseSVG(targetId);
+          } else if (tabName === "idkey-svg") {
+            const targetId = `${exampleId}-${tabName}`;
+            loadVCAndRenderIDKeySVG(targetId);
           }
         });
       });
