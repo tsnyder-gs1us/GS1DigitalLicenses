@@ -186,26 +186,36 @@
       });
 
       function showTab(activeButton, showEl) {
-        buttons.forEach(btn => btn.classList.remove('active'));
-        codes.forEach(pre => pre.style.display = 'none');
+        // 1. Remove active class from all tab buttons
+        buttons.forEach(btn => btn.classList.remove("active"));
 
-        activeButton.classList.add('active');
-        showEl.style.display = 'block';
+        // 2. Hide all tab content panels (both <pre> and <div>)
+        container.querySelectorAll(
+          `#${exampleId}-jwt, #${exampleId}-json, #${exampleId}-svg`
+        ).forEach(el => el.style.display = "none");
 
-        const code = showEl.querySelector('code');
-        if (!code?.dataset.loaded && code?.dataset.src) {
+        // 3. Activate the clicked tab and show its content
+        activeButton.classList.add("active");
+        if (showEl) showEl.style.display = "block";
+
+        // 4. If it’s a <pre><code> tab and not yet loaded, fetch and highlight
+        const code = showEl?.querySelector?.("code");
+        if (code && !code.dataset.loaded && code.dataset.src) {
           fetch(code.dataset.src)
             .then(res => res.ok ? res.text() : Promise.reject(res))
             .then(text => {
               code.textContent = text;
               code.dataset.loaded = "true";
-              if (window.hljs && typeof hljs.highlightElement === 'function') {
+              if (window.hljs && typeof hljs.highlightElement === "function") {
                 setTimeout(() => hljs.highlightElement(code), 0);
               }
             })
-            .catch(() => code.textContent = "Failed to load example.");
+            .catch(() => {
+              code.textContent = "Failed to load example.";
+            });
         }
       }
+
     });
 
     if (window.hljs && typeof hljs.highlightAll === 'function') {
