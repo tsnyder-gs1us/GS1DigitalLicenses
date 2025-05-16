@@ -1,8 +1,4 @@
 {
-  "kid": "did:web:id.gs1.org#fw_hRvwdtJ-LgJk5mSBcdXYfZigY0Ysvz1hOA--1thI",
-  "alg": "ES256"
-}
-{
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
     "https://ref.gs1.org/gs1/vc/license-context"
