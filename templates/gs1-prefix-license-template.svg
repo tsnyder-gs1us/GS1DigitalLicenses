@@ -1,18 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
-  <rect x="0" y="0" width="600" height="340" rx="10" ry="10" style="fill: #f0f0f0; stroke: #ccc; stroke-width: 1;" />
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="380" viewBox="0 0 600 380">
+  <!-- GS1 orange outer decorative border -->
+  <rect x="5" y="5" width="590" height="370" rx="24" ry="24"
+        style="fill: none; stroke: #f36f21; stroke-width: 4; stroke-dasharray: 10 4;" />
 
-  <text x="30" y="40" style="font: bold 18px sans-serif; fill: #333;">Credential:</text>
-  <text x="150" y="40" id="credential-name" style="font: 18px monospace; fill: #0057b8;">[CREDENTIAL NAME]</text>
+  <!-- Inner soft frame -->
+  <rect x="15" y="15" width="570" height="350" rx="12" ry="12"
+        style="fill: #fffdf8; stroke: #ccc; stroke-width: 1.5;" />
 
-  <text x="30" y="80" style="font: bold 16px sans-serif; fill: #333;">Organization Name:</text>
-  <text x="250" y="80" id="org-name" style="font: 16px monospace; fill: #0057b8;">[ORG NAME]</text>
+  <!-- Background gradient for subtle paper texture -->
+  <defs>
+    <linearGradient id="paper-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8f5ef; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="15" y="15" width="570" height="350" rx="12" ry="12" fill="url(#paper-bg)" />
 
-  <text x="30" y="120" style="font: bold 16px sans-serif; fill: #333;">Organization GLN:</text>
-  <text x="250" y="120" id="org-gln" style="font: 16px monospace; fill: #0057b8;">[GLN]</text>
+  <!-- GS1 Logo -->
+  <image href="https://gs1go2.azureedge.net/cdn/ff/-DWrvJ6_9SFLuFoLPq53eDFnZK5ChJZhyMixhk4Vh_M/1746862910/:relative:/themes/custom/gsone_revamp/logo.png" x="460" y="30" width="110" height="36" />
 
-  <text x="30" y="160" style="font: bold 16px sans-serif; fill: #333;">License Value:</text>
-  <text x="250" y="160" id="license-value" style="font: 16px monospace; fill: #0057b8;">[LICENSE]</text>
+  <!-- Credential Title -->
+  <text x="30" y="60" style="font: bold 20px serif; fill: #333;">Credential:</text>
+  <text x="170" y="60" id="credential-name" style="font: 18px monospace; fill: #0057b8;">[CREDENTIAL NAME]</text>
 
-  <text x="30" y="200" style="font: bold 16px sans-serif; fill: #333;">Alt License Value:</text>
-  <text x="250" y="200" id="alt-license-value" style="font: 16px monospace; fill: #0057b8;">[ALTERNATE]</text>
-</svg>
+  <!-- Organization Info -->
+  <text x="30" y="110" style="font: bold 16px sans-serif; fill: #333;">Organization Name:</text>
+  <text x="250" y="110" id="org-name" style="font: 16px monospace; fill: #0057b8;">[ORG NAME]</text>
+
+  <text x="30" y="150" style="font: bold 16px sans-serif; fill: #333;">Organization GLN:</text>
+  <text x="250" y="150" id="org-gln" style="font: 16px monospace; fill: #0057b8;">[GLN]</text>
+
+  <!-- License Info -->
+  <text x="30" y="190" style="font: bold 16px sans-serif; fill: #333;">License Value:</text>
+  <text x="250" y="190" id="license-value" style="font: 16px monospace; fill: #0057b8;">[LICENSE]</text>
+
+  <text x="30" y="230" style="font: bold 16px sans-serif; fill: #333;">Alt License Value:</text>
+  <text x="250" y="230" id="alt-license-value" style="font: 16px monospace; fill: #0057b8;">[ALTERNATE]</text>
