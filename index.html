@@ -230,8 +230,9 @@
     document.querySelectorAll('.example-tabset').forEach(container => {
       const exampleId = container.dataset.example;
       const buttons = container.querySelectorAll('button[data-tab]');
-      const codes = container.querySelectorAll('pre');
-
+      const codes = Array.from(buttons).map(btn =>
+        container.querySelector(`#${exampleId}-${btn.dataset.tab}`)
+      ).filter(Boolean);
       const firstBtn = container.querySelector('button.active') || buttons[0];
       const firstTab = container.querySelector(`#${exampleId}-${firstBtn.dataset.tab}`);
 
