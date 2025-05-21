@@ -67,7 +67,7 @@
         <p>GS1 Licenses= Credentials use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
         The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
         uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
-        details of a GS1 License in the format that is well understood worldwide.  A few optional properties of the W3C VCDM are mandatory in GS1 License Credentials. These are outlined here:
+        details of a GS1 License in the format that is well understood worldwide.  A few optional properties of the W3C VCDM are mandatory in GS1 License Credentials. These are outlined here:</p>
 
         <table>
            <caption>GS1 License Credential VCDM Properties</caption>
@@ -125,41 +125,9 @@
                     <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. It MUST be of the type <code>SvgRenderingTemplate</code>. <span class="todo">confirm with Steering Committee</span></td>
                 </tr>
             </tbody>
-            </table>
-        </p>
+        </table>
 
-
-        <div class="callout important">
-          <div class="callout-icon">!</div>
-          <div class="callout-text">
-            <strong>Note:</strong>The current GS1 License Context can be found here:
-            <ul class="orange-bullets">
-                <li><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/license-context/">https://ref.gs1.org/gs1/vc/license-context/</a></li>
-                <li><span class="todo">Confirm this is up to date with VCDM 2.0</span></li>
-            </ul>.
-          </div>
-        </div>
-
-        <p>The GS1 License context establishes six different types of GS1 License Credentials.  Three of these licenses correspond directly to the descriptions and examples above. The following  will be described in detail in this section:
-        <ul class="orange-bullets">
-            <li><code>GS1PrefixLicenseCredential</code> -- A GS1 Prefix License </li>
-            <li><code>GS18PrefixLicenseCredential</code> -- a GS1 8 Prefix License for issuing GTIN8 Keys </li>
-            <li><code>GS1CompanyPrefixLicenseCredential</code> -- A GS1 Company Prefix License</li>
-            <li><code>GS1IdentificationKeyLicenseCredential</code> -- A GS1 Single Issue ID Key License</li>
-        </ul>.
-
-        <div class="callout important">
-          <div class="callout-icon">!</div>
-          <div class="callout-text">
-            <strong>Note:</strong>This context also defines the following licenses that will be covered in section <a href="#license-exceptions"></a>.
-            <ul class="orange-bullets">
-                <li><code>DelegatedGS1PrefixLicenseCredential</code></li>
-                <li><code>DelegatedGS1IdentificationKeyLicenseCredential</code></li>
-            </ul>.
-          </div>
-        </div>
-
-        <p>All GS1 License Credentials share these properties.</p>
+        <p>GS1 License Credentials share these additional properties.</p>
 
         <table>
            <caption>GS1 License Credential Properties</caption>
@@ -203,11 +171,40 @@
                   <td><code>gs1:GS1IdentificationKeyTypeCode</code></td>
                   <td>Optional</td>
                   <td>When this field exits, it restricts the license to a specific GS1 ID Key type. This field MUST be present in
-                    <code>GS1IdentificationKeyLicenseCredential</code>. <span class="todo">confirm with Steering Committee</span>
-                    See Section <a href='#identification-key-type'></a></td>
+                    <code>GS1IdentificationKeyLicenseCredential</code>. See Section <a href='#identification-key-type'></a></td>
                 </tr>
             </tbody>
         </table>
+
+        <div class="callout important">
+          <div class="callout-icon">!</div>
+          <div class="callout-text">
+            <strong>Note:</strong>The current GS1 License Context can be found here:
+            <ul class="orange-bullets">
+                <li><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/gs1/vc/license-context/">https://ref.gs1.org/gs1/vc/license-context/</a></li>
+                <li><span class="todo">Confirm this is up to date with VCDM 2.0</span></li>
+            </ul>.
+          </div>
+        </div>
+
+        <p>The GS1 License context establishes six different types of GS1 License Credentials.  Three of these licenses correspond directly to the descriptions and examples above. The following  will be described in detail in this section:
+        <ul class="orange-bullets">
+            <li><code>GS1PrefixLicenseCredential</code> -- A GS1 Prefix License </li>
+            <li><code>GS18PrefixLicenseCredential</code> -- a GS1 8 Prefix License for issuing GTIN8 Keys </li>
+            <li><code>GS1CompanyPrefixLicenseCredential</code> -- A GS1 Company Prefix License</li>
+            <li><code>GS1IdentificationKeyLicenseCredential</code> -- A GS1 Single Issue ID Key License</li>
+        </ul>.
+
+        <div class="callout important">
+          <div class="callout-icon">!</div>
+          <div class="callout-text">
+            <strong>Note:</strong>This context also defines the following licenses that will be covered in section <a href="#license-exceptions"></a>.
+            <ul class="orange-bullets">
+                <li><code>DelegatedGS1PrefixLicenseCredential</code></li>
+                <li><code>DelegatedGS1IdentificationKeyLicenseCredential</code></li>
+            </ul>.
+          </div>
+        </div>
 
         <section id="identification-key-type">
             <h3>identificationKeyType</h3>
