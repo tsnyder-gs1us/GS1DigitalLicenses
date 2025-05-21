@@ -3,36 +3,37 @@
 <head>
 </head>
 <body>
-    <h2>Digital Licensing</h2>
+    <h2>GS1 Digital Licensing</h2>
     <p><a href='#GS1-Licenses'>GS1 Licensing</a> provides the root of trust for the globally unique
-        numbering systems
-        GS1 Digital Licenses are digital representations of the existing GS1 Licenses described in <a href="#GS1-Licenses"></a>.  These Digital licenses
+        trade identification systems.
+        GS1 <strong>Digital</strong> Licenses are digital representations of the existing GS1 Licenses described in <a href="#GS1-Licenses"></a>.  These Digital licenses
         can be verified by machines in <abbr title="Business to Business">B2B</abbr>
-        transactions. Why might digital verification of GS1 licenses be beneficial?</p>
+        transactions. Why might digital verification of GS1 Licenses be beneficial?</p>
     <ul class="orange-bullets">
-        <li>To prove a GS1 MO is authentic within the GS1 system for issuing Licenses</li>
+        <li>To prove a GS1 MO is authentic within the GS1 system for issuing licenses</li>
         <li>To prove a MC or MO is authorized to create specific GS1 ID Keys</li>
         <li>To establish provenance over GS1 ID Keys created by MC or MO</li>
         <li>To establish provenance over data about GS1 ID Keys created by MC or MO</li>
     </ul>
     <section id="Licensing-nutshell">
         <h3>Digital Licensing in a Nutshell</h3>
-        <p>GS1 Digital Licenses parallel the licenses discussed in <a href='#GS1-Licenses'></a>.</p>
         <p>A Digital GS1 Prefix License is issued by GO to a specific MO.  It authorizes them to
-        issue GS1 Company Prefixes
-         and single issue identifiers from a specific GS1 prefix value. GS1 Prefix Licenses
-        are typically 3 digit numbers, with exceptions listed in <a href="#tricky-topics"></a>.
+        issue GCPs and GS1 ID Key Licenses from a specific GS1 Prefix value. GS1 Prefix License values
+        are typically three digit numbers, but can range from two to seven digits with details in the
+        <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification Section 1.4.2</a>.
         For example, GS1 New Zealand is issued prefixes 940 - 949.</p>
 
         <p>A Digital GCP is issued from an MO to a MC to authorize them to issue
         GS1 ID Keys from a specific number range.  GCPs have different lengths depending on the
-        needs of the MC.  GCPs range from 6 digits to 11 digits.  They always begin with the
-        prefix value.  The fewer digits a GCP has, the more individual GS1 ID Keys it can create. For example,
-        a 10 digit GCP (e.g. 08600058400) can only create 10 GS1 ID Keys of each type while a 6 digit GCP can create
-        many thousands of GS1 ID Keys.</p>
+        needs of the MC.  GCPs range from four digits to twelve digits.  They always begin with (but are at least one digit longer
+        than)  the a valid GS1 Prefix License value.  For details see
+        <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification Section 1.4.4</a>.
+        The fewer digits a GCP has, the more individual GS1 ID Keys it can create. For example,
+        a eleven digit GCP can only create a few GTINs while a 7 digit GCP can create
+        many thousands of GTINs. (<span class="todo">TODO</span> put a link to some data here that Andrew Provides) </p>
 
-        <p>A Digital Single ID Key License authorizes a MC to use a specific GS1 ID Key for their
-        business operations. Single Issue ID Key Licenses are often used by small businesses to
+        <p>A Digital GS1 ID Key License authorizes a MC to use a single GS1 ID Key for their
+        business operations. GS1 ID Key Licenses are often used by small businesses to
         generate a few GTIN numbers for their products.  They are also used to issue GLN numbers
         to identify organizations in the global supply chain that participate, but are not creating
         product, shipments or assets.</p>
@@ -40,14 +41,14 @@
     </section>
     <section id="License-Hierarchy">
         <h3>Digital License Hierarchy</h3>
-        <p>These licenses form a hierarchy that can be represented by the image below</p>
+        <p>These licenses form a hierarchy that can be represented by the image below.</p>
         <figure id="figure">
           <img src="images/GeneralLicenseHierarchy.drawio.svg" alt="GS1 License Hierarchy" />
           <figcaption>GS1 License Hierarchy</figcaption>
         </figure>
-        <p>The GS1 Global Office issues GS1 Prefixes to MOs.  Each MO gets GS1 prefixes based on their needs, with
-        small MOs getting a single GS1 prefix while larger MOs may have hundreds.  GS1 MOs issue GCPs and single
-        issue ID Key Licenses from their prefixes. There are millions of MCs and millions of GCPs issued worldwide. </p>
+        <p>The GS1 Global Office licenses GS1 Prefixes to MOs.  Each MO licenses GS1 prefixes based on their needs, with
+        small MOs getting a single GS1 Prefix while larger MOs may have hundreds.  GS1 MOs issue GCPs and GS1
+         ID Key Licenses from their prefixes. There are millions of MCs and millions of GCPs issued worldwide. </p>
 
         <div class="callout important">
           <div class="callout-icon">!</div>
@@ -66,12 +67,10 @@
         <p>GS1 Digital Licenses use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
         The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
         uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
-        details of a license in the format that is well understood worldwide.
-
-        A few optional properties of the W3C VCDM are mandatory in GS1 License Credentials. These are outlined here:
+        details of a GS1 License in the format that is well understood worldwide.  A few optional properties of the W3C VCDM are mandatory in GS1 License Credentials. These are outlined here:
 
         <table>
-           <caption>GS1 License Credential VCDM core properties</caption>
+           <caption>GS1 License Credential VCDM Properties</caption>
             <thead>
                 <tr>
                   <th>Property</th>
@@ -81,49 +80,49 @@
             <tbody>
                 <tr>
                     <td><code>@context</code></td>
-                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 License Credential Context is also required (see below)</td>
+                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 License Credential Context is also required (see below).</td>
                 </tr>
                 <tr>
                     <td><code>id</code></td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials See Section <a href='#credential-id'></a></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. See Section <a href='#credential-id'></a.></td>
                 </tr>
                 <tr>
                     <td><code>type</code></td>
-                    <td>This property MUST contain <code>VerifiableCredential</code> in the VCDM, but MUST also include one of the GS1 License Credential Types defined below</td>
+                    <td>This property MUST contain <code>VerifiableCredential</code> in the VCDM, but MUST also contain one of the GS1 License Credential types defined below.</td>
                 </tr>
                 <tr>
                     <td><code>issuer</code></td>
-                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 License Credentials</td>
+                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 License Credentials.</td>
                 </tr>
                 <tr>
                     <td><code>validFrom</code></td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials</td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials.</td>
                 </tr>
                 <tr>
                     <td><code>name</code></td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials<span class="todo">confirm with Steering Committee</span></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. <span class="todo">confirm with Steering Committee</span></td>
                 </tr>
                 <tr>
                     <td><code>description</code></td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials<span class="todo">confirm with Steering Committee</span></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. <span class="todo">confirm with Steering Committee</span></td>
                 </tr>
                 <tr>
-                    <td>credentialSubject <code>:id</code></td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials See Section <a href='#credential-subject-id'></a></td>
+                    <td><code>credentialSubject:id</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. See Section <a href='#credential-subject-id'></a>.</td>
                 </tr>
                 <tr>
                     <td><code>credentialStatus</code></td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <code>BitstringStatusListEntry</code>
-                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> from the W3C.</td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. It MUST be of the type <code>BitstringStatusListEntry</code>
+                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bistring-status-list</a> specification from the W3C.</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <code>JsonSchema</code>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. It MUST be of the type <code>JsonSchema</code>
                         defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C.</td>
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
-                    <td>This property is optional in the VCDM but will be present in all GS1 License Credentials and be of the type <span class="todo">confirm with Steering Committee</span></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. It MUST be of the type <code>SvgRenderingTemplate</code>. <span class="todo">confirm with Steering Committee</span></td>
                 </tr>
             </tbody>
             </table>
@@ -141,7 +140,7 @@
           </div>
         </div>
 
-        <p>The GS1 License context establishes six different types of GS1 license Credentials.  Three of these licenses correspond directly to the descriptions and examples above. All of these  will be described in detail in this section:
+        <p>The GS1 License context establishes six different types of GS1 License Credentials.  Three of these licenses correspond directly to the descriptions and examples above. The following  will be described in detail in this section:
         <ul class="orange-bullets">
             <li><code>GS1PrefixLicenseCredential</code> -- A GS1 Prefix License </li>
             <li><code>GS18PrefixLicenseCredential</code> -- a GS1 8 Prefix License for issuing GTIN8 Keys </li>
@@ -197,29 +196,15 @@
                   <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
                   <td>Optional</td>
                   <td>a reference to the GS1 License that this credential extends (issues from). This is
-                  required on all license credentials except GS1 Prefix Credentials issued by GO</td>
+                  required on all GS1 License Credentials except GS1 Prefix Credentials issued by GO</td>
                 </tr>
-            </tbody>
-        </table>
-
-        <p>Identification Key Licenses (single Issue ID Keys) also contain these properties:</p>
-
-        <table>
-           <caption>GS1 ID Key Credential Additional Properties</caption>
-            <thead>
-                <tr>
-                  <th>Property</th>
-                  <th>Type</th>
-                  <th>Presence</th>
-                  <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
                 <tr>
                   <td><code>identificationKeyType</code></td>
                   <td><code>gs1:GS1IdentificationKeyTypeCode</code></td>
-                  <td>Mandatory</td>
-                  <td>See Section <a href='#identification-key-type'></a></td>
+                  <td>Optional</td>
+                  <td>When this field exits, it restricts the license to a specific GS1 ID Key type. This field MUST be present in
+                    <code>GS1IdentificationKeyLicenseCredential</code>. <span class="todo">confirm with Steering Committee</span>
+                    See Section <a href='#identification-key-type'></a></td>
                 </tr>
             </tbody>
         </table>
@@ -323,30 +308,31 @@
 
         <section id="encapsulation-and-signatures">
             <h3>Encapsulation and Signatures</h3>
-            <p>GS1 License credentials are issued in the W3C VCDM data model using <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/">vc-jose-cose</a>
-                specifically as references in <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/#securing-with-jose">this section</a>. GS1
+            <p>GS1 License Credentials are issued in the W3C VCDM data model using <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/">vc-jose-cose</a>
+                specifically as referenced in <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/#securing-with-jose">this section</a>. GS1
                 License Credentials are signed with ECDSA ES256 algorithm. Examples are shown in Section <a href="#License-Details"></a></p>
+
             <p><span class="todo">confirm with Steering Committee</span> that licenses are provided from GS1 in the VC format (not VP)</p>
         </section>
 
         <section id="delivery">
             <h3>Delivery</h3>
             <p><span class="todo">confirm with Steering Committee</span> how <code>GS18PrefixLicenseCredential</code> and <code>GS1PrefixLicenseCredential</code>
-            Digital Licenses are shared.</p>
+            Digital Licenses are shared. I think we want to say that these licenses are available in XXX format via HTTP get on their credential IDs...</p>
             <p>Contact your member organization for details on obtaining
              <code>GS1CompanyPrefixLicenseCredential</code> and <code>GS1IdentificationKeyLicenseCredential</code> Digital Licenses.</p>
         </section>
 
         <section id="credential-id">
             <h3>VCDM Credential ID Property</h3>
-            <p>The id property is optional in the VCDM, but required in GS1 License credentials. This property SHOULD be chosen
+            <p>The id property is optional in the VCDM, but required in GS1 License Credentials. This property SHOULD be chosen
             to be globally unique. Consideration should be given to revocation and re-issuance of credentials.</p>
             <p><span class="todo">TODO</span>What can we state about the ID property of these credentials.  Should it be a URL etc.
             Seemsl like it has to be more than </p>
         </section>
         <section id="credential-subject-id">
             <h3>VCDM Credential Subject ID property</h3>
-            <p>The id property is optional in the VCDM, but required in GS1 License credentials. The credential subject ID in all
+            <p>The id property is optional in the VCDM, but required in GS1 License Credentials. The credential subject ID in all
             license credentials is a DID that is controlled by the licensee. DIDs are defined by the W3C specification
             <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/did-1.0/">https://www.w3.org/TR/did-1.0/</a>.</p>
             <p><span class="todo">confirm with Steering Committee</span>What advice or guidance do we need here?</p>
@@ -362,7 +348,7 @@
             <h3>Digital GS1 Prefix Licenses</h3>
 
             <p>GS1 Prefix Licenses were described in <a href="#GS1-Licenses"></a> and <a href="#License-Hierarchy"></a>. The following shows
-                an example GS1 Prefix License issued from GO to GS1 US for prefix 08.</p>
+                an example GS1 Prefix License issued from GO to GS1 US for GS1 Prefix 08.</p>
 
             <div class="example-tabset" data-example="gs1-prefix-sample">
               <div class="example-tab-buttons">
@@ -382,16 +368,13 @@
             <p>The <code>extendsCredential</code> property is omitted as this credential is signed by the GS1 GO DID. The <code>credentialSubject id</code>  is the
                 MO DID with the <code>gs1:organization</code> property containing the
                 <code>partyGLN</code> and <code>name</code> properties. Since this prefix starts with a leading 0, the <code>alternativeLicenseValue</code> is present
-            with the leading zero removed.</p>
-
-            <p>The name and description properties are for visual rendering.</p>
+            with the leading zero removed. The name and description properties are for visual rendering.</p>
 
             <section id="gs1-prefix-credential-availability">
                 <h3>Prefix Credential IDs</h3>
-                <p><span class="todo">confirm with Steering Committee</span> The credential <code>id</code> property in GS1 Prefix credentials are always
-                    resolvable URLs and resolve to the credential itself (when using an HTTP get with <code>application/json</code></p>
+                <p>The credential <code>id</code> property in GS1 Prefix credentials are always
+                    resolvable URLs and resolve to the credential itself (when using an HTTP get with <abbr title="Multipurpose Internet Mail Extensions">MIME</abbr> type <code>application/json</code> <span class="todo">confirm with Steering Committee</span> </p>
             </section>
-
 
         </section>
 
@@ -478,9 +461,9 @@
             <h3>GTIN8 Prefix Licenses</h3>
 
             <p>a GTIN-8 is a 8 digit GTIN that is used for products where a larger barcode might not fit, such as a lipstick or box of matches.
-            GO can license prefixes to MOs to issue GTIN-8. GTIN-8 prefixes are not issued to MCs, so GTIN-8 are only licensed as individual ID
-            Keys to MCs.  Nevertheless, when handling GS1 License credentials you may come across a GTIN-8 Prefix License. GTIN-8 prefix
-            credential should always be issued by GO and do not require an <code>extendsCredential</code> property.</p>
+            GO can license prefixes to MOs to issue GTIN-8. GTIN-8 prefixes are not issued to MCs, so GTIN-8 are only licensed as individual GS1 ID
+            Keys to MCs.  Nevertheless, when handling GS1 License Credentials you may come across a GTIN-8 Prefix License. GTIN-8 Prefix
+            Credentials should always be issued by GO and do not require an <code>extendsCredential</code> property.</p>
 
             <div class="example-tabset" data-example="gtin8-prefix-sample">
               <div class="example-tab-buttons">
@@ -500,7 +483,7 @@
         </section>
         <section id="gtin8-id-key-licenses">
             <h3>Individual GTIN8 Licenses</h3>
-            <p>When a GTIN-8 is licensed to an MC, it is conveyed digitally as an ID Key License as shown in section <a href="#gtin-license-sample"></a>.
+            <p>When a GTIN-8 is licensed to an MC, it is conveyed digitally as a GS1 ID Key License as shown in section <a href="#gtin-license-sample"></a>.
             These licenses have the following specific format.
                 <ul class="orange-bullets">
                     <li>The extendsCredential property references a valid GTIN-8 prefix license</li>
