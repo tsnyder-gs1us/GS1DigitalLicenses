@@ -32,17 +32,17 @@
             highlights the basics of how to format GS1 ID Keys from a GCP. For more details on how to form
             individual GS1 ID Keys from your GCP, see your MO web page, the
             <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification</a>
-            or services like <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/services/activate">GS1 Activate</a>
+            or services like <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/services/activate">GS1 Activate</a>.
         </p>
 
         <p>
             A GS1 ID Key License Credential still requires a GS1 ID Key Credential to assert that the GS1 ID Key
             is in circulation.  Think of a GS1 ID Key License Credential as a right to use a specific GS1 ID Key
-            and the GS1 ID Key Credential as the actual instantiation (usage) of that Key.
+            and the GS1 ID Key Credential as the actual instantiation (usage) of that GS1 ID Key.
         </p>
 
 
-        <p><span class="todo">TODO</span>we need to explain why this is valuable</p>
+        <p><span class="todo">TODO</span>we need to explain why this is valuable and necessary.</p>
     </section>
     <section id="key-credentials-overview">
         <h3>ID Key Credential Overview</h3>
@@ -65,43 +65,42 @@
             <tbody>
                 <tr>
                     <td><code>@context</code></td>
-                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 Declaration Credential Context MUST be included (see below)</td>
+                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 Declaration Credential Context MUST be included (see below).</td>
                 </tr>
                 <tr>
                     <td><code>id</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 ID Key Credentials See Section <a href='#key-credential-id'></a></td>
+                    <td>This property is optional in the VCDM but MUST be present. See Section <a href='#key-credential-id'></a>.</td>
                 </tr>
                 <tr>
                     <td><code>type</code></td>
-                    <td>This property MUST contain <code>VerifiableCredential</code> in the VCDM, but MUST also <code>KeyCredential</code></td>
+                    <td>This property MUST contain <code>VerifiableCredential</code> in the VCDM, but MUST also contain<code>KeyCredential</code>.</td>
                 </tr>
                 <tr>
-                    <td><code>issuer</code> <code>id</code></td>
-                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 ID Key Credentials</td>
+                    <td><code>issuer:id</code></td>
+                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>).</td>
                 </tr>
-
                 <tr>
-                    <td>credentialSubject <code>:id</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 ID Key Credentials and MUST be a GS1 Digital Link URI. See Section <a href='#key-credential-subject-id'></a></td>
+                    <td><code>credentialSubject:id</code></td>
+                    <td>This property is optional in the VCDM but MUST be present and MUST be a GS1 Digital Link URI. See Section <a href='#key-credential-subject-id'></a>.</td>
                 </tr>
                 <tr>
                     <td><code>credentialStatus</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 ID Key Credentials and be of the type <code>BitstringStatusListEntry</code>
+                    <td>This property is optional in the VCDM but MUST be present and be of the type <code>BitstringStatusListEntry</code>
                     defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bitstring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
-                    <td>This property is optional in the VCDM but MAY be present in all GS1 ID Key Credentials and be of the type <code>JsonSchema</code>
-                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C. <span class="todo">confirm with Steering Committee</span> is this optional</td>
+                    <td>This property is optional in the VCDM but MUST be present and be of the type <code>JsonSchema</code>
+                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C.</td>
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
-                    <td>This property is optional in the VCDM but MAY be present in all GS1 ID Key Credentials and be of the type <span class="todo">confirm with Steering Committee</span> is this optional</td>
+                    <td>This property is optional in the VCDM but SHOULD be present.<span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
                 </tr>
             </tbody>
             </table>
 
-            <span class="todo">confirm with Steering Committee</span>Should we require name and description? What about an Issuer name.
+            <span class="todo">confirm with Steering Committee</span>Should we require description? What about an Issuer name. These are assumed for the renderings below.
         </p>
 
         <div class="callout important">
@@ -144,7 +143,8 @@
                   <td><code>extendsCredential</code></td>
                   <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
                   <td>Mandatory</td>
-                  <td>a reference to the GS1 License or GS1 ID Key Credential that this credential extends (issues from). </td>
+                  <td>a reference to the GS1 License Credential or GS1 ID Key Credential that this credential extends (issues from).
+                  See Section <a href='#key-credential-extends-credential'></a>.</td>
                 </tr>
             </tbody>
         </table>
@@ -159,7 +159,7 @@
                 </ul>
             </p>
 
-            <span class="todo">confirm with Steering Committee</span>By these rules its possible to create a batch/lot/serial number credential and extend a GCP. Do we require that there be a chain as the granularity gets more specific?  TODO should these comparisons only be done on the path component of the GS1 Digital Link or should it include the query components?
+            <span class="todo">confirm with Steering Committee</span>By these rules its possible to create a batch/lot/serial number credential and extend a GCP. Do we require that there be a chain as the granularity gets more specific? Should these comparisons only be done on the path component of the GS1 Digital Link or should it include the query components?
 
             <p>A few examples:</p>
             <ul>
