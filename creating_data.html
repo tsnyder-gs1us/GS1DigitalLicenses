@@ -3,23 +3,23 @@
 <head>
 </head>
 <body>
-    <h2>Creating Data Credentials</h2>
+    <h2>Creating GS1 Data Credentials</h2>
 
     <p>
-        This section describes how to create Digital GS1 Data Credentials.
+        This section describes how to create GS1 Data Credentials.
     </p>
 
     <section id="data-credential-whatis">
-        <h3>What is a Data Credential</h3>
+        <h3>What is a GS1 Data Credential</h3>
         <p>A GS1 Data Credential is an envelope to declare facts about GS1 ID Keys.  Its primary purpose is to link
         back to the Key Credentials (and ultimately the License) so that these facts can be confidently
-        attributed to the MC that holds the license to commission this Key. For example, as a brand owner,
+        attributed to the MC that holds the license to commission this GS1 ID Key. For example, as a brand owner,
         I can create a GS1 Data Credential that asserts the country of origin of a specific GTIN/Batch/Lot
         and any party receiving this credential (and its chain) can know its authentic data from the
         brand owner.</p>
     </section>
     <section id="data-credential-details">
-        <h3>Data Credential Details</h3>
+        <h3>GS1 Data Credential Details</h3>
         <p>GS1 Data Credentials use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
         The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
         uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
@@ -37,38 +37,63 @@
             <tbody>
                 <tr>
                     <td><code>@context</code></td>
-                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 Declaration Credential and Context MUST be included (see below)</td>
+                    <td>In addition to the W3C VCDM 2.0 Context, the GS1 Declaration Credential and Context MUST be included (see below).</td>
                 </tr>
                 <tr>
                     <td><code>id</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials See Section <a href='#data-credential-id'></a></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials. See Section <a href='#data-credential-id'></a>.</td>
                 </tr>
                 <tr>
                     <td><code>type</code></td>
-                    <td>This property MUST contain <code>VerifiableCredential</code> and MUST also contain <code>DataCredential</code></td>
+                    <td>This property MUST contain <code>VerifiableCredential</code> and MUST also contain <code>DataCredential</code>.</td>
                 </tr>
                 <tr>
-                    <td><code>issuer</code> <code>id</code></td>
-                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) in the GS1 Data Credentials</td>
+                    <td><code>issuer:id</code></td>
+                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>).</td>
                 </tr>
 
                 <tr>
-                    <td>credentialSubject <code>:id</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials and MUST be a GS1 Digital Link URI. See Section <a href='#key-credential-subject-id'></a></td>
+                    <td><code>credentialSubject:id</code></td>
+                    <td>This property is optional in the VCDM but MUST be present and MUST be a GS1 Digital Link URI. See Section <a href='#key-credential-subject-id'></a>.</td>
                 </tr>
                 <tr>
                     <td><code>credentialStatus</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials and MUST be of the type <code>BitstringStatusListEntry</code>
+                    <td>This property is optional in the VCDM but MUST be present and MUST be of the type <code>BitstringStatusListEntry</code>
                     defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bitstring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
-                    <td>This property is optional in the VCDM but MAY be present in all GS1 Data Credentials and MAY be of the type <code>JsonSchema</code>
-                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C. <span class="todo">confirm with Steering Committee</span> is this optional</td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials and MUST be of the type <code>JsonSchema</code>
+                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C. <span class="todo">confirm with Steering Committee</span> is this optional.</td>
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
-                    <td>This property is optional in the VCDM but MAY be present in all GS1 Data Credentials and be of the type <span class="todo">confirm with Steering Committee</span> is this optional</td>
+                    <td>This property is optional in the VCDM but SHOULD be present and SHOULD be of the type <code>SvgRenderingTemplate</code>. <span class="todo">confirm with Steering Committee</span> is this optional.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><span class="todo">confirm with Steering Committee</span> should we require a <code>validFrom</code>.</p>
+
+        <p>All GS1 Data Credentials share these additional properties:</p>
+
+        <table>
+           <caption>GS1 Data Credential Properties</caption>
+            <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Presence</th>
+                  <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td><code>keyAuthorization</code></td>
+                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
+                  <td>Optional</td>
+                  <td>a reference to a credential that authorizes the issuer to declare data. Normally this is a GS1 ID Key Credential. When the Licensee of the GS1 ID
+                    Key creates Data Credentials they SHOULD include a <code>keyAuthorization</code> referencing the GS1 ID Key Credential for this ID Key.</td>
                 </tr>
             </tbody>
         </table>
@@ -97,35 +122,12 @@
             <p>The Data <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI.</p>
         </section>
 
-        All GS1 Data Credentials share these properties:
-
-        <table>
-           <caption>GS1 Data Credential Properties</caption>
-            <thead>
-                <tr>
-                  <th>Property</th>
-                  <th>Type</th>
-                  <th>Presence</th>
-                  <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                  <td><code>keyAuthorization</code></td>
-                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
-                  <td>Optional</td>
-                  <td>a reference to a credential that authorizes the issuer to declare data. Normally this is a GS1 ID Key Credential. When the Licensee of the GS1 ID
-                    Key creates Data Credentials they SHOULD include a <code>keyAuthorization</code> referencing the GS1 ID Key Credential for this ID Key.</td>
-                </tr>
-            </tbody>
-        </table>
-
     </section>
 
     <section id="data-credential-subtypes">
         <h3>Data Credential Subtypes</h3>
         <p>GS1 Data Credentials form a base class for building more specific credentials. GS1 defines these specific Data Credentials
-        that extend the <code>DataCredential</code> Model for various GS1 ID Keys.</p>
+        that extend the <code>DataCredential</code> model for various GS1 ID Keys.</p>
 
         <section id="product-data-credential">
         <h3>Product Data Credential</h3>
@@ -147,7 +149,7 @@
                       <td><code>product</code></td>
                       <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Product">gs1:Product</a></td>
                       <td>Mandatory</td>
-                      <td>An Object that contains an instance of <code>gs1:Product</code> describing the product associated with <code>credentialSubject</code> <code>id</code> GTIN GS1 Digital Link URI</td>
+                      <td>An Object that contains an instance of <code>gs1:Product</code> describing the product associated with <code>credentialSubject</code> <code>id</code> GTIN GS1 Digital Link URI.</td>
                     </tr>
                 </tbody>
             </table>
@@ -177,7 +179,7 @@
                       <td><code>organization</code></td>
                       <td><a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/voc/Organization">gs1:Organization</a></td>
                       <td>Mandatory</td>
-                      <td>An Object that contains an instance of <code>gs1:Organization</code> describing the organization associated with <code>credentialSubject</code> <code>id</code> GLN GS1 Digital Link URI</td>
+                      <td>An Object that contains an instance of <code>gs1:Organization</code> describing the organization associated with <code>credentialSubject</code> <code>id</code> GLN GS1 Digital Link URI.</td>
                     </tr>
                 </tbody>
             </table>
@@ -195,10 +197,10 @@
 
         <p>Custom Extensions to the GS1 Data Credential should be formed as follows:
             <ul>
-                <li>The <code>type</code> property MUST contain <code>DataCredential</code> and satisfy the requirements in <a href="#data-credential-details"></a></li>
-                <li>The <code>type</code> property SHOULD contain a credential-specific type (e.g., CertificationDetailsCredential)</li>
-                <li>The credential SHOULD contain a schema reference to your custom credential</li>
-                <li>The data should describe the GS1 ID Key that is the <code>credentialSubject</code> <code>id</code></li>
+                <li>The <code>type</code> property MUST contain <code>DataCredential</code> and satisfy the requirements in <a href="#data-credential-details"></a>.</li>
+                <li>The <code>type</code> property SHOULD contain a credential-specific type (e.g., CertificationDetailsCredential).</li>
+                <li>The credential SHOULD contain a schema reference to your custom credential.</li>
+                <li>The data should describe the GS1 ID Key that is the <code>credentialSubject</code> <code>id</code>.</li>
                 <li>When possible the data SHOULD adhere to the <a target="_blank" rel="noopener noreferrer"  href="https://www.gs1.org/gs1-web-vocabulary">GS1 Web Vocabulary</a>
                     or the <a target="_blank" rel="noopener noreferrer"  href="https://navigator.gs1.org/gdm"> GS1 Global Data Model</a>.</li>
             </ul>

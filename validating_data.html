@@ -3,17 +3,17 @@
 <head>
 </head>
 <body>
-    <h2>Validating Data Credentials</h2>
+    <h2>Validating GS1 Data Credentials</h2>
     <p>This section describes the philosophy and procedures to validate GS1 Data Credentials.</p>
     <section id="data-validation-whatis">
         <h3>What is Data Validation</h3>
-        <p>Data credential validation is the process of validating a set of data about a GS1 ID Key.</p>
+        <p>GS1 Data Credential validation is the process of validating a set of data about a GS1 ID Key.</p>
 
-        <p>For example, a Data Credential about a GS1 Digital Link describing a GTIN might assert master data about the product
+        <p>For example, a GS1 Data Credential about a GS1 Digital Link describing a GTIN might assert master data about the product
         such as dimensions, color, sizing, description, country of origin or any other attribute.  In this case,
         it's desirable to verify that this data has not been altered and was created by the licensee of that specific GTIN.</p>
 
-        <p>Another data credential might offer details about a specific shipment (SSCC) like the date,
+        <p>Another data credential might offer details about a specific shipment (SSCC), including the date,
             time, and location the shipment was received by a specific party. In this case, it's important
             to verify that this data was unaltered, but it is unlikely this would be issued by the licensee
             of the SSCC.</p>
@@ -44,10 +44,10 @@
         the following steps MUST be performed to validate a GS1 Data Credential
 
         <ul>
-            <li><strong>D</strong> MUST be a valid VCDM 2.0 credential document</li>
-            <li>The signature of <strong>D</strong> MUST be valid and from a signing key referenced in the issuer DID</li>
-            <li><strong>D</strong> MUST NOT be revoked (see <a href="#revocation"></a> <span class="todo">TODO</span> is this required)</li>
-            <li><strong>D</strong> <code>validFrom</code> MUST NOT be in the future</li>
+            <li><strong>D</strong> MUST be a valid VCDM 2.0 credential document.</li>
+            <li>The signature of <strong>D</strong> MUST be valid and from a signing key referenced in the issuer DID.</li>
+            <li><strong>D</strong> MUST NOT be revoked (see <a href="#revocation"></a>.</li>
+            <li><strong>D</strong> <code>validFrom</code> MUST NOT be in the future.</li>
             <li>The credential document <strong>D</strong>  MUST conform to the JSON schema for the data credential:
                 <ul>
                     <li>For general data credentials  <a href="https://id.gs1.org/vc/schema/v1/data">https://id.gs1.org/vc/schema/v1/data</a></li>

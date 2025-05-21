@@ -3,10 +3,10 @@
 <head>
 </head>
 <body>
-    <h2>Creating ID Key Credentials</h2>
+    <h2>Creating GS1 ID Key Credentials</h2>
 
     <p>
-        This section describes how to create Digital GS1 ID Key Credentials.
+        This section describes how to create GS1 ID Key Credentials.
     </p>
     <section id="creating-key-overview">
         <h3>ID Key Overview</h3>
@@ -17,9 +17,9 @@
         </p>
 
         <p>
-            A MC that has obtained a Digital GCP or ID Key license can create GS1 ID Key Credentials to assert
+            A MC that has obtained a GCP License Credential or GS1 ID Key License Credential can create GS1 ID Key Credentials to assert
             the existence of a specific GS1 ID Key.  For example, if a fictitious company Healthy Tots
-            has a Digital GCP license and wishes to commission a GTIN from their GCP, they can create
+            has a GCP License Credential and wishes to commission a GTIN from their GCP, they can create
             and share a GS1 ID Key Credential asserting the existence of this GTIN for global trade.
         </p>
         <p>
@@ -44,15 +44,15 @@
 
         <p><span class="todo">TODO</span>we need to explain why this is valuable and necessary.</p>
     </section>
-    <section id="key-credentials-overview">
-        <h3>ID Key Credential Overview</h3>
+    <section id="key-credentials-details">
+        <h3>ID Key Credential Details</h3>
 
         <p>GS1 ID Key Credentials use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
         The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
         uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
-        details in the format that is well understood worldwide.
+        details in the format that is well understood worldwide.</p>
 
-        A few optional properties of the W3C VCDM are mandatory in GS1 ID Key Credentials. These are outlined here:
+        <p>A few optional properties of the W3C VCDM are mandatory in GS1 ID Key Credentials. These are outlined here:</p>
 
         <table>
            <caption>GS1 ID Key Credential VCDM core properties</caption>
@@ -95,13 +95,35 @@
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
-                    <td>This property is optional in the VCDM but SHOULD be present.<span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
+                    <td>This property is optional in the VCDM but SHOULD be present and SHOULD be of the type <code>SvgRenderingTemplate</code>. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
                 </tr>
             </tbody>
             </table>
 
-            <span class="todo">confirm with Steering Committee</span>Should we require description? What about an Issuer name. These are assumed for the renderings below.
-        </p>
+            <p><span class="todo">confirm with Steering Committee</span>Should we require description? What about an Issuer name. These are assumed for the renderings below.</p>
+
+            <p>All GS1 ID Key Credentials share these additional properties:
+
+            <table>
+               <caption>GS1 ID Key Credential Properties</caption>
+                <thead>
+                    <tr>
+                      <th>Property</th>
+                      <th>Type</th>
+                      <th>Presence</th>
+                      <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td><code>extendsCredential</code></td>
+                      <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
+                      <td>Mandatory</td>
+                      <td>a reference to the GS1 License Credential or GS1 ID Key Credential that this credential extends (issues from).
+                      See Section <a href='#key-credential-extends-credential'></a>.</td>
+                    </tr>
+                </tbody>
+            </table>
 
         <div class="callout important">
           <div class="callout-icon">!</div>
@@ -125,29 +147,6 @@
             <h3>ID Key CredentialSubject ID Property</h3>
             <p>The ID Key <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI.</p>
         </section>
-
-        All GS1 ID Key Credentials share these properties:
-
-        <table>
-           <caption>GS1 ID Key Credential Properties</caption>
-            <thead>
-                <tr>
-                  <th>Property</th>
-                  <th>Type</th>
-                  <th>Presence</th>
-                  <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                  <td><code>extendsCredential</code></td>
-                  <td><a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/xmlschema-2/#anyURI">xsd:anyURI</a></td>
-                  <td>Mandatory</td>
-                  <td>a reference to the GS1 License Credential or GS1 ID Key Credential that this credential extends (issues from).
-                  See Section <a href='#key-credential-extends-credential'></a>.</td>
-                </tr>
-            </tbody>
-        </table>
 
         <section id="key-credential-extends-credential">
             <h3>ID Key Credential extendsCredential property</h3>

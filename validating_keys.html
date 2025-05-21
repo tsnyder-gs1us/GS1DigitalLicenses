@@ -3,40 +3,43 @@
 <head>
 </head>
 <body>
-    <h2>Validating Keys</h2>
+    <h2>Validating GS1 ID Key Credential</h2>
     <p>This section describes the philosophy and process for validating GS1 ID Key Credentials.</p>
     <section id="key-validation-philosophy">
-        <h3>Key Validation Overview</h3>
-        <p>A Key Credential provides proof that a GS1 MC has commissioned a specific GS1 ID Key, possibly with additional specificity like a specific batch/lot or specific serial number.
+        <h3>GS1 ID Key Validation Overview</h3>
+        <p>A GS1 ID Key Credential provides proof that a GS1 MC has commissioned a specific GS1 ID Key, possibly with additional specificity like a specific batch/lot or specific serial number.
         The validation of a GS1 ID Key Credential requires verifying the integrity of the credential itself as well as validating that the Key Credential "extends" from a valid Credential.</p>
 
          <span class="todo">TODO</span>Try to talk about why it's valuable to validate these.
 
     </section>
     <section id="key-validation-rules">
-        <h3>Key Validation Rules</h3>
+        <h3>GS1 ID Key Validation Rules</h3>
 
         Denoting the GS1 ID Key Credential as <strong>K</strong> and the credential referenced by <strong>K</strong>'s <code>extendsCredential</code> property as <strong>P</strong>,
         the following steps MUST be performed to validate a GS1 ID Key Credential:
 
         <ul>
-            <li><strong>K</strong> MUST be a valid VCDM 2.0 credential document</li>
-            <li>The signature of <strong>K</strong> MUST be valid and from a signing key referenced in the issuer DID</li>
-            <li><strong>K</strong> MUST NOT be revoked (see <a href="#revocation"></a> <span class="todo">TODO</span> is this required)</li>
-            <li><strong>K</strong> <code>validFrom</code> MUST NOT be in the future</li>
-            <li>The credential document <strong>K</strong>  MUST conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/key">https://id.gs1.org/vc/schema/v1/key</a></li>
-            <li>The <code>issuer</code> of <strong>K</strong>  MUST match the issuer of <strong>P</strong></li>
+            <li><strong>K</strong> MUST be a valid VCDM 2.0 credential document.</li>
+            <li>The signature of <strong>K</strong> MUST be valid and from a signing key referenced in the issuer DID.</li>
+            <li><strong>K</strong> MUST NOT be revoked (see <a href="#revocation"></a>.</li>
+            <li><strong>K</strong> <code>validFrom</code> MUST NOT be in the future.</li>
+            <li>The credential document <strong>K</strong>  MUST conform to the JSON schema located at <a href="https://id.gs1.org/vc/schema/v1/key">https://id.gs1.org/vc/schema/v1/key</a>.</li>
+            <li>The <code>issuer</code> of <strong>K</strong>  MUST match the issuer of <strong>P</strong>.</li>
             <li><strong>P</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a> or MUST be a valid <a href="#validating-keys">GS1 ID Key Credential</a>.</li>
-            <li>If <strong>P</strong> is a valid GS1 License Credential
+            <li>If <strong>P</strong> is a valid GS1 License Credential:
                 <ul>
                     <li>The primary GS1 ID Key extracted from <strong>K</strong> <code>credentialSubject</code> <code>id</code>
-                            MUST begin with (as a string) the <code>licenseValue</code> from <strong>P</strong>.</li>
+                            MUST begin with (as a string) the <code>licenseValue</code> from <strong>P</strong>. <span class="todo">TODO</span>
+                        this isnt quite correct. For example a digital link always references the GTIN as 14 digits but the licenseValue could be from
+                        a GTIN 8 license credential in which case there are leading zeros.</li>
                 </ul>
             </li>
-            <li>If <strong>P</strong> is a valid GS1 ID Key Credential
+            <li>If <strong>P</strong> is a valid GS1 ID Key Credential:
                 <ul>
                     <li>The canonicalized <strong>K</strong> <code>credentialSubject</code> <code>id</code> MUST start with
-                        and MUST extend the canonicalized <strong>P</strong> <code>credentialSubject</code> <code>id</code></li>
+                        and MUST extend the canonicalized <strong>P</strong> <code>credentialSubject</code> <code>id</code>. <span class="todo">TODO</span>
+                        the word extend here is vague. I think it should have to contain addition path elements in the URI?</li>
                 </ul>
             </li>
         </ul>
