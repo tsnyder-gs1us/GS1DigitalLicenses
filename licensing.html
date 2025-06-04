@@ -101,11 +101,11 @@
                 </tr>
                 <tr>
                     <td><code>name</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. <span class="todo">confirm with Steering Committee</span></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. See Section <a href="#license-credential-name"></a>.</td>
                 </tr>
                 <tr>
                     <td><code>description</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. <span class="todo">confirm with Steering Committee</span></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. See Section <a href="#license-credential-description"></a>.</td>
                 </tr>
                 <tr>
                     <td><code>credentialSubject:id</code></td>
@@ -123,7 +123,7 @@
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. It MUST be of the type <code>SvgRenderingTemplate</code>. <span class="todo">confirm with Steering Committee</span></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 License Credentials. It MUST be of the type <code>SvgRenderingTemplate</code>.</td>
                 </tr>
             </tbody>
         </table>
@@ -198,6 +198,20 @@
                 <li><code>DelegatedGS1PrefixLicenseCredential</code></li>
                 <li><code>DelegatedGS1IdentificationKeyLicenseCredential</code></li>
             </ul>
+        </section>
+
+        <section id="license-credential-name">
+            <h3>License Credential Name</h3>
+            <p>License Credential <code>name</code> SHOULD convey a short name for
+            the license types from Section <a href="#license-credential-types"></a> in
+            in a human readable way for rendering in wallets. See <a href="#License-Examples"></a>.</p>
+        </section>
+
+        <section id="license-credential-description">
+            <h3>License Credential Description</h3>
+            <p>License Credential <code>description</code> SHOULD convey a longer
+                description of the license types from Section <a href="#license-credential-types"></a> in
+            in a human readable way for rendering in wallets. See <a href="#License-Examples"></a>.</p>
         </section>
 
         <section id="identification-key-type">
@@ -301,16 +315,15 @@
             <h3>Encapsulation and Signatures</h3>
             <p>GS1 License Credentials are issued in the W3C VCDM data model using <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/">vc-jose-cose</a>
                 specifically as referenced in <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-jose-cose/#securing-with-jose">this section</a>. GS1
-                License Credentials are signed with ECDSA ES256 algorithm. Examples are shown in Section <a href="#License-Examples"></a></p>
-
-            <p><span class="todo">confirm with Steering Committee</span> that licenses are provided from GS1 in the VC format (not VP)</p>
+                License Credentials from GO are signed with ECDSA ES256 algorithm. Contact your MO for
+                details on signature algorithms. Examples are shown in Section <a href="#License-Examples"></a>.</p>
         </section>
 
         <section id="delivery">
             <h3>Delivery</h3>
             <p><span class="todo">confirm with Steering Committee</span> how <code>GS18PrefixLicenseCredential</code> and <code>GS1PrefixLicenseCredential</code>
              GS1 Licenses Credentials are shared. I think we want to say that these licenses are available in XXX format via HTTP get on their credential IDs...</p>
-            <p>Contact your member organization for details on obtaining
+            <p>Contact your MO for details on obtaining
              <code>GS1CompanyPrefixLicenseCredential</code> and <code>GS1IdentificationKeyLicenseCredential</code> License Credentials.</p>
         </section>
 
@@ -325,7 +338,6 @@
             <p>The id property is optional in the VCDM, but MUST be present in GS1 License Credentials. The credential subject ID in all
             license credentials MUST be a DID that is controlled by the licensee. DIDs are defined by the W3C specification
             <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/did-1.0/">https://www.w3.org/TR/did-1.0/</a>.</p>
-            <p><span class="todo">confirm with Steering Committee</span>What advice or guidance do we need here?</p>
         </section>
     </section>
     <section id="License-Examples">
