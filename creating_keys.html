@@ -84,23 +84,29 @@
                     <td>This property is optional in the VCDM but MUST be present and MUST be a GS1 Digital Link URI. See Section <a href='#key-credential-subject-id'></a>.</td>
                 </tr>
                 <tr>
+                    <td><code>name</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Key Credentials. See Section <a href="#key-credential-name"></a>.</td>
+                </tr>
+                <tr>
+                    <td><code>description</code></td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Key Credentials. See Section <a href="#key-credential-description"></a>.</td>
+                </tr>
+                <tr>
                     <td><code>credentialStatus</code></td>
                     <td>This property is optional in the VCDM but MUST be present and be of the type <code>BitstringStatusListEntry</code>
-                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bitstring-status-list</a> from the W3C. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
+                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bitstring-status-list</a> from the W3C.</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
                     <td>This property is optional in the VCDM but MUST be present and be of the type <code>JsonSchema</code>
-                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C.</td>
+                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> specification from the W3C.</td>
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
-                    <td>This property is optional in the VCDM but SHOULD be present and SHOULD be of the type <code>SvgRenderingTemplate</code>. <span class="todo">confirm with Steering Committee</span>Do we force our members to do this?</td>
+                    <td>This property is optional in the VCDM but SHOULD be present and SHOULD be of the type <code>SvgRenderingTemplate</code> defined in the <a target="_blank" rel="noopener noreferrer" href="https://w3c-ccg.github.io/vc-render-method/">vc-render-method</a> specification from the W3C.</td>
                 </tr>
             </tbody>
             </table>
-
-            <p><span class="todo">confirm with Steering Committee</span>Should we require description? What about an Issuer name. These are assumed for the renderings below.</p>
 
             <p>All GS1 ID Key Credentials share these additional properties:
 
@@ -148,6 +154,16 @@
             <p>The ID Key <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI.</p>
         </section>
 
+        <section id="key-credential-name">
+            <h3>ID Key Credential Name Property</h3>
+            <p>The ID Key Credential <code>name</code> property MUST be present and SHOULD contain the following short string: "GS1 ID Key Credential"</p>
+        </section>
+
+        <section id="key-credential-description">
+            <h3>ID Key Credential Description</h3>
+            <p>The ID Key Credential <code>description</code> properly MUST be present and SHOULD contain
+            the following description: "This is a Verifiable Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the GS1 ID Key that it contains exists and is valid."</p>
+        </section>
         <section id="key-credential-extends-credential">
             <h3>ID Key Credential extendsCredential property</h3>
             <p>The ID Key Credential <code>extendsCredential</code> property MUST be one of the following:
