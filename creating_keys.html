@@ -170,15 +170,12 @@
         </section>
         <section id="key-credential-extends-credential">
             <h3>ID Key Credential extendsCredential property</h3>
-            <p>The ID Key Credential <code>extendsCredential</code> property MUST be one of the following:
-                <ul>
-                    <li>A reference to a GS1 License Credential where the primary GS1 ID Key extracted from the ID Key Credential <code>credentialSubject</code> <code>id</code>
-                        MUST begin with (as a string) the <code>licenseValue</code> from the credential referenced in the <code>extendsCredential</code> property</li>
-                    <li>a reference to another GS1 ID Key Credential where the canonicalized <code>credentialSubject</code> <code>id</code>  of the credential MUST start with and MUST extend the canonicalized <code>credentialSubject</code> <code>id</code> of the credential referenced in <code>extendsCredential</code>.
-                </ul>
-            </p>
 
-            <span class="todo">confirm with Steering Committee</span>By these rules its possible to create a batch/lot/serial number credential and extend a GCP. Do we require that there be a chain as the granularity gets more specific? Should these comparisons only be done on the path component of the GS1 Digital Link or should it include the query components?
+            <p>If the <code>credentialSubject</code> of the GS1 ID Key credential contains a GS1 Digital Link with a primary key <strong>K</strong> and no key qualifiers, then the <code>extendsCredential</code> property MUST contain a link to a GS1 License Credenial whose <code>licenseValue</code> is the string that starts <strong>K</strong>.</p>
+
+            <p> If the <code>credentialSubject</code> of the GS1 ID Key credential contains a GS1 Digital Link with a primary key <strong>K</strong> and key qualifiers <strong>Q</strong> then the <code>extendsCredential</code> property MUST contain a link to a GS1 ID Key Credential whose <code>credentialSubject</code> contains a GS1 Digital Link with the same primary key <strong>K</strong> and no key qualifiers.</p>
+
+            For a description of primary keys and key qualifiers see <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/standards/digital-link/uri-syntax/">The GS1 Digital Link Specification</a>.
 
             <p>A few examples:</p>
             <ul>
@@ -186,11 +183,9 @@
                 <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code> does <strong>NOT</strong> properly extend a GCP credential with <code>licenseValue</code>  <code>0755555</code></li>
                 <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> properly extends a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551</code></li>
                 <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extend a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234777777</code></li>
-                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extend a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> because although it "starts with", it does not "extend".</li>
+                <li>A GS1 ID Key credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> does <strong>NOT</strong> properly extend a GS1 ID Key Credential with <code>credentialSubject</code> <code>id</code> <code>https://id.gs1.org/01/07541234555551/10/ABC123</code> because although it has the same primary key, it contains a key qualifier.</li>
             </ul>
-
         </section>
-
     </section>
     <section id="key-credential-details">
         <h3>ID Key Credential Examples</h3>
