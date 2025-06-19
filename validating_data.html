@@ -46,7 +46,7 @@
         <ul>
             <li><strong>D</strong> MUST be a valid VCDM 2.0 credential document.</li>
             <li>The signature of <strong>D</strong> MUST be valid and from a signing key referenced in the issuer DID.</li>
-            <li><strong>D</strong> MUST NOT be revoked (see <a href="#revocation"></a>).</li>
+            <li>If present, <code>CredentialStatus</code> of <strong>D</strong>  MUST be valid (see <a href="#validating-credential-status"></a>).</li>
             <li><strong>D</strong> <code>validFrom</code> MUST NOT be in the future.</li>
             <li>The credential document <strong>D</strong>  MUST conform to the JSON schema for the data credential:
                 <ul>
