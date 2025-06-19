@@ -20,7 +20,7 @@
     </section>
     <section id="data-credential-details">
         <h3>GS1 Data Credential Details</h3>
-        <p>GS1 Data Credentials use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
+        <p>GS1 Data Credentials use the W3C Verifiable Credentials Data Model Version 2.0 defined in [[vc-data-model-2.0]].
         The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
         uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
         details in the format that is well understood worldwide.
@@ -49,7 +49,8 @@
                 </tr>
                 <tr>
                     <td><code>issuer:id</code></td>
-                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>).</td>
+                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>)
+                    as defined in [[did-1.1]].</td>
                 </tr>
 
                 <tr>
@@ -59,12 +60,11 @@
                 <tr>
                     <td><code>credentialStatus</code></td>
                     <td>This property is optional in the VCDM but MAY be present. If present, this property MUST be of the type <code>BitstringStatusListEntry</code>
-                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bitstring-status-list</a> from the W3C.</td>
+                    defined in [[vc-bitstring-status-list]].</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
-                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials and MUST be of the type <code>JsonSchema</code>
-                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> from the W3C. </td>
+                    <td>This property is optional in the VCDM but MUST be present in all GS1 Data Credentials and MUST be of the type <code>JsonSchema</code> defined in [[vc-json-schema]].</td>
                 </tr>
                 <tr>
                     <td><code>validFrom</code></td>
@@ -72,7 +72,8 @@
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
-                    <td>This property is optional in the VCDM but SHOULD be present and SHOULD be of the type <code>SvgRenderingTemplate</code>.</td>
+                    <td>This property is optional in the VCDM but SHOULD be present and SHOULD be of the type <code>SvgRenderingTemplate</code>
+                    in the <a target="_blank" rel="noopener noreferrer" href="https://w3c-ccg.github.io/vc-render-method/">vc-render-method</a> specification from the W3C.</td>
                 </tr>
             </tbody>
         </table>

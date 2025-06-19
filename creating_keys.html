@@ -47,7 +47,7 @@
     <section id="key-credentials-details">
         <h3>ID Key Credential Details</h3>
 
-        <p>GS1 ID Key Credentials use the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-data-model-2.0/">W3C Verifiable Credentials Data Model Version 2.0</a>.
+        <p>GS1 ID Key Credentials use the W3C Verifiable Credentials Data Model Version 2.0 defined in [[vc-data-model-2.0]]</a>.
         The <abbr title="W3C Verifiable Credentials Data Model">VCDM</abbr> credential format
         uses <abbr title="JavaScript Object Notation for Linked Data">JSON-LD</abbr> to encapsulate the
         details in the format that is well understood worldwide.</p>
@@ -77,7 +77,7 @@
                 </tr>
                 <tr>
                     <td><code>issuer:id</code></td>
-                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>).</td>
+                    <td>This property MUST be a Decentralized Identifier (<abbr title="Decentralized Identifier">DID</abbr>) as defined in [[did-1.1]].</td>
                 </tr>
                 <tr>
                     <td><code>credentialSubject:id</code></td>
@@ -98,12 +98,12 @@
                 <tr>
                     <td><code>credentialStatus</code></td>
                     <td>This property is optional in the VCDM but MUST be present and be of the type <code>BitstringStatusListEntry</code>
-                    defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-bitstring-status-list/">vc-bitstring-status-list</a> from the W3C.</td>
+                    defined in [[vc-bitstring-status-list]].</td>
                 </tr>
                 <tr>
                     <td><code>credentialSchema</code></td>
                     <td>This property is optional in the VCDM but MUST be present and be of the type <code>JsonSchema</code>
-                        defined in the <a target="_blank" rel="noopener noreferrer" href="https://www.w3.org/TR/vc-json-schema/">vc-json-schema</a> specification from the W3C.</td>
+                        defined in [[vc-json-schema]].</td>
                 </tr>
                 <tr>
                     <td><code>renderMethod</code></td>
