@@ -19,15 +19,14 @@
         <h3>GS1 License Credentials in a Nutshell</h3>
         <p>A GS1 Prefix License Credential is issued by GO to a specific MO.  It authorizes them to
         issue GCPs and GS1 ID Key Licenses from a specific GS1 Prefix value. GS1 Prefix License values
-        are typically three digit numbers, but can range from two to seven digits with details in the
-        <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification Section 1.4.2</a>.
+        are typically three digit numbers, but can range from two to seven digits with details in the [[gs1-general-specification]] Section 1.4.2.
         For example, GS1 New Zealand is issued prefixes 940 - 949.</p>
 
         <p>A GCP License Credential is issued from an MO to a MC to authorize them to issue
         GS1 ID Keys from a specific number range.  GCPs have different lengths depending on the
         needs of the MC.  GCPs range from four digits to twelve digits.  They always begin with (but are at least one digit longer
-        than)  the a valid GS1 Prefix License value.  For details see
-        <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification Section 1.4.4</a>.
+        than)  the a valid GS1 Prefix License value.  For details see the
+        [[gs1-general-specification]]  Section 1.4.4.
         The fewer digits a GCP has, the more individual GS1 ID Keys it can create. For example,
         a eleven digit GCP can only create a few GTINs while a 7 digit GCP can create
         many thousands of GTINs.</p>
@@ -283,11 +282,11 @@
 
         <p>For <code>GS1PrefixLicenseCredential</code>, <code>GS18PrefixLicenseCredential</code>,
             <code>GS1CompanyPrefixLicenseCredential</code>, and <code>DelegatedGS1PrefixLicenseCredential</code>
-            the <code>licenseValue</code> is the GS1 Prefix Or GCP as specified in
-            <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification Section 1.4</a>.<p>
+            the <code>licenseValue</code> is the GS1 Prefix Or GCP as specified in [[gs1-general-specification]]
+            Section 1.4.<p>
 
         <p>For <code>GS1IdentificationKeyLicenseCredential</code> and <code>DelegatedGS1IdentificationKeyLicenseCredential</code>
-         the <code>licenseValue</code> contains the licensed GS1 ID Key in the canonical form specified in <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/standards/digital-link/uri-syntax/">GS1 Digital Link Standard Section 4.5</a>.<p>
+         the <code>licenseValue</code> contains the licensed GS1 ID Key in the canonical form specified in [[gs1-digital-link]] Section 4.5.<p>
         </section>
 
         <section id="alternate-License-values">

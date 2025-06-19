@@ -30,8 +30,7 @@
         <p>
             The specific format of each GS1 ID Key is different. This <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/sites/default/files/docs/idkeys/gs1_id_keys_reference_card.pdf.pdf">quick reference card</a>
             highlights the basics of how to format GS1 ID Keys from a GCP. For more details on how to form
-            individual GS1 ID Keys from your GCP, see your MO web page, the
-            <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications">General Specification</a>
+            individual GS1 ID Keys from your GCP, see your MO web page, the [[gs1-general-specification]]
             or services like <a target="_blank" rel="noopener noreferrer" href="https://www.gs1.org/services/activate">GS1 Activate</a>.
         </p>
 
@@ -81,7 +80,7 @@
                 </tr>
                 <tr>
                     <td><code>credentialSubject:id</code></td>
-                    <td>This property is optional in the VCDM but MUST be present and MUST be a GS1 Digital Link URI. See Section <a href='#key-credential-subject-id'></a>.</td>
+                    <td>This property is optional in the VCDM but MUST be present and MUST be a GS1 Digital Link URI as defined in [[gs1-digital-link]]. See Section <a href='#key-credential-subject-id'></a>.</td>
                 </tr>
                 <tr>
                     <td><code>validFrom</code></td>
@@ -155,7 +154,7 @@
         </section>
         <section id="key-credential-subject-id">
             <h3>ID Key CredentialSubject ID Property</h3>
-            <p>The ID Key <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI.</p>
+            <p>The ID Key <code>credentialSubject</code> <code>id</code> property MUST be present and MUST be a GS1 Digital Link URI as defined in [[gs1-digital-link]].</p>
         </section>
 
         <section id="key-credential-name">
@@ -175,7 +174,7 @@
 
             <p> If the <code>credentialSubject</code> of the GS1 ID Key credential contains a GS1 Digital Link with a primary key <strong>K</strong> and key qualifiers <strong>Q</strong> then the <code>extendsCredential</code> property MUST contain a link to a GS1 ID Key Credential whose <code>credentialSubject</code> contains a GS1 Digital Link with the same primary key <strong>K</strong> and no key qualifiers.</p>
 
-            For a description of primary keys and key qualifiers see <a target="_blank" rel="noopener noreferrer" href="https://ref.gs1.org/standards/digital-link/uri-syntax/">The GS1 Digital Link Specification</a>.
+            For a description of primary keys and key qualifiers see [[gs1-digital-link]].
 
             <p>A few examples:</p>
             <ul>
