@@ -41,7 +41,7 @@
             <h3>Prefix License Validation Rules</h3>
             <p>The following additional steps MUST be performed to validate a GS1 Prefix License Credential denoted as <strong>PL</strong>:</p>
             <ul class="ref-numbered">
-                <li><strong>PL</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix.</a></li>
+                <li><strong>PL</strong> MUST conform to the JSON schema  <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix.</a></li>
                 <li><strong>PL</strong>  <code>Issuer</code> property MUST be a GS1 GO did:web or did:webvh.</li>
                 <li><strong>PL</strong> <code>licenseValue</code>  MUST be from two to seven numeric digits.<span class="todo">TODO add this rule to the schema</span></li>
                 <li>If <strong>PL</strong> <code>alternateLicenseValue</code> is present,  <code>licenseValue</code> must end with <code>alternateLicenseValue</code>.</li>
@@ -56,7 +56,7 @@
              </p>
 
             <ul class="ref-numbered" data-rule-prefix="GL">
-                <li><strong>GL</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/companyprefix">https://id.gs1.org/vc/schema/v1/companyprefix</a>&nbsp;.</li>
+                <li><strong>GL</strong> MUST conform to the JSON schema  <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/companyprefix">https://id.gs1.org/vc/schema/v1/companyprefix</a>&nbsp;.</li>
                 <li><strong>EL</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a>.</li>
                 <li><strong>GL</strong> <code>licenseValue</code> MUST be between four and twelve numeric digits.<span class="todo">TODO add this rule to the schema</span></li>
                 <li><strong>EL</strong> <code>credentialSubject</code> <code>id</code>MUST match <strong>GL</strong> <code>issuer</code>.</li>
@@ -70,7 +70,7 @@
             <p>The following additional steps MUST be performed to validate a GS1 Identification Key License Credential denoted as <strong>IL</strong> where the credential referenced by <strong>IL's</strong> <code>extendsCredential</code> property is denoted as <strong>EL</strong>:
             </p>
             <ul class="ref-numbered">
-                <li><strong>IL</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/identificationkey">https://id.gs1.org/vc/schema/v1/identificationkey</a>.</li>
+                <li><strong>IL</strong> MUST conform to the JSON schema  <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/identificationkey">https://id.gs1.org/vc/schema/v1/identificationkey</a>.</li>
                 <li><strong>EL</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a>.</li>
                 <li><strong>EL</strong> <code>credentialSubject</code> <code>id</code>MUST match <strong>IL</strong> <code>issuer</code>.</li>
                 <li><strong>IL</strong> <code>licenseValue</code> MUST begin with and MUST be at least one digit longer than the <strong>EL</strong> <code>licenseValue</code></li>
