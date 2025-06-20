@@ -48,8 +48,66 @@
           "status": "Draft Community Report"
         },
       },
-      "normativeReferences": ["gs1-general-specification", 'gs1-digital-link']
+      "normativeReferences": ["gs1-general-specification", 'gs1-digital-link'],
+      "postProcess": [addReferenceNumbers]
+
     };
+
+function addReferenceNumbers(doc, config) {
+    return new Promise(resolve => {
+      requestAnimationFrame(() => {
+        const lists = document.querySelectorAll("ul.ref-numbered");
+
+        lists.forEach(ul => {
+          // Find the closest section ancestor
+          const section = ul.closest("section");
+          if (!section) return;
+
+          // Find the nearest heading in the section with a .secno
+          const heading = section.querySelector("h2, h3, h4, h5, h6");
+          const secno = heading?.querySelector(".secno");
+          if (!secno) return;
+
+          const secNum = secno.textContent.trim().replace(/\.$/, "");
+
+          // Find the closest data-rule-prefix in the ancestor chain
+          let prefix = "XX";
+          let current = ul;
+          while (current && current !== document.body) {
+            if (current.hasAttribute("data-rule-prefix")) {
+              prefix = current.getAttribute("data-rule-prefix");
+              break;
+            }
+            current = current.parentElement;
+          }
+
+          // Number the list items
+          let counter = 1;
+          ul.querySelectorAll(":scope > li").forEach(li => {
+            if (!li.dataset.numbered) {
+              const itemNum = `${prefix}-${counter++}`;
+              li.innerHTML = `<span class="item-number">${itemNum}:</span> ${li.innerHTML}`;
+              li.dataset.numbered = "true";
+
+              const base = itemNum.replace(/^RULE\s/, "");
+
+              // Number nested bullets under this <li> if present
+              li.querySelectorAll(":scope > ul > li").forEach((subli, subIndex) => {
+                if (!subli.dataset.numbered) {
+                  const subItemNum = `${base}.${subIndex + 1}`;
+                  subli.innerHTML = `<span class="item-number">${subItemNum}:</span> ${subli.innerHTML}`;
+                  subli.dataset.numbered = "true";
+                }
+              });
+            }
+          });
+        });
+
+        console.log("✅ RULE numbering complete");
+        resolve();
+      });
+    });
+  }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
@@ -69,6 +127,7 @@
       });
     });
   </script>
+
 </head>
 <body>
 
@@ -320,7 +379,6 @@
     return atob(padded);
   }
 </script>
-
 
 </body>
 </html>

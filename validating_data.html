@@ -37,13 +37,13 @@
             originated from the licensee of the GS1 ID Key.  </p>
 
     </section>
-    <section id="data-validation-rules">
+    <section id="data-validation-rules" data-rule-prefix="D">
         <h3>Data Validation Rules</h3>
 
         Denoting the GS1 ID Data Credential as <strong>D</strong>,
         the following steps MUST be performed to validate a GS1 Data Credential
 
-        <ul>
+        <ul class="ref-numbered">
             <li><strong>D</strong> MUST be a valid VCDM 2.0 credential document.</li>
             <li>The signature of <strong>D</strong> MUST be valid and from a signing key referenced in the issuer DID.</li>
             <li>If present, <code>CredentialStatus</code> of <strong>D</strong>  MUST be valid (see <a href="#validating-credential-status"></a>).</li>
@@ -60,7 +60,7 @@
 
         If the credential <strong>D</strong> contains a <code>keyAuthorization</code> property, denoting the credential referenced by this property as <strong>K</strong>, it's possible to verify that the data in this credential was created by the licensee of the GS1 ID Key.  The following steps SHOULD be performed:
 
-        <ul>
+        <ul class="ref-numbered">
             <li>The <code>issuer</code> of <strong>D</strong>  MUST match the issuer of <strong>K</strong></li>
             <li><strong>K</strong> MUST be a valid <a href="#key-validation-rules">GS1 ID Key Credential</a></li>
             <li>The canonicalized <strong>D</strong> <code>credentialSubject</code> <code>id</code> MUST match the canonicalized <strong>K</strong> <code>credentialSubject</code> <code>id</code></li>

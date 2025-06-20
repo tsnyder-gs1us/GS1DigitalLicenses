@@ -29,6 +29,11 @@ p {
   margin-bottom: 1em;
 }
 
+ul.ref-numbered .item-number {
+  font-weight: bold;
+  margin-right: 0.5em;
+  color: #f47920;
+}
 
 body a:not(nav#toc a) {
   color: #005eb8;

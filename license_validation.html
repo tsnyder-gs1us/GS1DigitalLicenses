@@ -24,23 +24,23 @@
         identity validation policies consult the  <p><span class="todo">Governance Document</span> or your local MO.
 
     </section>
-    <section id="license-validation-rules">
+    <section id="license-validation-rules" data-rule-prefix="L">
         <h3>License Validation Rules</h3>
         <p>The following section contains rules for validation of GS1 License Credentials. If any of the conditions referenced in the following lists are false, the credential is invalid and should not be trusted.</p>
 
         <p>The following steps MUST be performed to validate a GS1 License Credential denoted as <strong>L</strong>:</p>
 
-        <ul>
+        <ul class="ref-numbered" data-rule-prefix="L">
             <li><strong>L</strong> MUST be a valid VCDM 2.0 credential document.</li>
             <li>The signature of <strong>L</strong>  MUST be valid and MUST be from a signing key referenced in the issuer DID.</li>
             <li><code>CredentialStatus</code> of <strong>L</strong>  MUST be valid (see <a href="#validating-credential-status"></a>).</li>
             <li><strong>L</strong> <code>validFrom</code> MUST NOT be in the future.</li>
         </ul>
 
-        <section id="prefix-license-validation-rules">
+        <section id="prefix-license-validation-rules" data-rule-prefix="PL">
             <h3>Prefix License Validation Rules</h3>
             <p>The following additional steps MUST be performed to validate a GS1 Prefix License Credential denoted as <strong>PL</strong>:</p>
-            <ul>
+            <ul class="ref-numbered">
                 <li><strong>PL</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/prefix">https://id.gs1.org/vc/schema/v1/prefix.</a></li>
                 <li><strong>PL</strong>  <code>Issuer</code> property MUST be a GS1 GO did:web or did:webvh.</li>
                 <li><strong>PL</strong> <code>licenseValue</code>  MUST be from two to seven numeric digits.<span class="todo">TODO add this rule to the schema</span></li>
@@ -48,14 +48,14 @@
             </ul>
         </section>
 
-        <section id="gcp-validation-rules">
+        <section id="gcp-validation-rules" data-rule-prefix="GL">
             <h3>GCP Validation Rules</h3>
 
             <p>The following additional steps MUST be performed to validate a GCP License Credential denoted as <strong>GL</strong> where
                 the credential referenced by <strong>GL's</strong> <code>extendsCredential</code> property is denoted as <strong>EL</strong>:
              </p>
 
-            <ul>
+            <ul class="ref-numbered" data-rule-prefix="GL">
                 <li><strong>GL</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/companyprefix">https://id.gs1.org/vc/schema/v1/companyprefix</a>.</li>
                 <li><strong>EL</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a>.</li>
                 <li><strong>GL</strong> <code>licenseValue</code> MUST be between four and twelve numeric digits.<span class="todo">TODO add this rule to the schema</span></li>
@@ -65,11 +65,11 @@
             </ul>
         </section>
 
-        <section id="id-key-validation-rules">
+        <section id="id-key-validation-rules" data-rule-prefix="IL">
             <h3>Identification Key License Validation Rules</h3>
             <p>The following additional steps MUST be performed to validate a GS1 Identification Key License Credential denoted as <strong>IL</strong> where the credential referenced by <strong>IL's</strong> <code>extendsCredential</code> property is denoted as <strong>EL</strong>:
             </p>
-            <ul>
+            <ul class="ref-numbered">
                 <li><strong>IL</strong> MUST conform to the JSON schema located at <a target="_blank" rel="noopener noreferrer" href="https://id.gs1.org/vc/schema/v1/identificationkey">https://id.gs1.org/vc/schema/v1/identificationkey</a>.</li>
                 <li><strong>EL</strong> MUST be a valid <a href="#license-validation">GS1 License Credential</a>.</li>
                 <li><strong>EL</strong> <code>credentialSubject</code> <code>id</code>MUST match <strong>IL</strong> <code>issuer</code>.</li>
