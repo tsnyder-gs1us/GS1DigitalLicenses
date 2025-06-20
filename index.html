@@ -49,9 +49,75 @@
         },
       },
       "normativeReferences": ["gs1-general-specification", 'gs1-digital-link'],
-      "postProcess": [addReferenceNumbers]
+      "postProcess": [addReferenceNumbers, initializeTabsAndSVG]
 
     };
+
+function initializeTabsAndSVG(doc, config) {
+  return new Promise(resolve => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.example-tabset').forEach(container => {
+        const exampleId = container.dataset.example;
+        const buttons = container.querySelectorAll('button[data-tab]');
+        const codes = Array.from(buttons).map(btn =>
+          container.querySelector(`#${exampleId}-${btn.dataset.tab}`)
+        ).filter(Boolean);
+        const firstBtn = container.querySelector('button.active') || buttons[0];
+        const firstTab = container.querySelector(`#${exampleId}-${firstBtn.dataset.tab}`);
+
+        showTab(firstBtn, firstTab);
+
+        buttons.forEach(button => {
+          const tabName = button.dataset.tab;
+          const target = container.querySelector(`#${exampleId}-${tabName}`);
+          button.addEventListener('click', () => {
+            showTab(button, target);
+            if (tabName === "license-svg") {
+              const targetId = `${exampleId}-${tabName}`;
+              loadVCAndRenderLicenseSVG(targetId);
+            } else if (tabName === "idkey-svg") {
+              const targetId = `${exampleId}-${tabName}`;
+              loadVCAndRenderIDKeySVG(targetId);
+            }
+          });
+        });
+
+        function showTab(activeButton, showEl) {
+          buttons.forEach(btn => btn.classList.remove("active"));
+          container.querySelectorAll(
+            `#${exampleId}-jwt, #${exampleId}-json, #${exampleId}-license-svg, #${exampleId}-idkey-svg`
+          ).forEach(el => el.style.display = "none");
+
+          activeButton.classList.add("active");
+          if (showEl) showEl.style.display = "block";
+
+          const code = showEl?.querySelector?.("code");
+          if (code && !code.dataset.loaded && code.dataset.src) {
+            fetch(code.dataset.src)
+              .then(res => res.ok ? res.text() : Promise.reject(res))
+              .then(text => {
+                code.textContent = text;
+                code.dataset.loaded = "true";
+                if (window.hljs && typeof hljs.highlightElement === "function") {
+                  setTimeout(() => hljs.highlightElement(code), 0);
+                }
+              })
+              .catch(() => {
+                code.textContent = "Failed to load example.";
+              });
+          }
+        }
+      });
+
+      if (window.hljs && typeof hljs.highlightAll === 'function') {
+        hljs.highlightAll();
+      }
+
+      resolve(); // postProcess must return a Promise
+    });
+  });
+}
+
 
 function addReferenceNumbers(doc, config) {
     return new Promise(resolve => {
@@ -177,26 +243,6 @@ function addReferenceNumbers(doc, config) {
 <section id="tof" class="appendix"></section>
 
 <script>
-  async function waitForIncludes() {
-    console.log("🕓 Waiting for ReSpec...");
-    await document.respecIsReady;
-
-    const includes = document.querySelectorAll("[data-include]");
-    console.log("🕓 Waiting for data-includes...");
-    await Promise.all([...includes].map(section => {
-      return new Promise(resolve => {
-        const observer = new MutationObserver(() => {
-          if (section.children.length > 0) {
-            observer.disconnect();
-            resolve();
-          }
-        });
-        observer.observe(section, { childList: true });
-      });
-    }));
-    console.log("✅ ReSpec ready — initializing tabs");
-  }
-
   async function loadVCAndRenderLicenseSVG(containerId) {
     const container = document.getElementById(containerId);
     if (!container || container.dataset.rendered) return;
@@ -305,73 +351,6 @@ function addReferenceNumbers(doc, config) {
       console.error("Render error:", err);
     }
   }
-
-  (async () => {
-    await waitForIncludes();
-
-    document.querySelectorAll('.example-tabset').forEach(container => {
-      const exampleId = container.dataset.example;
-      const buttons = container.querySelectorAll('button[data-tab]');
-      const codes = Array.from(buttons).map(btn =>
-        container.querySelector(`#${exampleId}-${btn.dataset.tab}`)
-      ).filter(Boolean);
-      const firstBtn = container.querySelector('button.active') || buttons[0];
-      const firstTab = container.querySelector(`#${exampleId}-${firstBtn.dataset.tab}`);
-
-      showTab(firstBtn, firstTab);
-
-      buttons.forEach(button => {
-        const tabName = button.dataset.tab;
-        const target = container.querySelector(`#${exampleId}-${tabName}`);
-        button.addEventListener('click', () => {
-          showTab(button, target);
-          if (tabName === "license-svg") {
-            const targetId = `${exampleId}-${tabName}`;
-            loadVCAndRenderLicenseSVG(targetId);
-          } else if (tabName === "idkey-svg") {
-            const targetId = `${exampleId}-${tabName}`;
-            loadVCAndRenderIDKeySVG(targetId);
-          }
-        });
-      });
-
-      function showTab(activeButton, showEl) {
-        // 1. Remove active class from all tab buttons
-        buttons.forEach(btn => btn.classList.remove("active"));
-
-        // 2. Hide all tab content panels (both <pre> and <div>)
-        container.querySelectorAll(
-          `#${exampleId}-jwt, #${exampleId}-json, #${exampleId}-license-svg, #${exampleId}-idkey-svg`
-        ).forEach(el => el.style.display = "none");
-
-        // 3. Activate the clicked tab and show its content
-        activeButton.classList.add("active");
-        if (showEl) showEl.style.display = "block";
-
-        // 4. If it’s a <pre><code> tab and not yet loaded, fetch and highlight
-        const code = showEl?.querySelector?.("code");
-        if (code && !code.dataset.loaded && code.dataset.src) {
-          fetch(code.dataset.src)
-            .then(res => res.ok ? res.text() : Promise.reject(res))
-            .then(text => {
-              code.textContent = text;
-              code.dataset.loaded = "true";
-              if (window.hljs && typeof hljs.highlightElement === "function") {
-                setTimeout(() => hljs.highlightElement(code), 0);
-              }
-            })
-            .catch(() => {
-              code.textContent = "Failed to load example.";
-            });
-        }
-      }
-
-    });
-
-    if (window.hljs && typeof hljs.highlightAll === 'function') {
-      hljs.highlightAll();
-    }
-  })();
 
   function decodeBase64Url(base64Url) {
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
