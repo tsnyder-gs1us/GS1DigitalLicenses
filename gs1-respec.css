@@ -404,3 +404,21 @@ table caption {
   padding: 0.5em;
   color: #005eb8; /* GS1 blue */
 }
+
+/* Reduce space below sections */
+section {
+  margin-bottom: 0.0rem !important;
+}
+
+/* Reduce spacing between section headings and following text */
+section > h1,
+section > h2,
+section > h3,
+section > h4 {
+  margin-bottom: 0.0rem !important;
+}
+
+/* Reduce space after the last paragraph in a section */
+section > p:last-of-type {
+  margin-bottom: 0.0rem !important;
+}
