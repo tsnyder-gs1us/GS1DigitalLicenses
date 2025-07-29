@@ -1,0 +1,24 @@
+{
+  "name": "vc-issuer",
+  "version": "1.0.0",
+  "description": "Verifiable Credential v2 issuer using @transmute/verifiable-credentials",
+  "main": "complete-issue-v2.js",
+  "type": "module",
+  "scripts": {
+    "start": "node complete-issue-v2.js"
+  },
+  "dependencies": {
+  "@transmute/verifiable-credentials": "git+https://github.com/transmute-industries/verifiable-credentials.git#main",
+   "jose": "^5.2.0",
+   "moment": "^2.29.4"
+  },
+  "keywords": [
+    "verifiable-credentials",
+    "vc",
+    "transmute",
+    "w3c",
+    "vc-v2"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
