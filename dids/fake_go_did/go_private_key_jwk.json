@@ -1,9 +1,9 @@
 {
-  "kid": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did.json#key-1",
-  "alg": "ES256",
   "kty": "EC",
+  "x": "veBJp4cqfWKcx6BOR8XBSE5m1jp0kXjBEdM1XqRxiJw",
+  "y": "Ulg5SCJjESRuIksbGSHIi66rD8BjSpbe6rZk8nFoPZg",
   "crv": "P-256",
-  "x": "q3pj90vWmp7uFTB8uMbXQGAvCLheDRH7DOxXH1UEOAg",
-  "y": "n1S_c8QGkTYrRmwhXpjzyYH6wF1a9ylrmD14qFAkeXE",
-  "d": "nyWzIbdVq1IgEER7iyekXAfG4WdufrtF28btk_bGnmA"
- }
+  "d": "wMDrDbHvE5jnor_DOChBmOY_AZfR0MYGCjaujAxAWZY",
+  "kid": "ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog",
+  "alg": "ES256"
+}

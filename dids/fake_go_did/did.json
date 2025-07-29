@@ -8,11 +8,11 @@
   "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did",
   "verificationMethod": [
     {
-      "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA",
+      "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog",
       "type": "JsonWebKey",
       "controller": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did",
       "publicKeyJwk": {
-        "kid": "KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA",
+        "kid": "ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog",
         "alg": "ES256",
         "kty": "EC",
         "crv": "P-256",
@@ -22,15 +22,15 @@
     }
   ],
   "authentication": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA"
+    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog"
   ],
   "assertionMethod": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA"
+    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog"
   ],
   "capabilityDelegation": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA"
+    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog"
   ],
   "capabilityInvocation": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA"
+    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#ffoSVU0sUj57acOgIKBZ4P7uWVLA1O6kSHwgliPDrog"
   ]
 }
