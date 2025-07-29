@@ -9,8 +9,8 @@
     "GS1CompanyPrefixLicenseCredential"
   ],
   "issuer": {
-    "id": "did:web:cbpvsvip-vc.gs1us.org",
-    "name": "GS1 US"
+    "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+    "name": "GS1 Utopia"
   },
   "name": "GS1 Company Prefix License",
   "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 ID Keys.",
