@@ -3,36 +3,36 @@
     "https://www.w3.org/ns/credentials/v2",
     "https://ref.gs1.org/gs1/vc/license-context"
   ],
-  "id": "https://id.gs1.org/vc/license/gs1_8_prefix/754",
+  "id": "https://woodycreek.github.io/GS1DigitalLicenses/samples/gtin8-prefix-sample.jwt",
   "type": [
     "VerifiableCredential",
     "GS18PrefixLicenseCredential"
   ],
   "issuer": {
-    "id": "did:web:id.gs1.org",
+    "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did",
     "name": "GS1 Global"
   },
   "name": "GS1 GTIN-8 Prefix License",
   "description": "FOR DEMONSTRATION PURPOSES ONLY: NOT TO BE USED FOR PRODUCTION GRADE SYSTEMS! A prefix that complies with GS1 Standards (a “GS1 Prefix”) is a unique identification number that is assigned to a Member Organization (By GS1 Global). It’s the foundation of GS1 Standards and can be found in all of the GS1 Identification Numbers.",
   "validFrom": "2024-01-25T12:30:00.000Z",
   "credentialSubject": {
-    "id": "did:web:www.gs1ca.org",
+    "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did",
     "organization": {
       "gs1:partyGLN": "7541230000000",
-      "gs1:organizationName": "GS1 Canada"
+      "gs1:organizationName": "GS1 Utopia"
     },
     "licenseValue": "754"
   },
   "credentialSchema": {
-    "id": "https://id.gs1.org/vc/schema/v1/gtin8-prefix",
+    "id": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/prefix8.json",
     "type": "JsonSchema"
   },
   "credentialStatus": {
-    "id": "https://id.gs1.org/vc/license/status/gs1_8_prefix/754",
+    "id": "https://woodycreek.github.io/GS1DigitalLicenses/status/go_status_list.jwt#2222",
     "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
-    "statusListIndex": "108",
-    "statusListCredential": "https://id.gs1.org/vc/status/1"
+    "statusListIndex": "2222",
+    "statusListCredential": "https://woodycreek.github.io/GS1DigitalLicenses/status/go_status_list.jwt"
   },
   "renderMethod": [
     {

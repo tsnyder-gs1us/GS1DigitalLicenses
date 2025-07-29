@@ -36,24 +36,48 @@ async function main() {
   };
 
   // Load sample credential JSON
-  const credentialJson = await fs.readFile(
+  const prefixCredentialJson = await fs.readFile(
     "../samples/gs1-prefix-license-sample.json",
     "utf-8"
   );
-  const claimset = transmute.text.encoder.encode(credentialJson);
+  const claimset_prefix = transmute.text.encoder.encode(prefixCredentialJson);
 
-  const issued = await transmute
+  const issued_prefix = await transmute
     .issuer({
       alg,
       type: "application/vc-ld+jwt",
       signer: issuerSigner,
     })
     .issue({
-      claimset,
+      claimset: claimset_prefix,
     });
 
-  console.log("Issued Credential (vc-ld+jwt):");
-  console.log(new TextDecoder().decode(issued));
+  console.log("Issued Prefix Credential (vc-ld+jwt):");
+  console.log(new TextDecoder().decode(issued_prefix));
+  await fs.writeFile("../samples/gs1-prefix-license-sample.jwt", issued_prefix, "utf-8");
+
+  // Load sample credential JSON
+  const prefix8CredentialJson = await fs.readFile(
+    "../samples/gtin8-prefix-sample.json",
+    "utf-8"
+  );
+
+  const claimset_prefix8 = transmute.text.encoder.encode(prefix8CredentialJson);
+
+  const issued_prefix8 = await transmute
+    .issuer({
+      alg,
+      type: "application/vc-ld+jwt",
+      signer: issuerSigner,
+    })
+    .issue({
+      claimset: claimset_prefix8,
+    });
+
+  console.log("Issued Prefix8 Credential (vc-ld+jwt):");
+  console.log(new TextDecoder().decode(issued_prefix8));
+  await fs.writeFile("../samples/gtin8-prefix-sample.jwt", issued_prefix8, "utf-8");
+
 }
 
 main().catch(console.error);
