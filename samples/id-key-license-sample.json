@@ -32,11 +32,11 @@
   },
 
   "credentialStatus": {
-    "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/24",
+    "id": "https://woodycreek.github.io/GS1DigitalLicenses/status/mo_status_list.jwt#2122",
     "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
-    "statusListIndex": "124",
-    "statusListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
+    "statusListIndex": "2122",
+    "statusListCredential": "https://woodycreek.github.io/GS1DigitalLicenses/status/mo_status_list.jwt"
   },
   "renderMethod": [
     {
