@@ -37,16 +37,19 @@ async function main() {
 
   const inputFiles = [
 	"../samples/gln-key-credential-sample.json",
-	"../samples/grai-data-credential-sample.json",
 	"../samples/grai-key-credential-sample.json",
 	"../samples/gtin-batch-key-credential-sample.json",
 	"../samples/gtin-key-credential-sample.json",
 	"../samples/gtin-serial-key-credential-sample.json",
-	"../samples/organization-data-credential-sample.json",
-	"../samples/product-data-credential-sample.json",
-	"../samples/sscc-data-credential-sample.json",
 	"../samples/sscc-key-credential-sample.json"
   ];
+
+// TODO add these
+//	"../samples/grai-data-credential-sample.json",
+//  "../samples/organization-data-credential-sample.json",
+//	"../samples/product-data-credential-sample.json",
+//	"../samples/sscc-data-credential-sample.json",
+
 
   for (const filePath of inputFiles) {
     try {
