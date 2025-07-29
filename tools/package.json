@@ -8,9 +8,11 @@
     "start": "node complete-issue-v2.js"
   },
   "dependencies": {
-  "@transmute/verifiable-credentials": "git+https://github.com/transmute-industries/verifiable-credentials.git#main",
-   "jose": "^5.2.0",
-   "moment": "^2.29.4"
+    "@transmute/verifiable-credentials": "git+https://github.com/transmute-industries/verifiable-credentials.git#main",
+    "did-resolver": "^4.1.0",
+    "jose": "^5.2.0",
+    "moment": "^2.29.4",
+    "web-did-resolver": "^2.0.30"
   },
   "keywords": [
     "verifiable-credentials",
