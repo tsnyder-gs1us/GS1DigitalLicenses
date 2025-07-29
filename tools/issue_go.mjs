@@ -35,49 +35,33 @@ async function main() {
     },
   };
 
-  // Load sample credential JSON
-  const prefixCredentialJson = await fs.readFile(
+  const inputFiles = [
     "../samples/gs1-prefix-license-sample.json",
-    "utf-8"
-  );
-  const claimset_prefix = transmute.text.encoder.encode(prefixCredentialJson);
-
-  const issued_prefix = await transmute
-    .issuer({
-      alg,
-      type: "application/vc-ld+jwt",
-      signer: issuerSigner,
-    })
-    .issue({
-      claimset: claimset_prefix,
-    });
-
-  console.log("Issued Prefix Credential (vc-ld+jwt):");
-  console.log(new TextDecoder().decode(issued_prefix));
-  await fs.writeFile("../samples/gs1-prefix-license-sample.jwt", issued_prefix, "utf-8");
-
-  // Load sample credential JSON
-  const prefix8CredentialJson = await fs.readFile(
     "../samples/gtin8-prefix-sample.json",
-    "utf-8"
-  );
+  ];
 
-  const claimset_prefix8 = transmute.text.encoder.encode(prefix8CredentialJson);
+  for (const filePath of inputFiles) {
+    try {
+      const json = await fs.readFile(filePath, "utf-8");
+      const claimset = transmute.text.encoder.encode(json);
 
-  const issued_prefix8 = await transmute
-    .issuer({
-      alg,
-      type: "application/vc-ld+jwt",
-      signer: issuerSigner,
-    })
-    .issue({
-      claimset: claimset_prefix8,
-    });
+      const issued = await transmute
+        .issuer({
+          alg,
+          type: "application/vc-ld+jwt",
+          signer: issuerSigner,
+        })
+        .issue({ claimset });
 
-  console.log("Issued Prefix8 Credential (vc-ld+jwt):");
-  console.log(new TextDecoder().decode(issued_prefix8));
-  await fs.writeFile("../samples/gtin8-prefix-sample.jwt", issued_prefix8, "utf-8");
+      const jwt = new TextDecoder().decode(issued);
+      console.log(`Issued JWT for ${filePath}:\n${jwt}`);
 
+      const outputPath = filePath.replace(/\.json$/, ".jwt");
+      await fs.writeFile(outputPath, jwt, "utf-8");
+    } catch (err) {
+      console.error(`❌ Failed to process ${filePath}:`, err);
+    }
+  }
 }
 
 main().catch(console.error);

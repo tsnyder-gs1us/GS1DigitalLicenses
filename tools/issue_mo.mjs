@@ -35,70 +35,34 @@ async function main() {
     },
   };
 
-  // Load sample credential JSON
-  const gcpCredentialJson = await fs.readFile(
+  const inputFiles = [
     "../samples/gcp-sample.json",
-    "utf-8"
-  );
-  const claimset_gcp = transmute.text.encoder.encode(gcpCredentialJson);
-
-  const issued_gcp = await transmute
-    .issuer({
-      alg,
-      type: "application/vc-ld+jwt",
-      signer: issuerSigner,
-    })
-    .issue({
-      claimset: claimset_gcp,
-    });
-
-  console.log("Issued GCP Credential (vc-ld+jwt):");
-  console.log(new TextDecoder().decode(issued_gcp));
-  await fs.writeFile("../samples/gcp-sample.jwt", issued_gcp, "utf-8");
-
-  // Load sample credential JSON
-  const idKeyCredentialJson = await fs.readFile(
     "../samples/id-key-license-sample.json",
-    "utf-8"
-  );
-  const claimset_idkey = transmute.text.encoder.encode(idKeyCredentialJson);
-
-  const issued_idkey = await transmute
-    .issuer({
-      alg,
-      type: "application/vc-ld+jwt",
-      signer: issuerSigner,
-    })
-    .issue({
-      claimset: claimset_idkey,
-    });
-
-  console.log("Issued ID Key Credential (vc-ld+jwt):");
-  console.log(new TextDecoder().decode(issued_idkey));
-  await fs.writeFile("../samples/id-key-license-sample.jwt", issued_idkey, "utf-8");
-
-  // Load sample credential JSON
-  const idKey8CredentialJson = await fs.readFile(
     "../samples/gtin8-id-key-license-sample.json",
-    "utf-8"
-  );
-  const claimset_idkey8 = transmute.text.encoder.encode(idKey8CredentialJson);
+  ];
 
-  const issued_idkey8 = await transmute
-    .issuer({
-      alg,
-      type: "application/vc-ld+jwt",
-      signer: issuerSigner,
-    })
-    .issue({
-      claimset: claimset_idkey8,
-    });
+  for (const filePath of inputFiles) {
+    try {
+      const json = await fs.readFile(filePath, "utf-8");
+      const claimset = transmute.text.encoder.encode(json);
 
-  console.log("Issued ID Key Credential (vc-ld+jwt):");
-  console.log(new TextDecoder().decode(issued_idkey8));
-  await fs.writeFile("../samples/gtin8-id-key-license-sample.jwt", issued_idkey8, "utf-8");
+      const issued = await transmute
+        .issuer({
+          alg,
+          type: "application/vc-ld+jwt",
+          signer: issuerSigner,
+        })
+        .issue({ claimset });
 
+      const jwt = new TextDecoder().decode(issued);
+      console.log(`Issued JWT for ${filePath}:\n${jwt}`);
 
+      const outputPath = filePath.replace(/\.json$/, ".jwt");
+      await fs.writeFile(outputPath, jwt, "utf-8");
+    } catch (err) {
+      console.error(`❌ Failed to process ${filePath}:`, err);
+    }
+  }
 }
 
 main().catch(console.error);
