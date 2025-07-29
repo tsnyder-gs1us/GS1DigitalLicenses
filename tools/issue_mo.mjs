@@ -36,9 +36,9 @@ async function main() {
   };
 
   const inputFiles = [
-    "../samples/gcp-sample.json",
-    "../samples/id-key-license-sample.json",
-    "../samples/gtin8-id-key-license-sample.json",
+    "../jsons/gcp-sample.json",
+    "../jsons/id-key-license-sample.json",
+    "../jsons/gtin8-id-key-license-sample.json",
   ];
 
   for (const filePath of inputFiles) {
@@ -57,7 +57,7 @@ async function main() {
       const jwt = new TextDecoder().decode(issued);
       console.log(`Issued JWT for ${filePath}:\n${jwt}`);
 
-      const outputPath = filePath.replace(/\.json$/, ".jwt");
+      const outputPath = filePath.replace(/jsons/, "samples").replace(/\.json$/, ".jwt");
       await fs.writeFile(outputPath, jwt, "utf-8");
     } catch (err) {
       console.error(`❌ Failed to process ${filePath}:`, err);

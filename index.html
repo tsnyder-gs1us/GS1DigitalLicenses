@@ -82,7 +82,7 @@ function initializeTabsAndSVG(doc, config) {
           });
         });
 
-        function showTab(activeButton, showEl) {
+        async function showTab(activeButton, showEl) {
           buttons.forEach(btn => btn.classList.remove("active"));
           container.querySelectorAll(
             `#${exampleId}-jwt, #${exampleId}-json, #${exampleId}-license-svg, #${exampleId}-idkey-svg`
@@ -93,18 +93,27 @@ function initializeTabsAndSVG(doc, config) {
 
           const code = showEl?.querySelector?.("code");
           if (code && !code.dataset.loaded && code.dataset.src) {
-            fetch(code.dataset.src)
-              .then(res => res.ok ? res.text() : Promise.reject(res))
-              .then(text => {
-                code.textContent = text;
-                code.dataset.loaded = "true";
-                if (window.hljs && typeof hljs.highlightElement === "function") {
-                  setTimeout(() => hljs.highlightElement(code), 0);
+            try {
+              const text = await (await fetch(code.dataset.src)).text();
+              if (activeButton.dataset.tab === "json" && code.dataset.src.endsWith(".jwt")) {
+                const parts = text.trim().split(".");
+                if (parts.length === 3) {
+                  const payload = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+                  const decoded = JSON.parse(atob(payload + "==".slice((payload.length % 4) || 4)));
+                  code.textContent = JSON.stringify(decoded, null, 2);
+                } else {
+                  code.textContent = "Invalid JWT structure.";
                 }
-              })
-              .catch(() => {
-                code.textContent = "Failed to load example.";
-              });
+              } else {
+                code.textContent = text;
+              }
+              code.dataset.loaded = "true";
+              if (window.hljs && typeof hljs.highlightElement === "function") {
+                setTimeout(() => hljs.highlightElement(code), 0);
+              }
+            } catch (err) {
+              code.textContent = "Failed to load or decode example.";
+            }
           }
         }
       });
@@ -113,11 +122,10 @@ function initializeTabsAndSVG(doc, config) {
         hljs.highlightAll();
       }
 
-      resolve(); // postProcess must return a Promise
+      resolve();
     });
   });
 }
-
 
 function addReferenceNumbers(doc, config) {
     return new Promise(resolve => {
@@ -243,6 +251,29 @@ function addReferenceNumbers(doc, config) {
 <section id="tof" class="appendix"></section>
 
 <script>
+  function decodeBase64Url(base64Url) {
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = base64 + '='.repeat((4 - base64.length % 4) % 4);
+    return atob(padded);
+  }
+
+  function parseJwtPayload(jwt) {
+    const parts = jwt.trim().split(".");
+    if (parts.length !== 3) throw new Error("Invalid JWT format");
+    const payload = decodeBase64Url(parts[1]);
+    return JSON.parse(payload);
+  }
+
+  async function loadVC(vcUrl) {
+    const res = await fetch(vcUrl);
+    const text = await res.text();
+    if (vcUrl.endsWith(".jwt")) {
+      return parseJwtPayload(text);
+    } else {
+      return JSON.parse(text);
+    }
+  }
+
   async function loadVCAndRenderLicenseSVG(containerId) {
     const container = document.getElementById(containerId);
     if (!container || container.dataset.rendered) return;
@@ -251,8 +282,7 @@ function addReferenceNumbers(doc, config) {
     if (!vcUrl) return;
 
     try {
-      const res = await fetch(vcUrl);
-      const vc = await res.json();
+      const vc = await loadVC(vcUrl);
 
       const renderMethod = vc.renderMethod?.find(
         (m) => m.type === "SvgRenderingTemplate"
@@ -269,38 +299,28 @@ function addReferenceNumbers(doc, config) {
 
       svgDoc.getElementById("credential-name").textContent =
         vc.name || "[MISSING]";
-
       svgDoc.getElementById("org-name").textContent =
         vc.credentialSubject?.organization?.["gs1:organizationName"] || "[MISSING]";
-
       svgDoc.getElementById("org-gln").textContent =
         vc.credentialSubject?.organization?.["gs1:partyGLN"] || "[MISSING]";
-
       svgDoc.getElementById("license-value").textContent =
         vc.credentialSubject?.licenseValue || "[MISSING]";
-
       svgDoc.getElementById("alt-license-value").textContent =
         vc.credentialSubject?.alternativeLicenseValue || "N/A";
-
       svgDoc.getElementById("identificationKeyType").textContent =
         vc.credentialSubject?.identificationKeyType || "Any";
-
-
-      // issuer can be a string or object with `id` or `name`
       svgDoc.getElementById("issuer").textContent =
         typeof vc.issuer === "string"
           ? vc.issuer
           : vc.issuer?.name || vc.issuer?.id || "N/A";
-
-      // extendsCredential may or may not be present
       svgDoc.getElementById("extendsCredential").textContent =
         vc.credentialSubject?.extendsCredential || "None";
-
-      svgDoc.getElementById("vc-description").textContent = vc.description || "";
+      svgDoc.getElementById("vc-description").textContent =
+        vc.description || "";
 
       container.setAttribute("data-rendered", "true");
     } catch (err) {
-      console.error("Render error:", err);
+      console.error("Render error (license):", err);
     }
   }
 
@@ -312,8 +332,7 @@ function addReferenceNumbers(doc, config) {
     if (!vcUrl) return;
 
     try {
-      const res = await fetch(vcUrl);
-      const vc = await res.json();
+      const vc = await loadVC(vcUrl);
 
       const renderMethod = vc.renderMethod?.find(
         (m) => m.type === "SvgRenderingTemplate"
@@ -330,34 +349,24 @@ function addReferenceNumbers(doc, config) {
 
       svgDoc.getElementById("credential-name").textContent =
         vc.name || "[MISSING]";
-
       svgDoc.getElementById("gs1-key-digital-link").textContent =
         vc.credentialSubject?.id || "[MISSING]";
-
-      // issuer can be a string or object with `id` or `name`
       svgDoc.getElementById("issuer").textContent =
         typeof vc.issuer === "string"
           ? vc.issuer
           : vc.issuer?.name || vc.issuer?.id || "N/A";
-
-      // extendsCredential may or may not be present
       svgDoc.getElementById("extendsCredential").textContent =
         vc.credentialSubject?.extendsCredential || "None";
-
-      svgDoc.getElementById("vc-description").textContent = vc.description || "";
+      svgDoc.getElementById("vc-description").textContent =
+        vc.description || "";
 
       container.setAttribute("data-rendered", "true");
     } catch (err) {
-      console.error("Render error:", err);
+      console.error("Render error (IDKey):", err);
     }
   }
-
-  function decodeBase64Url(base64Url) {
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const padded = base64 + '='.repeat((4 - base64.length % 4) % 4);
-    return atob(padded);
-  }
 </script>
+
 
 </body>
 </html>
