@@ -1,0 +1,9 @@
+{
+  "kid": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did.json#key-1",
+  "alg": "ES256",
+  "kty": "EC",
+  "crv": "P-256",
+  "x": "q3pj90vWmp7uFTB8uMbXQGAvCLheDRH7DOxXH1UEOAg",
+  "y": "n1S_c8QGkTYrRmwhXpjzyYH6wF1a9ylrmD14qFAkeXE",
+  "d": "nyWzIbdVq1IgEER7iyekXAfG4WdufrtF28btk_bGnmA"
+ }
