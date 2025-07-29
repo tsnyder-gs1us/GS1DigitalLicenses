@@ -52,10 +52,10 @@
   </foreignObject>
 
   <!-- Extends Credential -->
-  <text x="30" y="220" style="font: 13px sans-serif; fill: #333;">
+  <text x="30" y="290" style="font: 13px sans-serif; fill: #333;">
     <tspan style="font-weight: bold;">Extends:</tspan>
   </text>
-  <text x="30" y="236" style="font: 10px monospace; fill: #0057b8;">
+  <text x="30" y="306" style="font: 10px monospace; fill: #0057b8;">
     <tspan id="extendsCredential">[VALUE]</tspan>
   </text>
 
