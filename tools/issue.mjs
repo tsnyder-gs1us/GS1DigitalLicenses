@@ -2,6 +2,7 @@
 import * as transmute from "@transmute/verifiable-credentials";
 import * as jose from "jose";
 import moment from "moment";
+import fs from "fs/promises";
 
 async function main() {
   const alg = `ES256`;
@@ -39,39 +40,8 @@ async function main() {
     },
   };
 
-  const yaml = `
-"@context":
-  - https://www.w3.org/ns/credentials/v2
-  - https://www.w3.org/ns/credentials/examples/v2
-
-id: ${baseURL}/credentials/3732
-type:
-  - VerifiableCredential
-  - ExampleDegreeCredential
-issuer:
-  id: ${issuer}
-  name: "Example University"
-validFrom: ${moment().toISOString()}
-credentialSchema:
-  id: ${baseURL}/schemas/product-passport
-  type: JsonSchema
-credentialStatus:
-  - id: ${baseURL}/credentials/status/3#${revocationIndex}
-    type: BitstringStatusListEntry
-    statusPurpose: revocation
-    statusListIndex: "${revocationIndex}"
-    statusListCredential: "${baseURL}/credentials/status/3"
-  - id: ${baseURL}/credentials/status/4#${suspensionIndex}
-    type: BitstringStatusListEntry
-    statusPurpose: suspension
-    statusListIndex: "${suspensionIndex}"
-    statusListCredential: "${baseURL}/credentials/status/4"
-credentialSubject:
-  id: did:example:ebfeb1f712ebc6f1c276e12ec21
-  degree:
-    type: ExampleBachelorDegree
-    subtype: Bachelor of Science and Arts
-`.trim();
+  const credentialJson = await fs.readFile("../samples/gs1-prefix-license-sample.json", "utf-8");
+  const claimset = transmute.text.encoder.encode(credentialJson);
 
   const issued = await transmute
     .issuer({
@@ -80,7 +50,7 @@ credentialSubject:
       signer: issuerSigner,
     })
     .issue({
-      claimset: transmute.text.encoder.encode(yaml),
+      claimset: claimset,
     });
 
   console.log("Issued Credential (vc-ld+jwt):");
