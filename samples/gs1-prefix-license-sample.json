@@ -3,7 +3,7 @@
     "https://www.w3.org/ns/credentials/v2",
     "https://ref.gs1.org/gs1/vc/license-context"
   ],
-  "id": "https://id.gs1.org/vc/license/gs1_prefix/08",
+  "id": "https://woodycreek.github.io/GS1DigitalLicenses/samples/gs1-prefix-license-sample.json",
   "type": [
     "VerifiableCredential",
     "GS1PrefixLicenseCredential"
@@ -25,15 +25,15 @@
     "alternativeLicenseValue": "8"
   },
   "credentialSchema": {
-    "id": "https://id.gs1.org/vc/schema/v1/prefix",
+    "id": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/prefix.json",
     "type": "JsonSchema"
   },
   "credentialStatus": {
-    "id": "https://id.gs1.org/vc/status/1#108",
+    "id": "https://woodycreek.github.io/GS1DigitalLicenses/status/go_status_list.jwt#108",
     "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
     "statusListIndex": "108",
-    "statusListCredential": "https://id.gs1.org/vc/status/1"
+    "statusListCredential": "https://woodycreek.github.io/GS1DigitalLicenses/status/go_status_list.jwt"
   },
   "renderMethod": [
     {
