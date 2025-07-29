@@ -8,11 +8,11 @@
   "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did",
   "verificationMethod": [
     {
-      "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#key-1",
+      "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA",
       "type": "JsonWebKey",
       "controller": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did",
       "publicKeyJwk": {
-        "kid": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#key-1",
+        "kid": "KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA",
         "alg": "ES256",
         "kty": "EC",
         "crv": "P-256",
@@ -22,15 +22,15 @@
     }
   ],
   "authentication": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#key-1"
+    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA"
   ],
   "assertionMethod": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#key-1"
+    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA"
   ],
   "capabilityDelegation": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#key-1"
+    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA"
   ],
   "capabilityInvocation": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#key-1"
+    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did#KzqzJVuRW44Eb6iLMSpXYMepUNlYi7C7u4HGW_N_lfA"
   ]
 }
