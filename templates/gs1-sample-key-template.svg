@@ -54,7 +54,9 @@
   <!-- Extends Credential -->
   <text x="30" y="220" style="font: 13px sans-serif; fill: #333;">
     <tspan style="font-weight: bold;">Extends:</tspan>
-   <tspan id="extendsCredential" style="font-family: monospace; fill: #0057b8;">[VALUE]</tspan>
+  </text>
+  <text x="30" y="236" style="font: 11px monospace; fill: #0057b8;">
+    <tspan id="extendsCredential">[VALUE]</tspan>
   </text>
 
   <!-- Issuer: Label right-aligned, value underlined -->
