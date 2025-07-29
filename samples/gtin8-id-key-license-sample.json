@@ -27,7 +27,7 @@
     "identificationKeyType": "GTIN"
   },
   "credentialSchema": {
-    "id": "https://id.gs1.org/vc/schema/v1/identificationkey",
+    "id": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/idkey.json",
     "type": "JsonSchema"
   },
 
