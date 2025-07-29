@@ -61,9 +61,9 @@
   </foreignObject>
 
   <!-- Extends Credential -->
-  <text x="30" y="290" style="font: sans-serif; fill: #333;">
-    <tspan style="font: 13px; font-weight: bold;">Extends:</tspan>
-    <tspan id="extendsCredential" style="font: 10px; font-family: monospace; fill: #0057b8;">[VALUE]</tspan>
+  <text x="30" y="290" style="font: 13px sans-serif; fill: #333;">
+    <tspan style="font-weight: bold;">Extends:</tspan>
+    <tspan id="extendsCredential" style="font-family: monospace; fill: #0057b8;">[VALUE]</tspan>
   </text>
 
   <!-- Issuer: Right-aligned with underline only under value -->
