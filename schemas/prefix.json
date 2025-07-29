@@ -55,7 +55,7 @@
           "title": "Credential Schema Identifier",
           "type": "string",
           "format": "uri",
-          "const": "https://id.gs1.org/vc/schema/v1/prefix"
+          "const": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/prefix.json"
         },
         "type": {
           "title": "Credential Schema Type",
@@ -238,7 +238,7 @@
       "alternativeLicenseValue": "8"
     },
     "credentialSchema": {
-      "id": "https://id.gs1.org/vc/schema/v1/prefix",
+      "id": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/prefix.json",
       "type": "JsonSchema"
     },
     "credentialStatus": {
