@@ -55,16 +55,17 @@
   <text x="30" y="220" style="font: 13px sans-serif; fill: #333;">
     <tspan style="font-weight: bold;">Extends:</tspan>
   </text>
-  <text x="30" y="236" style="font: 8px monospace; fill: #0057b8;">
+  <text x="30" y="236" style="font: 10px monospace; fill: #0057b8;">
     <tspan id="extendsCredential">[VALUE]</tspan>
   </text>
 
   <!-- Issuer: Label right-aligned, value underlined -->
-  <text id="issuer-label" x="560" y="250" text-anchor="end"
+  <text id="issuer-label" x="560" y="320" text-anchor="end"
         style="font: bold 13px sans-serif; fill: #333;">
     Issuer:
   </text>
-  <text id="issuer" x="560" y="272" text-anchor="end"
+
+  <text id="issuer" x="560" y="336" text-anchor="end"
         style="font: italic 13px monospace; fill: #0057b8; text-decoration: underline;">
     [ISSUER]
   </text>
