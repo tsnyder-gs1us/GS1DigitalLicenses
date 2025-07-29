@@ -6,10 +6,6 @@ import fs from "fs/promises";
 
 async function main() {
   const alg = "ES256";
-  const statusListSize = 131072;
-  const revocationIndex = 94567;
-  const suspensionIndex = 23452;
-  const baseURL = "https://vendor.example/api";
 
   // Load keys
   const privateKeyJwk = JSON.parse(
@@ -29,8 +25,10 @@ async function main() {
       // Use jose directly to avoid encoding confusion
       const keyLike = await jose.importJWK(privateKeyJwk, alg);
 
+      const fullKid = `${issuer}#${privateKeyJwk.kid}`;
+
       const jws = await new jose.CompactSign(bytes)
-        .setProtectedHeader({ kid: privateKeyJwk.kid, alg: privateKeyJwk.alg })
+        .setProtectedHeader({ kid: fullKid, alg: privateKeyJwk.alg })
         .sign(keyLike);
 
       return transmute.text.encoder.encode(jws);
