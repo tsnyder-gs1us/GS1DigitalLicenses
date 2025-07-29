@@ -3,7 +3,7 @@
     "https://www.w3.org/ns/credentials/v2",
     "https://ref.gs1.org/gs1/vc/license-context"
   ],
-  "id": "https://cbpvsvip-vc-api.gs1us.org/credentials/081015955",
+  "id": "https://woodycreek.github.io/GS1DigitalLicenses/samples/gcp-sample.jwt",
   "type": [
     "VerifiableCredential",
     "GS1CompanyPrefixLicenseCredential"
@@ -21,7 +21,7 @@
       "gs1:partyGLN": "0810159550000",
       "gs1:organizationName": "Healthy Tots"
     },
-    "extendsCredential": "https://id.gs1.org/vc/license/gs1_prefix/08",
+    "extendsCredential": "https://woodycreek.github.io/GS1DigitalLicenses/samples/gs1-prefix-license-sample.jwt",
     "licenseValue": "081015955",
     "alternativeLicenseValue": "81015955"
   },
@@ -30,11 +30,11 @@
     "type": "JsonSchema"
   },
   "credentialStatus": {
-    "id": "https://cbpvsvip-vc-api.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14#10010",
+    "id": "https://woodycreek.github.io/GS1DigitalLicenses/status/mo_status_list.jwt#10010",
     "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
     "statusListIndex": "10010",
-    "statusListCredential": "https://cbpvsvip-vc-api.gs1us.org/status/801c6cc6-4fc4-4aa3-a347-3b31a175ac14/"
+    "statusListCredential": "https://woodycreek.github.io/GS1DigitalLicenses/status/mo_status_list.jwt#124"
   },
   "renderMethod": [
     {

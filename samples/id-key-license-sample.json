@@ -3,7 +3,7 @@
     "https://www.w3.org/ns/credentials/v2",
     "https://ref.gs1.org/gs1/vc/license-context"
   ],
-  "id": "http://did-vc.gs1us.org/vc/license/00198715637472",
+  "id": "https://woodycreek.github.io/GS1DigitalLicenses/samples/id-key-license-sample.jwt",
   "type": [
     "VerifiableCredential",
     "GS1IdentificationKeyLicenseCredential"
@@ -16,12 +16,12 @@
   "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is a Verifiable License Key Credential that indicates that a specific GS1 ID Key has been licensed to a party",
   "validFrom": "2024-01-25T12:30:00.000Z",
   "credentialSubject": {
-    "id": "did:key:z6Mksk3ENVS8xt3ZJp53UHftjnWwyHh6yeoexYysDuy6upkV/1",
+    "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mc_did",
     "organization": {
       "gs1:partyGLN": "0810159550000",
       "gs1:organizationName": "Healthy Tots"
     },
-    "extendsCredential": "https://id.gs1.org/vc/license/gs1_prefix/00198",
+    "extendsCredential": "https://woodycreek.github.io/GS1DigitalLicenses/samples/gs1-prefix-license-sample.jwt",
     "licenseValue": "00810159550111",
     "alternativeLicenseValue": "810159550111",
     "identificationKeyType": "GTIN"
