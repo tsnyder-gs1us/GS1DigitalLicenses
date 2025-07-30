@@ -1,9 +1,9 @@
 {
-  "$id": "GS1-Product-Data-Schema",
+  "$id": "GS1-Data-Schema",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "version": "1.0.0",
-  "title": "ProductDataCredential",
-  "description": "The product data credential is the Verifiable Credential that is shared with parties interested in the basic information associated with a product identified by a GTIN.",
+  "title": "DataCredential",
+  "description": "The product data credential is the Verifiable Credential that is shared with parties interested in the basic information associated with a GS1 ID Key.",
   "type": "object",
   "properties": {
     "@context": {
@@ -12,19 +12,16 @@
       "const": [
         "https://www.w3.org/ns/credentials/v2",
         "https://ref.gs1.org/gs1/vc/declaration-context",
-        "https://ref.gs1.org/gs1/vc/product-context"
       ],
       "default": [
         "https://www.w3.org/ns/credentials/v2",
         "https://ref.gs1.org/gs1/vc/declaration-context",
-        "https://ref.gs1.org/gs1/vc/product-context"
       ],
       "items": {
         "type": "string",
         "enum": [
           "https://www.w3.org/ns/credentials/v2",
           "https://ref.gs1.org/gs1/vc/declaration-context",
-          "https://ref.gs1.org/gs1/vc/product-context"
         ]
       }
     },
@@ -33,17 +30,17 @@
       "readOnly": true,
       "const": [
         "VerifiableCredential",
-        "ProductDataCredential"
+        "DataCredential"
       ],
       "default": [
         "VerifiableCredential",
-        "ProductDataCredential"
+        "DataCredential"
       ],
       "items": {
         "type": "string",
         "enum": [
           "VerifiableCredential",
-          "ProductDataCredential"
+          "DataCredential"
         ]
       }
     },
@@ -58,7 +55,7 @@
           "title": "Credential Schema Identifier",
           "type": "string",
           "format": "uri",
-          "const": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/productdata.json"
+          "const": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/data.json"
         },
         "type": {
           "title": "Credential Schema Type",
@@ -168,30 +165,6 @@
           "type": "string",
           "format": "uri"
         },
-        "product": {
-          "title": "Any item (product or service) upon which there is a need to retrieve pre-defined information and that may be priced, or ordered, or invoiced at any point in any supply chain.",
-          "type": "object",
-          "properties": {
-            "gs1:brand": {
-              "title": "The brand of the product that appears on the consumer package.",
-              "type": "object",
-              "properties": {
-                "gs1:brandName": {
-                  "title": "The brand name of the product that appears on the consumer package.",
-                  "type": "string"
-                }
-              }
-            },
-            "gs1:productDescription": {
-              "title": "An understandable and useable description of a product using brand and other descriptors. This attribute is filled with as little abbreviation as possible, while keeping to a reasonable length. This should be a meaningful description of the product with full spelling to facilitate message processing. Retailers can use this description as the base to fully understand the brand, flavour, scent etc. of the specific product, in order to accurately create a product description as needed for their internal systems. Examples: XYZ Brand Base Invisible Solid Deodorant AP Stick Spring Breeze.",
-              "type": "string"
-            }
-          },
-          "required": [
-            "gs1:brand",
-            "gs1:productDescription"
-          ]
-        },
         "sameAs": {
           "title": "If the credential subject ID is not a GS1 Digital Link URI, this specifies the GS1 Digital Link URI.",
           "type": "string"
@@ -222,11 +195,10 @@
     "@context": [
       "https://www.w3.org/ns/credentials/v2",
       "https://ref.gs1.org/gs1/vc/declaration-context",
-      "https://ref.gs1.org/gs1/vc/product-context"
     ],
     "type": [
       "VerifiableCredential",
-      "ProductDataCredential"
+      "DataCredential"
     ],
     "issuer": {
       "id": "did:web:healthytots.net",
@@ -239,29 +211,8 @@
     "credentialSubject": {
       "id": "https://id.gs1.org/01/00810159550000",
       "keyAuthorization": "did:key:z6MkjJLbS3eAmBG6AX7AuPgjVeDNdgz34fC7pF5RghwYNutE",
-      "product": {
-        "gs1:brand": {
-          "gs1:brandName": "Healthy Tots"
-        },
-        "gs1:productDescription": "Test Product 1",
-        "gs1:gpcCategoryCode": "10000266",
-        "gs1:netContent": {
-          "gs1:value": "175",
-          "gs1:unitCode": "LBS"
-        },
-        "gs1:targetMarket": {
-          "gs1:targetMarketCountries": [
-            {
-              "gs1:countryCode": "MX"
-            },
-            {
-              "gs1:countryCode": "CA"
-            },
-            {
-              "gs1:countryCode": "US"
-            }
-          ]
-        }
+      "myCustomData" : {
+      	"field": 3
       }
     },
     "credentialSchema": {
