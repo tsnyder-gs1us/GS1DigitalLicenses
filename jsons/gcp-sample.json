@@ -34,7 +34,7 @@
     "type": "BitstringStatusListEntry",
     "statusPurpose": "revocation",
     "statusListIndex": "10010",
-    "statusListCredential": "https://woodycreek.github.io/GS1DigitalLicenses/status/mo_status_list.jwt#124"
+    "statusListCredential": "https://woodycreek.github.io/GS1DigitalLicenses/status/mo_status_list.jwt"
   },
   "renderMethod": [
     {

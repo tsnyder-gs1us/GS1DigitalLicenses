@@ -44,6 +44,8 @@ async function main() {
 	"../jsons/sscc-key-credential-sample.json",
   "../jsons/organization-data-credential-sample.json",
   "../jsons/product-data-credential-sample.json",  
+  "../jsons/grai-data-credential-sample.json",
+  "../jsons/sscc-data-credential-sample.json",  
   ];
 
 // TODO add these
