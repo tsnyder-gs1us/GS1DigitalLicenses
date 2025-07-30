@@ -41,13 +41,13 @@ async function main() {
 	"../jsons/gtin-batch-key-credential-sample.json",
 	"../jsons/gtin-key-credential-sample.json",
 	"../jsons/gtin-serial-key-credential-sample.json",
-	"../jsons/sscc-key-credential-sample.json"
+	"../jsons/sscc-key-credential-sample.json",
+  "../jsons/organization-data-credential-sample.json",
+  "../jsons/product-data-credential-sample.json",  
   ];
 
 // TODO add these
 //	"../samples/grai-data-credential-sample.json",
-//  "../samples/organization-data-credential-sample.json",
-//	"../samples/product-data-credential-sample.json",
 //	"../samples/sscc-data-credential-sample.json",
 
 
