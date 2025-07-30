@@ -18,7 +18,7 @@
   "credentialSubject": {
     "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did",
     "organization": {
-      "gs1:partyGLN": "7541230000000",
+      "gs1:partyGLN": "0614141000005",
       "gs1:organizationName": "GS1 Utopia"
     },
     "licenseValue": "754"
