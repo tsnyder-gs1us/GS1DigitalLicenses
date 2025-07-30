@@ -3,7 +3,7 @@
     "https://www.w3.org/ns/credentials/v2",
     "https://ref.gs1.org/gs1/vc/license-context"
   ],
-  "id": "http://did-vc.gs1us.org/vc/license/00198715637472",
+  "id": "https://woodycreek.github.io/GS1DigitalLicenses/samples/gtin8-id-key-license-sample.jwt",
   "type": [
     "VerifiableCredential",
     "GS1IdentificationKeyLicenseCredential"
