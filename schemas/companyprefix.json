@@ -54,8 +54,7 @@
           "id": {
             "title": "Credential Schema Identifier",
             "type": "string",
-            "format": "uri",
-            "const": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/companyprefix.json"
+            "format": "uri"
           },
           "type": {
             "title": "Credential Schema Type",
