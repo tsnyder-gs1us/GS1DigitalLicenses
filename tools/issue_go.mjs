@@ -15,7 +15,7 @@ async function main() {
     await fs.readFile("../dids/fake_go_did/go_public_key_jwk.json", "utf-8")
   );
 
-  const issuer = "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did";
+  const issuer = "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did";
 
   console.log("Public JWK for jwt.io:");
   console.log(JSON.stringify(publicKeyJwk, null, 2));

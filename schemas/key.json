@@ -207,7 +207,7 @@
       "extendsCredential": "http://did-vc.gs1us.org/vc/license/081015955"
     },
     "credentialSchema": {
-      "id": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/key.json",
+      "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/key.json",
       "type": "JsonSchema"
     },
     "credentialStatus": {

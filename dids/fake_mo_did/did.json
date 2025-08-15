@@ -5,12 +5,12 @@
     "https://w3id.org/security/jwk/v1",
     "https://www.w3.org/ns/credentials/v2"
   ],
-  "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+  "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
   "verificationMethod": [
     {
-      "id": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg",
+      "id": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg",
       "type": "JsonWebKey",
-      "controller": "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did",
+      "controller": "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did",
       "publicKeyJwk": {
         "kty": "EC",
         "x": "srFhVgaI82GR5RFxA70s6kYBA9vLCSix5jPO8zoL_Po",
@@ -22,15 +22,15 @@
     }
   ],
   "authentication": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg"
+    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg"
   ],
   "assertionMethod": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg"
+    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg"
   ],
   "capabilityDelegation": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg"
+    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg"
   ],
   "capabilityInvocation": [
-    "did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg"
+    "did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_mo_did#XpkvTnYOXlHpCdeAhedup86LgPpKRutgEcdpXXGqqtg"
   ]
 }

@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 
 const newDidName = "fake_mc_did";
-const didBase = "did:web:woodycreek.github.io:GS1DigitalLicenses:dids";
+const didBase = "did:web:gs1.github.io:GS1DigitalLicenses:dids";
 const newDid = `${didBase}:${newDidName}`;
 
 async function main() {

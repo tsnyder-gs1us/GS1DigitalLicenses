@@ -237,7 +237,7 @@
       "alternativeLicenseValue": "754"
     },
     "credentialSchema": {
-      "id": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/prefix8.json",
+      "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/prefix8.json",
       "type": "JsonSchema"
     },
     "credentialStatus": {

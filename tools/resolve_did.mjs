@@ -1,7 +1,7 @@
 import { Resolver } from 'did-resolver';
 import { getResolver as webDidResolver } from 'web-did-resolver';
 
-const did = 'did:web:woodycreek.github.io:GS1DigitalLicenses:dids:fake_go_did';
+const did = 'did:web:gs1.github.io:GS1DigitalLicenses:dids:fake_go_did';
 
 const resolver = new Resolver({
   ...webDidResolver()

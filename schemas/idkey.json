@@ -245,7 +245,7 @@
         "identificationKeyType": "GTIN"
       },
       "credentialSchema": {
-        "id": "https://woodycreek.github.io/GS1DigitalLicenses/schemas/companyprefix.json",
+        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/companyprefix.json",
         "type": "JsonSchema"
       },
       "credentialStatus": {

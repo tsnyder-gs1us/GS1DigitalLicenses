@@ -2,7 +2,7 @@
 
 This github repo contains the document development for the simplified GS1 VC Data Model.
 
-View the document [here](https://woodycreek.github.io/GS1DigitalLicenses/).
+View the document [here](https://gs1.github.io/GS1DigitalLicenses/).
 
 # Viewing in web server
 
