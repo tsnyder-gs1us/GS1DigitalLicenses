@@ -33,3 +33,16 @@ respec index.html -o output.html
 ```
 open output.html
 ```
+
+## Generate JWTs
+
+To generate the JWT data, first ensure the templates in the ```jsons``` directory are valid and accurate.  Then execute this sequence.
+Don't forget to check them in.
+
+```
+cd tools
+npm install
+node issue_go.mjs
+node issue_mo.mjs
+node issue_mc.mjs
+```
