@@ -1,0 +1,357 @@
+{
+  "$id": "GS1-Data-Schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "title": "DataCredential",
+  "description": "The product data credential is the Verifiable Credential that is shared with parties interested in the basic information associated with a GS1 ID Key.",
+  "type": "object",
+
+  "$defs": {
+    "GS1DigitalLink" : {
+     "title": "GS1 Digital Link",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?:(\\/\\/((([^\\/?#]*)@)?([^\\/?#:]*)(:([^\\/?#]*))?))?([^?#]*)(((\\/(01|8006|8013|8010|414|417|8017|8018|255|00|253|401|402|8003|8004)\\/)(\\d{4}[^\\/]+)(\\/[^/]+\\/[^/]+)?\\/?(\\?([^?\\n]*))?(#([^\\n]*))?))$"
+    },
+    "DID": {
+      "title": "Decentralized Identifier (DID)",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^did:[a-z0-9]+:(?:[A-Za-z0-9._-]|%[0-9A-Fa-f]{2})+(?::(?:[A-Za-z0-9._-]|%[0-9A-Fa-f]{2})+)*$"
+    },
+    "Issuer": {
+      "title": "Issuer",
+      "description": "The issuer of the credential",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Issuer Identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "name": {
+          "title": "Issuer Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "RenderMethod": {
+      "type": "object",
+      "description": "Rendering support",
+      "properties": {
+        "id": {
+          "title": "Render Method Id",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "const": "SvgRenderingTemplate"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "type"]
+    },
+    "CredentialSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Credential Schema Identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "title": "Credential Schema Type",
+          "const": "JsonSchema"
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ]
+    },
+    "CredentialStatus": {
+      "type": "object",
+      "description": "Revocation supported.",
+      "properties": {
+        "id": {
+          "title": "Credential Status",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "const": "BitstringStatusListEntry"
+        },
+        "statusPurpose": {
+          "type": "string",
+          "const": "revocation"
+        },
+        "statusListIndex": {
+          "type": "string"
+        },
+        "statusSize": {
+          "type": "number"
+        },
+        "statusListCredential": {
+          "type": "string",
+          "format": "uri"
+        },
+        "statusMessage": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["0x0", "0x1"]
+              },
+              "message": {
+                "type": "string",
+                "enum": ["valid", "revoked"]
+              }
+            },
+            "required": ["status", "message"]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "statusPurpose",
+        "statusListIndex",
+        "statusListCredential"
+      ]
+    },
+    "Organization": {
+      "title": "An Organization is any legal or physical entity involved at any point in any supply chain and upon which there is a need to retrieve predefined information. An Organization is uniquely identified by a Global Location Number (GLN).",
+      "type": "object",
+      "properties": {
+        "gs1:partyGLN": {
+          "title": "13-digit GLN that is being used to identify a legal entity or function. If gs1:glnType is present, gs1:partyGLN SHALL only be used when gs1:GLN_TypeCode includes LEGAL_ENTITY and/or FUNCTION",
+          "type": "string",
+          "pattern": "^\\d{13}$"
+        },
+        "gs1:organizationName": {
+          "title": "The name of the organization expressed in text.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "gs1:partyGLN",
+        "gs1:organizationName"
+      ]
+    },
+    "ValidFrom": {
+      "description": "Date from which the credential is to be considered valid.",
+      "type": "string",
+      "format": "date-time"
+    },
+  },
+"properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string", "format": "uri" },
+          {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": true
+          }
+        ]
+      },
+      "allOf": [
+        { "contains": { "const": "https://www.w3.org/ns/credentials/v2" } },
+        { "contains": { "const": "https://ref.gs1.org/gs1/vc/declaration-context" } },
+        { "contains": { "const": "https://ref.gs1.org/gs1/vc/product-context" } }
+      ]
+    },
+    "id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "type": "array",
+      "items": { "type": "string" },
+      "allOf": [
+        { "contains": { "const": "VerifiableCredential" } },
+        { "contains": { "const": "DataCredential" } },
+        { "contains": { "const": "AssetCredential" } }
+      ],
+    },
+    "issuer": {
+      "$ref": "#/$defs/Issuer"
+    },
+    "validFrom": {
+      "$ref": "#/$defs/ValidFrom"
+    },
+    "name": {
+      "type": "string",
+    },
+    "description" : {
+      "type": "string",
+    },
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/GS1DigitalLink"
+        },
+        "sameAs": {
+          "$ref": "#/$defs/DID"
+        },
+        "keyAuthorization": {
+          "title": "Reference to a credential that authorizes the issuer to declare data for the credential subject (the key). Normally, this is the key credential itself, in which case the issuer of this and the key credential must be the same. For data that is declared by other parties on behalf of the issuer of the key credential, an authorization credential may be provided instead. In some circumstances, where the issuer of the data declaration is entirely independent, the key authorization may be entirely outside of the GS1 system (e.g., aproof-of-purchase Verifiable Credential for a product review).",
+          "type": "string",
+          "format": "uri"
+        },
+        "gs1:assetType": {
+          "type": "object",
+          "properties": {
+            "@id": { "type": "string", "format": "uri" },
+            "gs1:descriptionShort": { "type": "string" }
+          },
+          "required": ["@id", "gs1:descriptionShort"],
+        },
+        "gs1:owner": {
+          "type": "object",
+          "properties": {
+            "@type": { "const": "gs1:Organization" },
+            "gs1:gln": {
+              "type": "string",
+              "pattern": "^[0-9]{13}$"
+            }
+          },
+          "required": ["@type", "gs1:gln"],
+        },
+        "gs1:hasLocation": {
+          "type": "object",
+          "properties": {
+            "@type": { "const": "gs1:Place" },
+            "gs1:gln": {
+              "type": "string",
+              "pattern": "^[0-9]{13}$"
+            },
+            "gs1:descriptionShort": { "type": "string" }
+          },
+        },
+        "gs1:status": {
+          "type": "object",
+          "properties": {
+            "@id": { "type": "string", "format": "uri-reference" }
+          },
+          "required": ["@id"],
+        },
+
+        "gs1:material": { "type": "string" },
+        "gs1:dimensionUnit": { "type": "string" },
+
+        "gs1:depth": {
+          "type": "object",
+          "properties": {
+            "@value": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$" },
+            "@type": { "const": "xsd:decimal" }
+          },
+          "required": ["@value", "@type"],
+        },
+        "gs1:width": {
+          "type": "object",
+          "properties": {
+            "@value": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$" },
+            "@type": { "const": "xsd:decimal" }
+          },
+          "required": ["@value", "@type"],
+        },
+        "gs1:height": {
+          "type": "object",
+          "properties": {
+            "@value": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$" },
+            "@type": { "const": "xsd:decimal" }
+          },
+          "required": ["@value", "@type"],
+        },
+
+        "gs1:grossWeight": {
+          "type": "object",
+          "properties": {
+            "@value": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$" },
+            "@type": { "const": "xsd:decimal" }
+          },
+          "required": ["@value", "@type"],
+        },
+
+        "gs1:handlingInstructions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@value": { "type": "string" }
+            },
+            "required": ["@value"],
+          },
+          "minItems": 1
+        },
+      },
+      "required": [
+        "id",
+        "type",
+        "gs1:assetType",
+        "gs1:owner",
+        "gs1:hasLocation",
+        "gs1:status",
+        "gs1:material",
+        "gs1:dimensionUnit",
+        "gs1:depth",
+        "gs1:width",
+        "gs1:height",
+        "gs1:grossWeight",
+        "gs1:handlingInstructions",
+      ]
+    },
+    "credentialSchema": {
+      "oneOf": [
+        { "$ref": "#/$defs/CredentialSchema" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CredentialSchema" },
+          "minItems": 1
+        }
+      ]
+    },
+    "credentialStatus": {
+      "oneOf": [
+        { "$ref": "#/$defs/CredentialStatus" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CredentialStatus" },
+          "minItems": 1
+        }
+      ]
+    },
+    "renderMethod": {
+      "oneOf": [
+        { "$ref": "#/$defs/RenderMethod" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RenderMethod" },
+          "minItems": 1
+        }
+      ]
+    },
+  },
+  "required": [
+    "@context",
+    "id",
+    "type",
+    "issuer",
+    "credentialSubject",
+    "credentialSchema",
+  ],
+}
