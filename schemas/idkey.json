@@ -35,8 +35,7 @@
       },
       "required": [
         "id"
-      ],
-      "additionalProperties": false
+      ]
     },
     "RenderMethod": {
       "type": "object",
@@ -55,8 +54,7 @@
           "type": "string"
         }
       },
-      "required": ["id", "type"],
-      "additionalProperties": true
+      "required": ["id", "type"]
     },
     "CredentialSchema": {
       "type": "object",
@@ -71,7 +69,6 @@
           "const": "JsonSchema"
         }
       },
-      "additionalProperties": false,
       "required": [
         "id",
         "type"
@@ -119,8 +116,7 @@
                 "enum": ["valid", "revoked"]
               }
             },
-            "required": ["status", "message"],
-            "additionalProperties": false
+            "required": ["status", "message"]
           }
         }
       },
@@ -130,8 +126,7 @@
         "statusPurpose",
         "statusListIndex",
         "statusListCredential"
-      ],
-      "additionalProperties": false
+      ]
     },
     "Organization": {
       "title": "An Organization is any legal or physical entity involved at any point in any supply chain and upon which there is a need to retrieve predefined information. An Organization is uniquely identified by a Global Location Number (GLN).",
