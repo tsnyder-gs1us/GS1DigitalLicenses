@@ -1,253 +1,266 @@
 {
-    "$id": "GS1-Company-Prefix-Schema",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "version": "1.0.0",
-    "title": "GS1CompanyPrefixLicenseCredential",
-    "description": "A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 identification keys",
-    "type": "object",
-    "properties": {
-      "@context": {
-        "type": "array",
-        "readOnly": true,
-        "const": [
-          "https://www.w3.org/ns/credentials/v2",
-          "https://ref.gs1.org/gs1/vc/license-context"
-        ],
-        "default": [
-          "https://www.w3.org/ns/credentials/v2",
-          "https://ref.gs1.org/gs1/vc/license-context"
-        ],
-        "items": {
+  "$id": "GS1-Company-Prefix-Schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "title": "GS1CompanyPrefixLicenseCredential",
+  "description": "A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 identification keys",
+  "type": "object",
+  "$defs": {
+    "GS1DigitalLink" : {
+     "title": "GS1 Digital Link",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?:(\\/\\/((([^\\/?#]*)@)?([^\\/?#:]*)(:([^\\/?#]*))?))?([^?#]*)(((\\/(01|8006|8013|8010|414|417|8017|8018|255|00|253|401|402|8003|8004)\\/)(\\d{4}[^\\/]+)(\\/[^/]+\\/[^/]+)?\\/?(\\?([^?\\n]*))?(#([^\\n]*))?))$"
+    },
+    "DID": {
+      "title": "Decentralized Identifier (DID)",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^did:[a-z0-9]+:(?:[A-Za-z0-9._-]|%[0-9A-Fa-f]{2})+(?::(?:[A-Za-z0-9._-]|%[0-9A-Fa-f]{2})+)*$"
+    },
+    "Issuer": {
+      "title": "Issuer",
+      "description": "The issuer of the credential",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Issuer Identifier",
           "type": "string",
-          "enum": [
-            "https://www.w3.org/ns/credentials/v2",
-            "https://ref.gs1.org/gs1/vc/license-context"
-          ]
+          "format": "uri"
+        },
+        "name": {
+          "title": "Issuer Name",
+          "type": "string"
         }
       },
-      "type": {
-        "type": "array",
-        "readOnly": true,
-        "const": [
-          "VerifiableCredential",
-          "GS1CompanyPrefixLicenseCredential"
-        ],
-        "default": [
-          "VerifiableCredential",
-          "GS1CompanyPrefixLicenseCredential"
-        ],
-        "items": {
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "RenderMethod": {
+      "type": "object",
+      "description": "Rendering support",
+      "properties": {
+        "id": {
+          "title": "Render Method Id",
           "type": "string",
-          "enum": [
-            "VerifiableCredential",
-            "GS1CompanyPrefixLicenseCredential"
-          ]
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "const": "SvgRenderingTemplate"
+        },
+        "name": {
+          "type": "string"
         }
       },
-      "id": {
-        "type": "string",
-        "format": "uri"
-      },
-      "credentialSchema": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "Credential Schema Identifier",
-            "type": "string",
-            "format": "uri"
-          },
-          "type": {
-            "title": "Credential Schema Type",
-            "const": "JsonSchema"
-          }
+      "required": ["id", "type"],
+      "additionalProperties": true
+    },
+    "CredentialSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Credential Schema Identifier",
+          "type": "string",
+          "format": "uri"
         },
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "type"
-        ]
+        "type": {
+          "title": "Credential Schema Type",
+          "const": "JsonSchema"
+        }
       },
-      "credentialStatus": {
-        "type": "object",
-        "description": "Revocation supported.",
-        "properties": {
-          "id": {
-            "title": "Credential Status",
-            "type": "string",
-            "format": "url",
-            "example": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/1121973"
-          },
-          "type": {
-            "type": "string",
-            "const": "BitstringStatusListEntry"
-          },
-          "statusPurpose": {
-            "type": "string",
-            "const": "revocation"
-          },
-          "statusListIndex": {
-            "type": "string",
-            "example": "1121973"
-          },
-          "statusSize": {
-            "type": "number",
-            "example": 2
-          },
-          "statusListCredential": {
-            "type": "string",
-            "format": "url",
-            "example": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
-          },
-          "statusMessage": {
-            "type": "array",
-            "readOnly": true,
-            "items": {
-              "type": "object",
-              "properties": {
-                "status": {
-                  "type": "string",
-                  "enum": [
-                    "0x0",
-                    "0x1"
-                  ]
-                },
-                "message": {
-                  "type": "string",
-                  "enum": [
-                    "valid",
-                    "revoked"
-                  ]
-                }
-              }
-            }
-          }
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type"
+      ]
+    },
+    "CredentialStatus": {
+      "type": "object",
+      "description": "Revocation supported.",
+      "properties": {
+        "id": {
+          "title": "Credential Status",
+          "type": "string",
+          "format": "uri"
         },
-        "additionalProperties": false,
-        "required": [
-          "id",
-          "type",
-          "statusPurpose",
-          "statusListIndex",
-          "statusListCredential"
-        ]
-      },
-      "validFrom": {
-        "description": "Date from which the credential is to be considered valid.",
-        "type": "string",
-        "format": "date-time"
-      },
-      "issuer": {
-        "title": "Issuer",
-        "description": "The issuer of the credential",
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "Issuer Identifier",
-            "type": "string",
-            "format": "uri"
-          },
-          "name": {
-            "title": "Issuer Name",
-            "type": "string"
-          }
+        "type": {
+          "type": "string",
+          "const": "BitstringStatusListEntry"
         },
-        "required": [
-          "id"
-        ],
-        "additionalProperties": false
-      },
-      "credentialSubject": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "title": "Member Company Decentralized Identifier. The subject of this credential must be the issuer of all GS1 ID Key and GS1 Data Credential inherit from the company prefix.", 
-            "type": "string",
-            "format": "uri"
-          },
-          "organization": {
-            "title": "An Organization is any legal or physical entity involved at any point in any supply chain and upon which there is a need to retrieve predefined information. An Organization is uniquely identified by a Global Location Number (GLN).",
+        "statusPurpose": {
+          "type": "string",
+          "const": "revocation"
+        },
+        "statusListIndex": {
+          "type": "string"
+        },
+        "statusSize": {
+          "type": "number"
+        },
+        "statusListCredential": {
+          "type": "string",
+          "format": "uri"
+        },
+        "statusMessage": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
             "type": "object",
             "properties": {
-              "gs1:partyGLN": {
-                "title": "13-digit GLN that is being used to identify a legal entity or function. If gs1:glnType is present, gs1:partyGLN SHALL only be used when gs1:GLN_TypeCode includes LEGAL_ENTITY and/or FUNCTION",
+              "status": {
                 "type": "string",
-                "pattern": "^\\d{13}$"
+                "enum": ["0x0", "0x1"]
               },
-              "gs1:organizationName": {
-                "title": "The name of the organization expressed in text.",
-                "type": "string"
+              "message": {
+                "type": "string",
+                "enum": ["valid", "revoked"]
               }
             },
-            "required": [
-              "gs1:partyGLN", "gs1:organizationName"
-            ]
-          },
-          "licenseValue": {
-            "type": "string",
-            "title": "GS1 Company Prefix License Value",
-            "pattern": "^\\d{4,12}$"
-          },
-          "alternativeLicenseValue": {
-            "title": "GS1 Company Prefix Alternative License Value. This field is optional.",
-            "type": "string"
-          },
-          "extendsCredential": {
-            "title": "Provides a complete chain to the GS1 Prefix or GS1-8 Prefix license credential issued by GS1 Global Office.",
-            "type": "string"
+            "required": ["status", "message"],
+            "additionalProperties": false
           }
-        },
-        "required": [
-          "id", "licenseValue", "organization", "extendsCredential"
-        ]
-      }
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "statusPurpose",
+        "statusListIndex",
+        "statusListCredential"
+      ],
+      "additionalProperties": false
     },
-    "required": [
-      "@context",
-      "id",
-      "type",
-      "issuer",
-      "validFrom",
-      "credentialSchema",
-      "credentialStatus",
-      "credentialSubject"
-    ],
-    "example": {
-      "@context": [
-        "https://www.w3.org/ns/credentials/v2",
-        "https://ref.gs1.org/gs1/vc/license-context"
-      ],
-      "id": "http://did-vc.gs1us.org/vc/license/081015955",
-      "type": [
-        "VerifiableCredential",
-        "GS1CompanyPrefixLicenseCredential"
-      ],
-      "issuer": {
-        "id": "did:web:cbpvsvip-vc.gs1us.org",
-        "name": "GS1 US"
-      },
-      "name": "GS1 Company Prefix License",
-      "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. A GS1 Company Prefix License is issued by a GS1 Member Organization or GS1 Global Office and allocated to a user company or to itself for the purpose of generating tier 1 GS1 identification keys.",
-      "validFrom": "2024-01-25T12:30:00.000Z",
-      "credentialSubject": {
-        "id": "did:web:healthytots.net",
-        "organization": {
-          "gs1:partyGLN": "0810159550000",
-          "gs1:organizationName": "Healthy Tots"
+    "Organization": {
+      "title": "An Organization is any legal or physical entity involved at any point in any supply chain and upon which there is a need to retrieve predefined information. An Organization is uniquely identified by a Global Location Number (GLN).",
+      "type": "object",
+      "properties": {
+        "gs1:partyGLN": {
+          "title": "13-digit GLN that is being used to identify a legal entity or function. If gs1:glnType is present, gs1:partyGLN SHALL only be used when gs1:GLN_TypeCode includes LEGAL_ENTITY and/or FUNCTION",
+          "type": "string",
+          "pattern": "^\\d{13}$"
         },
-        "extendsCredential": "https://id.gs1.org/vc/license/gs1_prefix/08",
-        "licenseValue": "081015955",
-        "alternativeLicenseValue": "81015955"
+        "gs1:organizationName": {
+          "title": "The name of the organization expressed in text.",
+          "type": "string"
+        }
       },
-      "credentialSchema": {
-        "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/companyprefix.json",
-        "type": "JsonSchema"
+      "required": [
+        "gs1:partyGLN",
+        "gs1:organizationName"
+      ]
+    },
+    "ValidFrom": {
+      "description": "Date from which the credential is to be considered valid.",
+      "type": "string",
+      "format": "date-time"
+    },
+  },
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "allOf": [
+        { "contains": { "const": "https://www.w3.org/ns/credentials/v2" } },
+        { "contains": { "const": "https://ref.gs1.org/gs1/vc/license-context" } }
+      ],
+    },
+    "id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "type": "array",
+      "items": { "type": "string" },
+      "allOf": [
+        { "contains": { "const": "VerifiableCredential" } },
+        { "contains": { "const": "GS1CompanyPrefixLicenseCredential" } }
+      ],
+    },
+    "issuer": {
+      "$ref": "#/$defs/Issuer"
+    },
+    "validFrom": {
+      "$ref": "#/$defs/ValidFrom"
+    },
+    "name": {
+      "type": "string",
+    },
+    "description" : {
+      "type": "string",
+    },
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": { "$ref": "#/$defs/DID" },
+        "organization": {
+          "$ref": "#/$defs/Organization"
+        },
+        "licenseValue": {
+          "type": "string",
+          "title": "GS1 Prefix License Value",
+          "pattern": "^\\d{4,12}$"
+        },
+        "alternativeLicenseValue": {
+          "title": "GS1 Prefix Alternative License Value. This field is optional.",
+          "type": "string"
+        },
+        "extendsCredential" : {
+          "type": "string",
+          "format": "uri"
+        }
       },
-      "credentialStatus": {
-        "id": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/11920",
-        "type": "BitstringStatusListEntry",
-        "statusPurpose": "revocation",
-        "statusListIndex": "11920",
-        "statusListCredential": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
-      }
-    }
-  }
+      "required": [
+        "id",
+        "licenseValue",
+        "organization",
+        "extendsCredential"
+      ]
+    },
+    "credentialSchema": {
+      "oneOf": [
+        { "$ref": "#/$defs/CredentialSchema" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CredentialSchema" },
+          "minItems": 1
+        }
+      ]
+    },
+    "credentialStatus": {
+      "oneOf": [
+        { "$ref": "#/$defs/CredentialStatus" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CredentialStatus" },
+          "minItems": 1
+        }
+      ]
+    },
+    "renderMethod": {
+      "oneOf": [
+        { "$ref": "#/$defs/RenderMethod" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RenderMethod" },
+          "minItems": 1
+        }
+      ]
+    },
+  },
+  "required": [
+    "@context",
+    "id",
+    "type",
+    "issuer",
+    "validFrom",
+    "name",
+    "description",
+    "credentialSubject",
+    "credentialStatus",
+    "credentialSchema",
+    "renderMethod"
+  ],
+}
