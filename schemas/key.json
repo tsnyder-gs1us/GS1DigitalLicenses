@@ -5,138 +5,21 @@
   "title": "KeyCredential",
   "description": "This is the Verifiable Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the key that it contains exists and is valid. When the key is retired (e.g., a product is withdrawn from the market or an asset is destroyed), the credential is revoked.",
   "type": "object",
-  "properties": {
-    "@context": {
-      "type": "array",
-      "readOnly": true,
-      "const": [
-        "https://www.w3.org/ns/credentials/v2",
-        "https://ref.gs1.org/gs1/vc/declaration-context"
-      ],
-      "default": [
-        "https://www.w3.org/ns/credentials/v2",
-        "https://ref.gs1.org/gs1/vc/declaration-context"
-      ],
-      "items": {
-        "type": "string",
-        "enum": [
-          "https://www.w3.org/ns/credentials/v2",
-          "https://ref.gs1.org/gs1/vc/declaration-context"
-        ]
-      }
-    },
-    "type": {
-      "type": "array",
-      "readOnly": true,
-      "const": [
-        "VerifiableCredential",
-        "KeyCredential"
-      ],
-      "default": [
-        "VerifiableCredential",
-        "KeyCredential"
-      ],
-      "items": {
-        "type": "string",
-        "enum": [
-          "VerifiableCredential",
-          "KeyCredential"
-        ]
-      }
-    },
-    "id": {
+
+  "$defs": {
+    "GS1DigitalLink" : {
+     "title": "GS1 Digital Link",
       "type": "string",
-      "format": "uri"
+      "format": "uri",
+      "pattern": "^https?:(\\/\\/((([^\\/?#]*)@)?([^\\/?#:]*)(:([^\\/?#]*))?))?([^?#]*)(((\\/(01|8006|8013|8010|414|417|8017|8018|255|00|253|401|402|8003|8004)\\/)(\\d{4}[^\\/]+)(\\/[^/]+\\/[^/]+)?\\/?(\\?([^?\\n]*))?(#([^\\n]*))?))$"
     },
-    "credentialSchema": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "title": "Credential Schema Identifier",
-          "type": "string",
-          "format": "uri"
-        },
-        "type": {
-          "title": "Credential Schema Type",
-          "const": "JsonSchema"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type"
-      ]
-    },
-    "credentialStatus": {
-      "type": "object",
-      "description": "Revocation supported.",
-      "properties": {
-        "id": {
-          "title": "Credential Status",
-          "type": "string",
-          "format": "url",
-          "example": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/1121973"
-        },
-        "type": {
-          "type": "string",
-          "const": "BitstringStatusListEntry"
-        },
-        "statusPurpose": {
-          "type": "string",
-          "const": "revocation"
-        },
-        "statusListIndex": {
-          "type": "string",
-          "example": "1121973"
-        },
-        "statusSize": {
-          "type": "number",
-          "example": 2
-        },
-        "statusListCredential": {
-          "type": "string",
-          "format": "url",
-          "example": "https://cbpvsvip-vc.dev.gs1us.org/status/2c0a1f02-d545-481b-902a-1e919cd706e2/"
-        },
-        "statusMessage": {
-          "type": "array",
-          "readOnly": true,
-          "items": {
-            "type": "object",
-            "properties": {
-              "status": {
-                "type": "string",
-                "enum": [
-                  "0x0",
-                  "0x1"
-                ]
-              },
-              "message": {
-                "type": "string",
-                "enum": [
-                  "valid",
-                  "revoked"
-                ]
-              }
-            }
-          }
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "statusPurpose",
-        "statusListIndex",
-        "statusListCredential"
-      ]
-    },
-    "validFrom": {
-      "description": "Date from which the credential is to be considered valid.",
+    "DID": {
+      "title": "Decentralized Identifier (DID)",
       "type": "string",
-      "format": "date-time"
+      "format": "uri",
+      "pattern": "^did:[a-z0-9]+:(?:[A-Za-z0-9._-]|%[0-9A-Fa-f]{2})+(?::(?:[A-Za-z0-9._-]|%[0-9A-Fa-f]{2})+)*$"
     },
-    "issuer": {
+    "Issuer": {
       "title": "Issuer",
       "description": "The issuer of the credential",
       "type": "object",
@@ -153,27 +36,204 @@
       },
       "required": [
         "id"
+      ]
+    },
+    "RenderMethod": {
+      "type": "object",
+      "description": "Rendering support",
+      "properties": {
+        "id": {
+          "title": "Render Method Id",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "const": "SvgRenderingTemplate"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "type"]
+    },
+    "CredentialSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Credential Schema Identifier",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "title": "Credential Schema Type",
+          "const": "JsonSchema"
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ]
+    },
+    "CredentialStatus": {
+      "type": "object",
+      "description": "Revocation supported.",
+      "properties": {
+        "id": {
+          "title": "Credential Status",
+          "type": "string",
+          "format": "uri"
+        },
+        "type": {
+          "type": "string",
+          "const": "BitstringStatusListEntry"
+        },
+        "statusPurpose": {
+          "type": "string",
+          "const": "revocation"
+        },
+        "statusListIndex": {
+          "type": "string"
+        },
+        "statusSize": {
+          "type": "number"
+        },
+        "statusListCredential": {
+          "type": "string",
+          "format": "uri"
+        },
+        "statusMessage": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["0x0", "0x1"]
+              },
+              "message": {
+                "type": "string",
+                "enum": ["valid", "revoked"]
+              }
+            },
+            "required": ["status", "message"]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "statusPurpose",
+        "statusListIndex",
+        "statusListCredential"
+      ]
+    },
+    "Organization": {
+      "title": "An Organization is any legal or physical entity involved at any point in any supply chain and upon which there is a need to retrieve predefined information. An Organization is uniquely identified by a Global Location Number (GLN).",
+      "type": "object",
+      "properties": {
+        "gs1:partyGLN": {
+          "title": "13-digit GLN that is being used to identify a legal entity or function. If gs1:glnType is present, gs1:partyGLN SHALL only be used when gs1:GLN_TypeCode includes LEGAL_ENTITY and/or FUNCTION",
+          "type": "string",
+          "pattern": "^\\d{13}$"
+        },
+        "gs1:organizationName": {
+          "title": "The name of the organization expressed in text.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "gs1:partyGLN",
+        "gs1:organizationName"
+      ]
+    },
+    "ValidFrom": {
+      "description": "Date from which the credential is to be considered valid.",
+      "type": "string",
+      "format": "date-time"
+    },
+  },
+"properties": {
+    "@context": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "allOf": [
+        { "contains": { "const": "https://www.w3.org/ns/credentials/v2" } },
+        { "contains": { "const": "https://ref.gs1.org/gs1/vc/declaration-context" } }
       ],
-      "additionalProperties": false
+    },
+    "id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "type": "array",
+      "items": { "type": "string" },
+      "allOf": [
+        { "contains": { "const": "VerifiableCredential" } },
+        { "contains": { "const": "KeyCredential" } }
+      ],
+    },
+    "issuer": {
+      "$ref": "#/$defs/Issuer"
+    },
+    "validFrom": {
+      "$ref": "#/$defs/ValidFrom"
+    },
+    "name": {
+      "type": "string",
+    },
+    "description" : {
+      "type": "string",
     },
     "credentialSubject": {
       "type": "object",
       "properties": {
         "id": {
-          "title": "The credential subject ID must be a GS1 Digital Link URI. While preference should be given to the canonical URI (based on id.gs1.org), this is not required. Using the GS1 Digital Link URI means that the credential can support any level of granularity required (e.g., GTIN, GTIN+CPV, GTIN+lot, GTIN+serial, GLN, GLN+extension, etc.).",
-          "type": "string",
-          "format": "uri"
+          "$ref": "#/$defs/GS1DigitalLink"
         },
         "extendsCredential": {
           "title": "Provides a complete chain to the GS1 Company Issued by a GS1 Member Organization.",
-          "type": "string"
+          "type": "string",
+          "format": "uri"
         }
       },
       "required": [
         "id",
         "extendsCredential"
       ]
-    }
+    },
+    "credentialSchema": {
+      "oneOf": [
+        { "$ref": "#/$defs/CredentialSchema" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CredentialSchema" },
+          "minItems": 1
+        }
+      ]
+    },
+    "credentialStatus": {
+      "oneOf": [
+        { "$ref": "#/$defs/CredentialStatus" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CredentialStatus" },
+          "minItems": 1
+        }
+      ]
+    },
+    "renderMethod": {
+      "oneOf": [
+        { "$ref": "#/$defs/RenderMethod" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RenderMethod" },
+          "minItems": 1
+        }
+      ]
+    },
   },
   "required": [
     "@context",
@@ -181,41 +241,10 @@
     "type",
     "issuer",
     "validFrom",
-    "credentialSchema",
+    "name",
+    "description",
+    "credentialSubject",
     "credentialStatus",
-    "credentialSubject"
+    "credentialSchema",
   ],
-  "example": {
-    "@context": [
-      "https://www.w3.org/ns/credentials/v2",
-      "https://ref.gs1.org/gs1/vc/declaration-context"
-    ],
-    "issuer": {
-      "id": "did:web:healthytots.net",
-      "name": "Healthy Tots"
-    },
-    "type": [
-      "VerifiableCredential",
-      "KeyCredential"
-    ],
-    "name": "GS1 ID Key Credential",
-    "description": "THIS GS1 DIGITAL LICENSE CREDENTIAL IS FOR TESTING PURPOSES ONLY. This is the Verifiable Credential that indicates that something has been identified. It contains no data about what has been identified as that is done via the association process. This credential is used only to indicate that the key that it contains exists and is valid.",
-    "id": "did:key:z6MkjJLbS3eAmBG6AX7AuPgjVeDNdgz34fC7pF5RghwYNutE",
-    "validFrom": "2024-01-25T12:30:00.000Z",
-    "credentialSubject": {
-      "id": "https://id.gs1.org/01/00810159550000",
-      "extendsCredential": "http://did-vc.gs1us.org/vc/license/081015955"
-    },
-    "credentialSchema": {
-      "id": "https://gs1.github.io/GS1DigitalLicenses/schemas/key.json",
-      "type": "JsonSchema"
-    },
-    "credentialStatus": {
-      "id": "https://www.healthytots.net/status/d6800dbc-9573-4522-bf54-dcea2813e661/12320",
-      "type": "BitstringStatusListEntry",
-      "statusPurpose": "revocation",
-      "statusListIndex": "12320",
-      "statusListCredential": "https://www.healthytots.net/status/d6800dbc-9573-4522-bf54-dcea2813e661/"
-    }
-  }
 }
