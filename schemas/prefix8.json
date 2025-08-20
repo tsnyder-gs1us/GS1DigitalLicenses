@@ -200,7 +200,7 @@
         },
         "licenseValue": {
           "type": "string",
-          "title": "GS1 Prefix License Value",
+          "title": "GS1 Prefix 8 License Value",
           "pattern": "^\\d{2,7}$"
         },
         "alternativeLicenseValue": {
