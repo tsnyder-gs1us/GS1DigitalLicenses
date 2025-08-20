@@ -140,6 +140,11 @@
         "gs1:organizationName"
       ]
     },
+    "ValidFrom": {
+      "description": "Date from which the credential is to be considered valid.",
+      "type": "string",
+      "format": "date-time"
+    },
   },
   "properties": {
     "@context": {
@@ -166,9 +171,7 @@
       "$ref": "#/$defs/Issuer"
     },
     "validFrom": {
-      "description": "Date from which the credential is to be considered valid.",
-      "type": "string",
-      "format": "date-time"
+      "$ref": "#/$defs/ValidFrom"
     },
     "name": {
       "type": "string",
